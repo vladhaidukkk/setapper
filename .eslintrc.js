@@ -13,7 +13,10 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-param-reassign': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-props-no-spreading': 0,
+    'import/prefer-default-export': 0,
   },
   settings: {
     'import/resolver': {
