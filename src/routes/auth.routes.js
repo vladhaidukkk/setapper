@@ -1,22 +1,23 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { Login, Registration } from 'pages';
 
 const authRoutes = [
   {
     path: 'login',
-    element: <h1>Login</h1>,
+    element: <Login />,
   },
   {
     path: 'registration',
-    element: <h1>reg</h1>,
+    element: <Registration />,
   },
   {
     path: 'registration/*',
-    element: <Navigate to="/registration" replace />,
+    element: <Navigate to="" replace />,
   },
   {
     path: '*',
-    element: <Navigate to="/login" replace />,
+    element: <Navigate to="login" replace />,
   },
 ];
 
