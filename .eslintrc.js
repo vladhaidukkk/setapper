@@ -16,6 +16,7 @@ module.exports = {
     'no-param-reassign': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 0,
+    'react/jsx-no-constructed-context-values': 'warn',
     'import/prefer-default-export': 0,
   },
   settings: {

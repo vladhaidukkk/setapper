@@ -1,5 +1,5 @@
 const errorConstants = {
-  keys: {
+  types: {
     AUTH: 'authError',
   },
   messages: {

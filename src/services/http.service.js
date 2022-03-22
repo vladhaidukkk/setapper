@@ -1,6 +1,6 @@
 import axios from 'axios';
 import configKeys from 'config.json';
-import { isErrorExpected } from 'utils/helpers';
+import { isErrorExpectedHelper } from 'utils/helpers';
 
 const http = axios.create({
   baseURL: configKeys.apiEndpoint,
@@ -10,7 +10,7 @@ const http = axios.create({
 http.interceptors.response.use(
   (resp) => resp,
   (error) => {
-    if (!isErrorExpected(error)) {
+    if (!isErrorExpectedHelper(error)) {
       // todo: here can be logger
       error.message = 'Something went wrong:( Try it later.';
     }

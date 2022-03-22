@@ -1,4 +1,4 @@
-import isErrorExpected from 'utils/helpers/isErrorExpected.helper';
-import getErrorMessage from 'utils/helpers/getErrorMessage.helper';
+import isErrorExpectedHelper from 'utils/helpers/isErrorExpected.helper';
+import getErrorMessageHelper from 'utils/helpers/getErrorMessage.helper';
 
-export { isErrorExpected, getErrorMessage };
+export { isErrorExpectedHelper, getErrorMessageHelper };

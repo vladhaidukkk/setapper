@@ -24,7 +24,7 @@ function ErrorHandler({ children }) {
 }
 
 ErrorHandler.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 };
 
 export default ErrorHandler;

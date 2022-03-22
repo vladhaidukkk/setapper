@@ -46,8 +46,8 @@ const removeJwtData = () => {
 };
 
 // AccountId
-const setAccountId = (id) => {
-  set(localStorageConstants.keys.ACCOUNT_ID, id);
+const setAccountId = (value) => {
+  set(localStorageConstants.keys.ACCOUNT_ID, value);
 };
 
 const getAccountId = () => {
@@ -56,6 +56,15 @@ const getAccountId = () => {
 
 const removeAccountId = () => {
   remove(localStorageConstants.keys.ACCOUNT_ID);
+};
+
+// Theme
+const setTheme = (value) => {
+  set(localStorageConstants.keys.THEME, value);
+};
+
+const getTheme = () => {
+  return get(localStorageConstants.keys.THEME);
 };
 
 const localStorageService = {
@@ -71,6 +80,8 @@ const localStorageService = {
   setAccountId,
   getAccountId,
   removeAccountId,
+  setTheme,
+  getTheme,
 };
 
 export default localStorageService;

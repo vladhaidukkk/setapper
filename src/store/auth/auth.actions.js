@@ -1,7 +1,7 @@
 import authSlice from 'store/auth/auth.slice';
 import { authService } from 'services';
 import localStorageService from 'services/localStorage.service';
-import { history } from 'utils/core';
+import { historyUtil } from 'utils/core';
 import { handleError } from 'store/errors/errors.actions';
 import { errorConstants } from 'utils/constants';
 import { createAction } from '@reduxjs/toolkit';
@@ -17,10 +17,10 @@ const signUp = (payload) => async (dispatch) => {
     localStorageService.setJwtData(jwtData);
     localStorageService.setAccountId(jwtData.localId);
     dispatch(succeed(jwtData.localId));
-    history.push('/');
+    historyUtil.push('/');
   } catch (error) {
     dispatch(failed());
-    dispatch(handleError({ key: errorConstants.keys.AUTH, error }));
+    dispatch(handleError({ type: errorConstants.types.AUTH, error }));
   }
 };
 
@@ -31,10 +31,10 @@ const logIn = (payload) => async (dispatch) => {
     localStorageService.setJwtData(jwtData);
     localStorageService.setAccountId(jwtData.localId);
     dispatch(succeed(jwtData.localId));
-    history.push('/');
+    historyUtil.push('/');
   } catch (error) {
     dispatch(failed());
-    dispatch(handleError({ key: errorConstants.keys.AUTH, error }));
+    dispatch(handleError({ type: errorConstants.types.AUTH, error }));
   }
 };
 
@@ -42,7 +42,7 @@ const logOut = () => (dispatch) => {
   localStorageService.removeJwtData();
   localStorageService.removeAccountId();
   dispatch(loggedOut());
-  history.push('/auth/login'); // todo: change push when log out + all other
+  historyUtil.push('/auth/login'); // todo: change push when log out + all other
 };
 
 export { signUp, logIn, logOut };

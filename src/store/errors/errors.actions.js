@@ -1,13 +1,13 @@
 import errorsSlice from 'store/errors/errors.slice';
-import { getErrorMessage } from 'utils/helpers';
+import { getErrorMessageHelper } from 'utils/helpers';
 
 const { handled, cleared } = errorsSlice.actions;
 
 const handleError =
-  ({ key, error }) =>
+  ({ type, error }) =>
   (dispatch) => {
-    const errorMessage = getErrorMessage(error);
-    dispatch(handled({ key, error: errorMessage }));
+    const errorMessage = getErrorMessageHelper(error);
+    dispatch(handled({ type, error: errorMessage }));
   };
 
 const clearErrors = () => (dispatch) => {

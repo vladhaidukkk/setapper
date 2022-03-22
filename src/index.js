@@ -5,11 +5,11 @@ import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import App from 'app';
 import { Provider } from 'react-redux';
 import store from 'store';
-import { history } from 'utils/core';
+import { historyUtil } from 'utils/core';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HistoryRouter history={history}>
+    <HistoryRouter history={historyUtil}>
       <Provider store={store}>
         <App />
       </Provider>
