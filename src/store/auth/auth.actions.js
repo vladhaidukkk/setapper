@@ -2,8 +2,13 @@ import authSlice from 'store/auth/auth.slice';
 import { authService } from 'services';
 import localStorageService from 'services/localStorage.service';
 import { history } from 'utils/core';
+import { handleError } from 'store/errors/errors.actions';
+import { errorConstants } from 'utils/constants';
+import { createAction } from '@reduxjs/toolkit';
 
-const { requested, succeed, failed, loggedOut } = authSlice.actions;
+const { succeed, loggedOut } = authSlice.actions;
+const requested = createAction('auth/requested');
+const failed = createAction('auth/failed');
 
 const signUp = (payload) => async (dispatch) => {
   dispatch(requested());
@@ -14,8 +19,8 @@ const signUp = (payload) => async (dispatch) => {
     dispatch(succeed(jwtData.localId));
     history.push('/');
   } catch (error) {
-    const errorMessage = error.response?.data.error.message || error.message;
-    dispatch(failed(errorMessage));
+    dispatch(failed());
+    dispatch(handleError({ key: errorConstants.keys.AUTH, error }));
   }
 };
 
@@ -28,8 +33,8 @@ const logIn = (payload) => async (dispatch) => {
     dispatch(succeed(jwtData.localId));
     history.push('/');
   } catch (error) {
-    const errorMessage = error.response?.data.error.message || error.message;
-    dispatch(failed(errorMessage));
+    dispatch(failed());
+    dispatch(handleError({ key: errorConstants.keys.AUTH, error }));
   }
 };
 

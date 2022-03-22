@@ -1,0 +1,30 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getErrors } from 'store/errors/errors.selectors';
+import { clearErrors } from 'store/errors/errors.actions';
+import { toast } from 'react-toastify';
+
+function ErrorHandler({ children }) {
+  const dispatch = useDispatch();
+  const errors = useSelector(getErrors());
+
+  // todo: clear logs
+  console.log('errors out');
+
+  useEffect(() => {
+    console.log('in');
+    if (errors) {
+      errors.forEach((error) => toast.error(error));
+      dispatch(clearErrors());
+    }
+  }, [errors]);
+
+  return children;
+}
+
+ErrorHandler.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+};
+
+export default ErrorHandler;

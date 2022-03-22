@@ -6,8 +6,4 @@ const getLoggedInStatus = () => (state) => {
   return state.auth.isLoggedIn;
 };
 
-const getAuthError = () => (state) => {
-  return state.auth.error;
-};
-
-export { getAccountId, getLoggedInStatus, getAuthError };
+export { getAccountId, getLoggedInStatus };
