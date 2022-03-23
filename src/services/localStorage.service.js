@@ -19,13 +19,12 @@ const setJwtData = ({ idToken, refreshToken, expiresIn = 3600 }) => {
   const data = {
     accessToken: idToken,
     refreshToken,
-    expiresDate: Date.now() + expiresIn * 1000,
+    expiresDate: Date.now() + Number(expiresIn) * 1000,
   };
   set(localStorageConstants.keys.JWT_DATA, data, true);
 };
 
 const getJwtData = () => {
-  console.log(typeof get(localStorageConstants.keys.JWT_DATA, true));
   return get(localStorageConstants.keys.JWT_DATA, true);
 };
 

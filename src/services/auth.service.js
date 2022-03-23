@@ -18,7 +18,6 @@ const logIn = async ({ email, password }) => {
   return data;
 };
 
-// todo: use refresh token in httpService when realtimedb will be connected;
 const exchangeRefreshToken = async () => {
   const refreshToken = localStorageService.getJwtRefreshToken();
   const { data } = await authHttp.post('token', {
