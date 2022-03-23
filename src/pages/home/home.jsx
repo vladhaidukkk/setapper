@@ -25,11 +25,11 @@ function Home() {
 
   return (
     <div>
-      <header className="flex justify-between items-center bg-zinc-300 dark:bg-zinc-900 p-2.5">
+      <header className="flex items-center justify-between bg-zinc-300 p-2.5 dark:bg-zinc-900">
         <div>Logo</div>
-        <nav className="flex space-x-2.5 items-center">
+        <nav className="flex items-center space-x-2.5">
           <select
-            className="bg-zinc-400 dark:bg-zinc-700 rounded px-1.5 py-1"
+            className="rounded bg-zinc-400 px-1.5 py-1 dark:bg-zinc-700"
             onChange={handleThemeChange}
             value={theme}
           >
@@ -44,12 +44,12 @@ function Home() {
           </div>
           <div className="relative">
             <button type="button" onClick={toggleOpened}>
-              <div className="h-8 w-8 rounded flex justify-center items-center bg-zinc-400 dark:bg-zinc-700">ava</div>
+              <div className="flex h-8 w-8 items-center justify-center rounded bg-zinc-400 dark:bg-zinc-700">ava</div>
             </button>
             <div
               className={`${
                 isOpened ? 'block' : 'hidden'
-              } bg-zinc-300 dark:bg-zinc-900 rounded p-2.5 absolute top-full right-0`}
+              } absolute top-full right-0 rounded bg-zinc-300 p-2.5 dark:bg-zinc-900`}
             >
               <ul>
                 <li>
@@ -69,7 +69,7 @@ function Home() {
         </nav>
       </header>
       <h1>Main page (welcome)</h1>
-      <button className="bg-blue-200 rounded py-1 px-2 m-2" type="button" onClick={() => dispatch(logOut())}>
+      <button className="m-2 rounded bg-blue-200 py-1 px-2" type="button" onClick={() => dispatch(logOut())}>
         log out
       </button>
     </div>
