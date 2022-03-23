@@ -1,6 +1,7 @@
 const errorConstants = {
   types: {
     AUTH: 'authError',
+    ACCOUNT: 'accountError',
   },
   messages: {
     EMAIL_NOT_FOUND: 'Email was not found',

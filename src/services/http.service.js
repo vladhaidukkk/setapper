@@ -1,11 +1,22 @@
 import axios from 'axios';
 import configKeys from 'config.json';
-import { isErrorExpectedHelper } from 'utils/helpers';
+import { formatUrlForFirebaseHelper, isErrorExpectedHelper } from 'utils/helpers';
 
 const http = axios.create({
   baseURL: configKeys.apiEndpoint,
 });
 // todo: make request auth checked (rules in rtdb + here push something(token mb))
+
+http.interceptors.request.use(
+  (config) => {
+    if (configKeys.useFirebase) {
+      config.url = formatUrlForFirebaseHelper(config.url);
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 http.interceptors.response.use(
   (resp) => resp,

@@ -16,9 +16,11 @@ function Registration() {
     <div>
       <form className="bg-slate-300 rounded m-4 w-max p-2 space-y-1" onSubmit={handleSubmit(handleFormSubmit)}>
         <h1>Register</h1>
+        <input type="text" {...register('username')} />
+        <br />
         <input type="text" {...register('email')} />
         <br />
-        <input type="text" {...register('password')} />
+        <input type="password" {...register('password')} />
         <br />
         <button type="submit">register</button>
         <div>

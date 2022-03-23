@@ -18,7 +18,7 @@ function Login() {
         <h1>Login</h1>
         <input type="text" {...register('email')} />
         <br />
-        <input type="text" {...register('password')} />
+        <input type="password" {...register('password')} />
         <br />
         <button type="submit">log iin</button>
         <div>

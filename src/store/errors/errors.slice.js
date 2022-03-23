@@ -8,7 +8,7 @@ const errorsSlice = createSlice({
   reducers: {
     handled: (state, action) => {
       if (!state.entities) state.entities = {};
-      state.entities[action.payload.key] = action.payload.error;
+      state.entities[action.payload.type] = action.payload.error;
     },
     cleared: (state) => {
       state.entities = null;
