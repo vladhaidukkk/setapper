@@ -1,5 +1,5 @@
 import React from 'react';
-import Pages, { Auth, Builder, Main, Presets } from 'pages';
+import Pages, { Auth, Builder, Home, Presets } from 'pages';
 import { Navigate } from 'react-router-dom';
 
 const appRoutes = [
@@ -9,7 +9,7 @@ const appRoutes = [
     children: [
       {
         index: true,
-        element: <Main />,
+        element: <Home />,
       },
       {
         path: 'auth/*',
