@@ -6,10 +6,10 @@ function SectionsBar() {
   return (
     <aside className="w-56 bg-zinc-300">
       <ul>
-        {sectionConstants.LIST.map((item) => (
-          <li key={item.name}>
-            <NavLink to={`/builder/${item.name}`} className={(state) => (state.isActive ? 'underline' : undefined)}>
-              {item.name}
+        {sectionConstants.LIST.map(({ name, Icon }) => (
+          <li key={name}>
+            <NavLink to={`/builder/${name}`} className={(state) => (state.isActive ? 'underline' : undefined)}>
+              <Icon className="h-7 w-7" />
             </NavLink>
           </li>
         ))}

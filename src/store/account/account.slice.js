@@ -1,5 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const crudRequested = (state) => {
+  state.isLoading = true;
+};
+
+const crudReceived = (state, action) => {
+  state.data = action.payload;
+  state.isLoading = false;
+};
+
+const crudFailed = (state) => {
+  state.isLoading = false;
+};
+
 const accountSlice = createSlice({
   name: 'account',
   initialState: {
@@ -7,20 +20,12 @@ const accountSlice = createSlice({
     isLoading: false,
   },
   reducers: {
-    requested: (state) => {
-      state.isLoading = true;
-    },
-    received: (state, action) => {
-      state.data = action.payload;
-      state.isLoading = false;
-    },
-    creationRequested: (state) => {
-      state.isLoading = true;
-    },
-    created: (state, action) => {
-      state.data = action.payload;
-      state.isLoading = false;
-    },
+    requested: crudRequested,
+    received: crudReceived,
+    failed: crudFailed,
+    creationRequested: crudRequested,
+    created: crudReceived,
+    creationFailed: crudFailed,
     dataRemoved: (state) => {
       state.data = null;
     },

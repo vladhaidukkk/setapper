@@ -33,7 +33,19 @@ http.interceptors.request.use(
 );
 
 http.interceptors.response.use(
-  (resp) => resp,
+  (res) => {
+    if (configKeys.useFirebase && res.data) {
+      console.log('before', res.data);
+      if (Object.keys(res.data).length === 0) {
+        res.data = null;
+      } else {
+        res.data = Object.values(res.data)[0]?.id ? Object.values(res.data) : res.data;
+      }
+      console.log('after', res.data);
+    }
+
+    return res;
+  },
   (error) => {
     if (!isErrorExpectedHelper(error)) {
       // todo: here can be logger

@@ -24,6 +24,28 @@ const builderRoutes = [
     ),
   },
   {
+    path: ':section/new/',
+    element: (
+      <BuilderPathValidator>
+        <SetupsBar />
+        <SetupRedactor />
+      </BuilderPathValidator>
+    ),
+  },
+  {
+    path: ':section/new/*',
+    element: <Navigate to="" replace />,
+  },
+  {
+    path: ':section/:setupId/',
+    element: (
+      <BuilderPathValidator>
+        <SetupsBar />
+        <SetupRedactor />
+      </BuilderPathValidator>
+    ),
+  },
+  {
     path: ':section/:setupId/',
     element: (
       <BuilderPathValidator>

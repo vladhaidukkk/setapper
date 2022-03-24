@@ -1,11 +1,9 @@
 import accountSlice from 'store/account/account.slice';
-import { createAction } from '@reduxjs/toolkit';
 import { usersService } from 'services';
 import { handleError } from 'store/errors/errors.actions';
 import { errorConstants } from 'utils/constants';
 
-const { requested, received, creationRequested, created, dataRemoved } = accountSlice.actions;
-const failed = createAction('account/failed');
+const { requested, received, failed, creationRequested, created, creationFailed, dataRemoved } = accountSlice.actions;
 
 const createAccount = (id, payload) => async (dispatch) => {
   dispatch(creationRequested());
@@ -13,7 +11,7 @@ const createAccount = (id, payload) => async (dispatch) => {
     const accountData = await usersService.createUser(id, { ...payload, registeredAt: Date.now() });
     dispatch(created(accountData));
   } catch (error) {
-    dispatch(failed());
+    dispatch(creationFailed());
     dispatch(handleError({ type: errorConstants.types.ACCOUNT, error }));
   }
 };

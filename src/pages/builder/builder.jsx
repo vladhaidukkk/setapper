@@ -8,17 +8,6 @@ function Builder() {
       <SectionsBar />
       <Outlet />
     </div>
-    // {/* <BuilderPathValidator> */}
-    // {/*  //{' '} */}
-    // {/*  <div className="flex h-screen"> */}
-    // {/*    // <SectionsBar /> */}
-    // {/*    // /!* show if list of your  *!/ */}
-    // {/*    // {section && <SetupsBar />} */}
-    // {/*    // {section ? <SetupRedactor /> : <BuilderDoc />} */}
-    // {/*    //{' '} */}
-    // {/*  </div> */}
-    // {/*  //{' '} */}
-    // {/* </BuilderPathValidator> */}
   );
 }
 

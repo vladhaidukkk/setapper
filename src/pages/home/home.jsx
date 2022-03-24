@@ -42,7 +42,7 @@ function Home() {
       <header className="bg-zinc-300 p-2.5 dark:bg-zinc-900">
         <div className="container mx-auto flex items-center justify-between">
           <div>Logo</div>
-          <nav className="flex items-center space-x-2.5">
+          <nav className="flex items-center space-x-3">
             <select
               className="rounded bg-zinc-400 px-1.5 py-1 dark:bg-zinc-700"
               onChange={handleThemeChange}
@@ -52,10 +52,12 @@ function Home() {
               <option value={themeConstants.DARK}>{themeConstants.DARK}</option>
               <option value={themeConstants.SYSTEM}>{themeConstants.SYSTEM}</option>
             </select>
-            <div>
+            <div className="space-x-2">
               <Link to="/">Home</Link>
               <Link to="/presets">Presets</Link>
               <Link to="/builder">Builder</Link>
+              <Link to="/auth/login">Login</Link>
+              <Link to="/auth/registration">Signup</Link>
             </div>
             <div className="relative" id="id">
               <button type="button" onClick={toggleOpened}>
