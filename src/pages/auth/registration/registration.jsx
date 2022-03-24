@@ -14,7 +14,7 @@ function Registration() {
 
   return (
     <div>
-      <form className="bg-slate-300 rounded m-4 w-max p-2 space-y-1" onSubmit={handleSubmit(handleFormSubmit)}>
+      <form className="m-4 w-max space-y-1 rounded bg-slate-300 p-2" onSubmit={handleSubmit(handleFormSubmit)}>
         <h1>Register</h1>
         <input type="text" {...register('username')} />
         <br />

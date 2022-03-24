@@ -1,8 +1,8 @@
 import React from 'react';
-import { AuthRouter } from 'components/routing';
+import { Outlet } from 'react-router-dom';
 
 function Auth() {
-  return <AuthRouter />;
+  return <Outlet />;
 }
 
 export default Auth;

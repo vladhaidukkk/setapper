@@ -1,37 +1,35 @@
 import React from 'react';
-import Pages, { Auth, Builder, Home, Presets } from 'pages';
+import { Auth, Builder, Home, Presets } from 'pages';
 import { Navigate } from 'react-router-dom';
+import authRoutes from 'routes/auth.routes';
+import builderRoutes from 'routes/builder.routes';
 
 const appRoutes = [
   {
-    path: '/',
-    element: <Pages />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: 'auth/*',
-        element: <Auth />,
-      },
-      {
-        path: 'presets',
-        element: <Presets />,
-      },
-      {
-        path: 'presets/*',
-        element: <Navigate to="" replace />,
-      },
-      {
-        path: 'builder',
-        element: <Builder />,
-      },
-      {
-        path: '*',
-        element: <Navigate to="" replace />,
-      },
-    ],
+    index: true,
+    element: <Home />,
+  },
+  {
+    path: 'auth/*',
+    element: <Auth />,
+    children: authRoutes,
+  },
+  {
+    path: 'presets/',
+    element: <Presets />,
+  },
+  {
+    path: 'presets/*',
+    element: <Navigate to="" replace />,
+  },
+  {
+    path: 'builder/*',
+    element: <Builder />,
+    children: builderRoutes,
+  },
+  {
+    path: '*',
+    element: <Navigate to="" replace />,
   },
 ];
 

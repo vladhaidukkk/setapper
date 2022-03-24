@@ -1,14 +1,13 @@
 import React from 'react';
-import { AppRouter } from 'components/routing';
 import { AccountUploader, ErrorHandler, ThemeProvider } from 'hoc';
+import routes from 'routes';
+import { useRoutes } from 'react-router-dom';
 
 function App() {
   return (
     <ThemeProvider>
       <ErrorHandler>
-        <AccountUploader>
-          <AppRouter />
-        </AccountUploader>
+        <AccountUploader>{useRoutes(routes)}</AccountUploader>
       </ErrorHandler>
     </ThemeProvider>
   );

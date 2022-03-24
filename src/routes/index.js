@@ -1,4 +1,13 @@
+import React from 'react';
+import Pages from 'pages';
 import appRoutes from 'routes/app.routes';
-import authRoutes from 'routes/auth.routes';
 
-export { appRoutes, authRoutes };
+const routes = [
+  {
+    path: '/',
+    element: <Pages />,
+    children: appRoutes,
+  },
+];
+
+export default routes;

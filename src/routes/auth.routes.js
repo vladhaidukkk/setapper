@@ -4,11 +4,11 @@ import { Login, Registration } from 'pages';
 
 const authRoutes = [
   {
-    path: 'login',
+    path: 'login/',
     element: <Login />,
   },
   {
-    path: 'registration',
+    path: 'registration/',
     element: <Registration />,
   },
   {
