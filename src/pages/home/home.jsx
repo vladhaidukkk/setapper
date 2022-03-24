@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'store/auth/auth.actions';
 import { Link } from 'react-router-dom';
 import { themeConstants } from 'utils/constants';
-import { useTheme } from 'hooks';
+import { useEventListener, useTheme } from 'hooks';
 import { getLoggedInStatus } from 'store/auth/auth.selectors';
 
 function Home() {
@@ -12,6 +12,18 @@ function Home() {
   const isLoggedIn = useSelector(getLoggedInStatus());
 
   const [isOpened, setOpened] = useState(false);
+  // todo: use dropdown
+  const { addListener, removeListener } = useEventListener(window, 'click', ({ target }) => {
+    const sortIsParent = target.closest(`#id`);
+    if (!sortIsParent) setOpened(() => false);
+  });
+
+  useEffect(() => {
+    if (isOpened) addListener();
+    else removeListener();
+
+    return removeListener;
+  }, [isOpened]);
 
   const toggleOpened = () => {
     setOpened((prev) => !prev);
@@ -45,7 +57,7 @@ function Home() {
               <Link to="/presets">Presets</Link>
               <Link to="/builder">Builder</Link>
             </div>
-            <div className="relative">
+            <div className="relative" id="id">
               <button type="button" onClick={toggleOpened}>
                 <div className="flex h-8 w-8 items-center justify-center rounded bg-zinc-400 dark:bg-zinc-700">ava</div>
               </button>
