@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import localStorageService from 'services/localStorage.service';
 
 const crudRequested = (state) => {
   state.isLoading = true;
@@ -17,7 +18,7 @@ const accountSlice = createSlice({
   name: 'account',
   initialState: {
     data: null,
-    isLoading: false,
+    isLoading: !!localStorageService.getJwtAccessToken(),
   },
   reducers: {
     requested: crudRequested,

@@ -1,18 +1,27 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
-import { sectionConstants } from 'utils/constants';
+import { toolConstants } from 'utils/constants';
+import { useSelector } from 'react-redux';
+import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
 
 function BuilderPathValidator({ children }) {
-  const { section } = useParams();
+  const { tool, setupId } = useParams();
+  const isSetupsLoading = useSelector(getSetupsLoadingStatus());
+  const setup = useSelector(getSetupById(setupId));
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (section) {
-      const isCorrect = sectionConstants.LIST.find((item) => item.name === section);
-      if (!isCorrect) navigate(`/builder/${sectionConstants.DOC_NAME}`, { replace: true });
+    if (tool) {
+      const isSectionValid = toolConstants.LIST.find((item) => item.name === tool);
+
+      if (!isSectionValid) {
+        navigate(`/builder/inspector`, { replace: true });
+      } else if (setupId && !setup && !isSetupsLoading) {
+        navigate(`/builder/${tool}`, { replace: true });
+      }
     }
-  }, [section]);
+  }, [tool, setupId, isSetupsLoading]);
 
   return children;
 }

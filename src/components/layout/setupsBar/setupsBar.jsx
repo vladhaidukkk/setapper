@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { getSetupsByTool, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
 
 function SetupsBar() {
-  const { section } = useParams();
+  const { tool } = useParams();
   const isSetupsLoading = useSelector(getSetupsLoadingStatus());
-  const setups = useSelector(getSetupsByTool(section));
+  const setups = useSelector(getSetupsByTool(tool));
   const [searchValue, setSearchValue] = useState('');
 
   const filteredSetups = searchValue
@@ -28,18 +28,18 @@ function SetupsBar() {
           value={searchValue}
           placeholder="Search..."
         />
-        <Link to={`/builder/${section}`} className="shrink-0 rounded border bg-sky-300 p-1 shadow">
+        <Link to={`/builder/${tool}`} className="shrink-0 rounded border bg-sky-300 p-1 shadow">
           +
         </Link>
       </div>
-      <h1 className="text-xl font-medium">{capitalize(section)}</h1>
+      <h1 className="text-xl font-medium">{capitalize(tool)}</h1>
       <ul className="space-y-2">
         {isSetupsLoading ? (
           <li>loading setups...</li>
         ) : (
           filteredSetups?.map((setup) => (
             <li className="space-y-1 rounded border bg-zinc-50 p-1 shadow" key={setup.id}>
-              <NavLink to={`/builder/${section}/${setup.id}`}>
+              <NavLink to={`/builder/${tool}/${setup.id}`}>
                 <h4 className="text-md border-b font-medium">{setup.title}</h4>
                 <p>{setup.description}</p>
               </NavLink>

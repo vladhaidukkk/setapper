@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import localStorageService from 'services/localStorage.service';
 
 const setupsSlice = createSlice({
   name: 'setups',
   initialState: {
     entities: null,
-    isLoading: false,
+    isLoading: !!localStorageService.getJwtAccessToken(),
   },
   reducers: {
     requested: (state) => {

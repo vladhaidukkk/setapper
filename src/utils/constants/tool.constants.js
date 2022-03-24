@@ -2,7 +2,7 @@ import { ReactComponent as EslintIcon } from 'assets/icons/eslint.svg';
 import { ReactComponent as WebpackIcon } from 'assets/icons/webpack.svg';
 import { ReactComponent as GulpIcon } from 'assets/icons/gulp.svg';
 
-const sectionConstants = {
+const toolConstants = {
   LIST: [
     {
       name: 'webpack',
@@ -17,7 +17,6 @@ const sectionConstants = {
       Icon: EslintIcon,
     },
   ],
-  DOC_NAME: 'doc',
 };
 
-export default sectionConstants;
+export default toolConstants;

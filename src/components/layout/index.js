@@ -1,6 +1,6 @@
-import SectionsBar from 'components/layout/sectionsBar/sectionsBar';
+import ToolsBar from 'components/layout/toolsBar/toolsBar';
 import SetupsBar from 'components/layout/setupsBar/setupsBar';
-import SetupRedactor from 'components/layout/setupRedactor/setupRedactor';
-import EmptyRedactor from 'components/layout/emptyRedactor/emptyRedactor';
+import SetupEditor from 'components/layout/setupEditor/setupEditor';
+import SetupCreator from 'components/layout/setupCreator/setupCreator';
 
-export { SectionsBar, SetupsBar, SetupRedactor, EmptyRedactor };
+export { ToolsBar, SetupsBar, SetupEditor, SetupCreator };

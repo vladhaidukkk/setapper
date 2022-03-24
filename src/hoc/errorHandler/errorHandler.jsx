@@ -9,11 +9,7 @@ function ErrorHandler({ children }) {
   const dispatch = useDispatch();
   const errors = useSelector(getErrors());
 
-  // todo: clear logs
-  console.log('errors out');
-
   useEffect(() => {
-    console.log('in');
     if (errors) {
       errors.forEach((error) => toast.error(error));
       dispatch(clearErrors());

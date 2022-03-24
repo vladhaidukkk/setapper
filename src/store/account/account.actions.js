@@ -8,7 +8,7 @@ const { requested, received, failed, creationRequested, created, creationFailed,
 const createAccount = (id, payload) => async (dispatch) => {
   dispatch(creationRequested());
   try {
-    const accountData = await usersService.createUser(id, { ...payload, registeredAt: Date.now() });
+    const accountData = await usersService.createUser(id, payload);
     dispatch(created(accountData));
   } catch (error) {
     dispatch(creationFailed());

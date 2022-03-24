@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { SectionsBar } from 'components/layout';
+import { ToolsBar } from 'components/layout';
 
 function Builder() {
   return (
     <div className="flex h-screen">
-      <SectionsBar />
+      <ToolsBar />
       <Outlet />
     </div>
   );

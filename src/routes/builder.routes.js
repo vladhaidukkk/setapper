@@ -1,66 +1,43 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { EmptyRedactor, SetupRedactor, SetupsBar } from 'components/layout';
-import { sectionConstants } from 'utils/constants';
-import { Documentation } from 'pages';
+import { SetupEditor, SetupsBar, SetupCreator } from 'components/layout';
+import { Inspector } from 'pages';
 import { BuilderPathValidator } from 'hoc';
 
 const builderRoutes = [
   {
-    path: `${sectionConstants.DOC_NAME}/`,
-    element: <Documentation />,
+    path: `inspector/`,
+    element: <Inspector />,
   },
   {
-    path: `${sectionConstants.DOC_NAME}/*`,
+    path: `inspector/*`,
     element: <Navigate to="" replace />,
   },
   {
-    path: ':section/',
+    path: ':tool/',
     element: (
       <BuilderPathValidator>
         <SetupsBar />
-        <EmptyRedactor />
+        <SetupCreator />
       </BuilderPathValidator>
     ),
   },
   {
-    path: ':section/new/',
+    path: ':tool/:setupId/',
     element: (
       <BuilderPathValidator>
         <SetupsBar />
-        <SetupRedactor />
+        <SetupEditor />
       </BuilderPathValidator>
     ),
   },
   {
-    path: ':section/new/*',
-    element: <Navigate to="" replace />,
-  },
-  {
-    path: ':section/:setupId/',
-    element: (
-      <BuilderPathValidator>
-        <SetupsBar />
-        <SetupRedactor />
-      </BuilderPathValidator>
-    ),
-  },
-  {
-    path: ':section/:setupId/',
-    element: (
-      <BuilderPathValidator>
-        <SetupsBar />
-        <SetupRedactor />
-      </BuilderPathValidator>
-    ),
-  },
-  {
-    path: ':section/:setupId/*',
+    path: ':tool/:setupId/*',
     element: <Navigate to="" replace />,
   },
   {
     path: '*',
-    element: <Navigate to={sectionConstants.DOC_NAME} replace />,
+    element: <Navigate to="inspector" replace />,
   },
 ];
 

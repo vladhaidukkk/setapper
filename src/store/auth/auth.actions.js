@@ -26,7 +26,7 @@ const signUp = (payload) => async (dispatch) => {
   }
 };
 
-const logIn = (payload) => async (dispatch) => {
+const logIn = (payload, location) => async (dispatch) => {
   dispatch(requested());
   try {
     const jwtData = await authService.logIn(payload);
@@ -34,7 +34,7 @@ const logIn = (payload) => async (dispatch) => {
     localStorageService.setAccountId(jwtData.localId);
     dispatch(succeed(jwtData.localId));
     dispatch(loadAccountById(jwtData.localId));
-    historyUtil.push('/');
+    historyUtil.push(location?.state?.from?.pathname || '/');
   } catch (error) {
     dispatch(failed());
     dispatch(handleError({ type: errorConstants.types.AUTH, error }));
@@ -46,7 +46,7 @@ const logOut = () => (dispatch) => {
   localStorageService.removeAccountId();
   dispatch(loggedOut());
   dispatch(removeAccountData());
-  historyUtil.push('/auth/login'); // todo: change push when log out + all other
+  historyUtil.push('/');
 };
 
 export { signUp, logIn, logOut };

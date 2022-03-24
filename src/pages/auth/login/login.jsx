@@ -2,19 +2,20 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'store/auth/auth.actions';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Login() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { handleSubmit, register } = useForm();
 
   const handleFormSubmit = (data) => {
-    dispatch(logIn(data));
+    dispatch(logIn(data, location));
   };
 
   return (
     <div>
-      <form className="bg-slate-300 rounded m-4 w-max p-2 space-y-1" onSubmit={handleSubmit(handleFormSubmit)}>
+      <form className="m-4 w-max space-y-1 rounded bg-slate-300 p-2" onSubmit={handleSubmit(handleFormSubmit)}>
         <h1>Login</h1>
         <input type="text" {...register('email')} />
         <br />

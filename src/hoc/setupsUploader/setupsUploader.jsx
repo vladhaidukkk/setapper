@@ -9,7 +9,6 @@ function SetupsUploader({ children }) {
   const accountId = useSelector(getAccountId());
 
   useEffect(() => {
-    console.log(accountId);
     if (accountId) {
       dispatch(loadUserSetups(accountId));
     }

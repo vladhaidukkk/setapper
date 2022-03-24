@@ -3,6 +3,7 @@ import { Auth, Builder, Home, Presets } from 'pages';
 import { Navigate } from 'react-router-dom';
 import authRoutes from 'routes/auth.routes';
 import builderRoutes from 'routes/builder.routes';
+import { PrivateRoute, PublicRoute } from 'hoc';
 
 const appRoutes = [
   {
@@ -24,12 +25,20 @@ const appRoutes = [
   },
   {
     path: 'builder/*',
-    element: <Builder />,
+    element: (
+      <PrivateRoute>
+        <Builder />
+      </PrivateRoute>
+    ),
     children: builderRoutes,
   },
   {
     path: '*',
-    element: <Navigate to="" replace />,
+    element: (
+      <PublicRoute>
+        <Navigate to="" replace />
+      </PublicRoute>
+    ),
   },
 ];
 

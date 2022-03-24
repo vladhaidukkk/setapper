@@ -3,7 +3,7 @@ import httpService from 'services/http.service';
 const usersEndpoint = 'users/';
 
 const createUser = async (id, payload) => {
-  const { data } = await httpService.put(usersEndpoint + id, payload);
+  const { data } = await httpService.put(usersEndpoint + id, { ...payload, registeredAt: Date.now() });
   return data;
 };
 
