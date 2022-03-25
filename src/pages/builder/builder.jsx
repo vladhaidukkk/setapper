@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { ToolsBar } from 'components/layout';
+import { NavBar } from 'components/layout';
 
 function Builder() {
   return (
-    <div className="flex h-screen">
-      <ToolsBar />
+    <div className="flex min-h-screen w-full bg-gray-800">
+      <NavBar />
       <Outlet />
     </div>
   );

@@ -19,7 +19,7 @@ function SetupsBar() {
   };
 
   return (
-    <aside className="w-60 space-y-3 bg-zinc-200 p-2.5">
+    <aside className="w-60 space-y-3 p-2.5">
       <div className="flex space-x-2">
         <input
           type="text"

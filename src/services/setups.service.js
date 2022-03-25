@@ -18,7 +18,12 @@ const getUserSetups = async (userId) => {
 
 const createSetup = async (payload) => {
   const id = uuid();
-  const { data } = await httpService.put(setupsEndpoint + id, { id, ...payload });
+  const { data } = await httpService.put(setupsEndpoint + id, {
+    id,
+    ...payload,
+    createdAt: Date.now(),
+    modifiedAt: Date.now(),
+  });
 
   return data;
 };
