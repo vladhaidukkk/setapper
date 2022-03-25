@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'no-param-reassign': 0,
+    'react/forbid-prop-types': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 0,
     'react/jsx-no-constructed-context-values': 'warn',

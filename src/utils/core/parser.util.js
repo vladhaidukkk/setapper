@@ -1,4 +1,4 @@
-import { cloneElement } from 'react';
+import React from 'react';
 import prettier from 'prettier/standalone';
 import babelParser from 'prettier/parser-babel';
 
@@ -47,16 +47,16 @@ const strToJsx = (str, delimiter, elem) => {
   return parts.map((part, index) => {
     if (insertRegex.test(part)) {
       // eslint-disable-next-line react/no-array-index-key
-      return cloneElement(elem, { key: index }, part);
+      return React.cloneElement(elem, { key: index }, part);
     }
     return part;
   });
 };
 
 const parserUtil = {
-  strToJsx,
   formatJsStr,
   formatJsonStr,
+  strToJsx,
 };
 
 export default parserUtil;

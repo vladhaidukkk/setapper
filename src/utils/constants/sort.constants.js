@@ -1,14 +1,16 @@
+import { ClockIcon, PencilIcon, SortAscendingIcon, SortDescendingIcon } from '@heroicons/react/solid';
+
 const sortConstants = {
   SETUPS: {
     iterOptions: [
-      { value: 'title', label: 'By title' },
-      { value: 'description', label: 'By description' },
-      { value: 'createdAt', label: 'By date of creation' },
-      { value: 'modifiedAt', label: 'By date of modification' },
+      { value: 'title', label: 'Title', Icon: PencilIcon },
+      { value: 'description', label: 'Description', Icon: ClockIcon },
+      { value: 'createdAt', label: 'Creation', Icon: ClockIcon },
+      { value: 'modifiedAt', label: 'Modification', Icon: ClockIcon },
     ],
     orderOptions: [
-      { value: 'asc', label: 'Asc' },
-      { value: 'desc', label: 'Desc' },
+      { value: 'asc', label: 'Asc', Icon: SortAscendingIcon },
+      { value: 'desc', label: 'Desc', Icon: SortDescendingIcon },
     ],
   },
 };

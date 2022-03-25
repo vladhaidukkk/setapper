@@ -28,8 +28,10 @@ function SetupCreator() {
   const { tool } = useParams();
   const linkRef = useRef();
 
+  console.log(getValues());
+
   // useEffect(() => {
-  //   // builderUtil.webpack(watch('options'));
+  //   // index.webpack(watch('options'));
   // }, [watch()]);
 
   const accountId = useSelector(getAccountId());
@@ -72,7 +74,7 @@ function SetupCreator() {
   return (
     <div className="space-y-2.5 p-2.5">
       <h1 className="text-2xl font-bold text-zinc-50">New {capitalize(tool)} setup</h1>
-      <div className="flex gap-x-4">
+      <div className="flex gap-x-4 text-zinc-800">
         <form onSubmit={handleSubmit(handleFormSubmit)} className="flex flex-col space-y-2">
           <input className="rounded border p-1 shadow" type="text" {...register('title')} placeholder="Title" />
           <textarea
@@ -88,7 +90,7 @@ function SetupCreator() {
 
             return (
               <label htmlFor={optionKey} key={optionKey}>
-                <div className="text-zinc-50">{capitalize(optionKey)}</div>
+                <div className="text-zinc-100">{capitalize(optionKey)}</div>
                 {dataType === 'boolean' ? (
                   <input
                     id={optionKey}
@@ -133,7 +135,7 @@ function SetupCreator() {
             className="rounded bg-sky-300 py-1 shadow"
             type="button"
             onClick={() => {
-              // const webpackConfigJsContent = builderUtil.webpack(getValues('options'));
+              // const webpackConfigJsContent = index.webpack(getValues('options'));
               // const webpackConfigJs = new File([webpackConfigJsContent], 'webpack.config.js');
               // console.log(webpackConfigJsContent);
               // console.log(webpackConfigJs);

@@ -35,8 +35,7 @@ const createSetup = (payload) => async (dispatch) => {
 const removeSetup = (id) => async (dispatch) => {
   dispatch(removalRequested());
   try {
-    const data = await setupsService.removeSetup(id);
-    console.log('rm data:', data);
+    await setupsService.removeSetup(id);
     dispatch(removed(id));
   } catch (error) {
     dispatch(removalFailed());
