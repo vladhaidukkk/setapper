@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { capitalize } from 'lodash';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { createSetup } from 'store/setups/setups.actions';
-// import { getAccountId } from 'store/auth/auth.selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSetup } from 'store/setups/setups.actions';
+import { getAccountId } from 'store/auth/auth.selectors';
 import { builderConstants } from 'utils/constants';
 import { parserUtil, builderUtil } from 'utils/core';
 
@@ -22,7 +22,7 @@ const getDefaults = () => ({
 });
 
 function SetupCreator() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { handleSubmit, register, watch, getValues } = useForm(getDefaults()); // here put all options
   // const [options, setAppEnv] = useState({ 'webpack.config.js': '' });
   const { tool } = useParams();
@@ -32,7 +32,7 @@ function SetupCreator() {
   //   // builderUtil.webpack(watch('options'));
   // }, [watch()]);
 
-  // const accountId = useSelector(getAccountId());
+  const accountId = useSelector(getAccountId());
   /*
    * title, description, ownerId, createdAt, modifiedAt, id, tool
    * options: {
@@ -66,7 +66,7 @@ function SetupCreator() {
     // data.output.path = data.output.path || toolConstants.output.path.def;
     // data.output.filename = data.output.filename || toolConstants.output.filename.def;
     console.log(data);
-    // dispatch(createSetup({ ...data, tool, ownerId: accountId }));
+    dispatch(createSetup({ ...data, tool, ownerId: accountId }));
   };
 
   return (

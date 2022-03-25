@@ -22,6 +22,9 @@ const setupsSlice = createSlice({
       if (!state.entities) state.entities = [];
       state.entities.push(action.payload);
     },
+    removed: (state, action) => {
+      state.entities = state.entities.filter((entity) => entity.id !== action.payload);
+    },
   },
 });
 

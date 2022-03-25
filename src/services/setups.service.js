@@ -28,9 +28,15 @@ const createSetup = async (payload) => {
   return data;
 };
 
+const removeSetup = async (id) => {
+  const { data } = await httpService.delete(setupsEndpoint + id);
+  return data;
+};
+
 const setupsService = {
   getUserSetups,
   createSetup,
+  removeSetup,
 };
 
 export default setupsService;

@@ -2,7 +2,6 @@ import { builderConstants } from 'utils/constants';
 
 const webpackBuilderUtil = (options) => {
   const initialOptions = builderConstants.webpack.OPTIONS;
-  console.log(options);
 
   const webpackConfigJs = `
     const path = require('path');
