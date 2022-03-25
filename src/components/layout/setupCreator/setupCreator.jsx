@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { capitalize } from 'lodash';
@@ -23,9 +23,10 @@ const getDefaults = () => ({
 
 function SetupCreator() {
   // const dispatch = useDispatch();
-  const { handleSubmit, register, watch } = useForm(getDefaults()); // here put all options
+  const { handleSubmit, register, watch, getValues } = useForm(getDefaults()); // here put all options
   // const [options, setAppEnv] = useState({ 'webpack.config.js': '' });
   const { tool } = useParams();
+  const linkRef = useRef();
 
   // useEffect(() => {
   //   // builderUtil.webpack(watch('options'));
@@ -114,8 +115,34 @@ function SetupCreator() {
         <div className="rounded border bg-zinc-50 p-2 shadow">
           <pre>{parserUtil.formatJsonStr(JSON.stringify(watch()))}</pre>
         </div>
-        <div className="rounded border bg-zinc-50 p-2 shadow">
-          <pre>{parserUtil.formatJsStr(builderUtil.webpack(watch('options')))}</pre>
+        <div className="flex flex-col space-y-3">
+          <div className="rounded border bg-zinc-50 p-2 shadow">
+            <pre>{parserUtil.formatJsStr(builderUtil.webpack(watch('options')))}</pre>
+          </div>
+          <a
+            ref={linkRef}
+            className="hidden"
+            href={`data:text/javascript;charset=utf-8,${encodeURIComponent(
+              parserUtil.formatJsStr(builderUtil.webpack(getValues('options')))
+            )}`}
+            download="webpack.config.js"
+          >
+            $nbsp;
+          </a>
+          <button
+            className="rounded bg-sky-300 py-1 shadow"
+            type="button"
+            onClick={() => {
+              // const webpackConfigJsContent = builderUtil.webpack(getValues('options'));
+              // const webpackConfigJs = new File([webpackConfigJsContent], 'webpack.config.js');
+              // console.log(webpackConfigJsContent);
+              // console.log(webpackConfigJs);
+              // console.log('download');
+              linkRef.current.click();
+            }}
+          >
+            Download
+          </button>
         </div>
       </div>
     </div>
