@@ -71,7 +71,7 @@ function SetupCreator() {
 
   return (
     <div className="space-y-2.5 p-2.5">
-      <h1 className="text-2xl font-bold">New {capitalize(tool)} setup</h1>
+      <h1 className="text-2xl font-bold text-zinc-50">New {capitalize(tool)} setup</h1>
       <div className="flex gap-x-4">
         <form onSubmit={handleSubmit(handleFormSubmit)} className="flex flex-col space-y-2">
           <input className="rounded border p-1 shadow" type="text" {...register('title')} placeholder="Title" />
