@@ -18,6 +18,8 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 0,
     'react/jsx-no-constructed-context-values': 'warn',
+    'jsx-a11y/control-has-associated-label': 0,
+    'jsx-a11y/anchor-has-content': 0,
     'import/prefer-default-export': 0,
   },
   settings: {

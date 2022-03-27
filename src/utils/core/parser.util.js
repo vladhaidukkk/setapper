@@ -35,8 +35,8 @@ const formatJsStr = (str) => {
   });
 };
 
-const formatJsonStr = (str) => {
-  return JSON.stringify(JSON.parse(str), null, 2);
+const formatJsonToStr = (json) => {
+  return JSON.stringify(json, null, 2);
 };
 
 const strToJsx = (str, delimiter, elem) => {
@@ -55,7 +55,7 @@ const strToJsx = (str, delimiter, elem) => {
 
 const parserUtil = {
   formatJsStr,
-  formatJsonStr,
+  formatJsonToStr,
   strToJsx,
 };
 

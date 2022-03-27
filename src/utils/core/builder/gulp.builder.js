@@ -1,3 +1,3 @@
-const gulpBuilder = {};
+const gulpBuilder = () => '';
 
 export default gulpBuilder;

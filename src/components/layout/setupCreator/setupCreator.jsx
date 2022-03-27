@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { capitalize } from 'lodash';
@@ -7,6 +7,7 @@ import { createSetup } from 'store/setups/setups.actions';
 import { getAccountId } from 'store/auth/auth.selectors';
 import { builderConstants } from 'utils/constants';
 import { parserUtil, builderUtil } from 'utils/core';
+import DownloadBtn from 'components/common/downloadBtn';
 
 const getDefaults = () => ({
   defaultValues: {
@@ -14,7 +15,7 @@ const getDefaults = () => ({
     description: '',
     options: Object.keys(builderConstants.webpack.OPTIONS).reduce((acc, optionKey) => {
       const option = builderConstants.webpack.OPTIONS[optionKey];
-      acc[optionKey] = option.defValue;
+      acc[optionKey] = option.defaultValue;
 
       return acc;
     }, {}),
@@ -24,50 +25,10 @@ const getDefaults = () => ({
 function SetupCreator() {
   const dispatch = useDispatch();
   const { handleSubmit, register, watch, getValues } = useForm(getDefaults()); // here put all options
-  // const [options, setAppEnv] = useState({ 'webpack.config.js': '' });
   const { tool } = useParams();
-  const linkRef = useRef();
-
-  console.log(getValues());
-
-  // useEffect(() => {
-  //   // index.webpack(watch('options'));
-  // }, [watch()]);
-
   const accountId = useSelector(getAccountId());
-  /*
-   * title, description, ownerId, createdAt, modifiedAt, id, tool
-   * options: {
-   *    folders: {
-   *      src: {
-   *        files: {
-   *          'index.js': 'content'
-   *        }
-   *      }
-   *    },
-   *    files: {
-   *      'package.json': 'all content',
-   *      'webpack.config.js': 'all content',
-   *    }
-   * }
-   * */
 
   const handleFormSubmit = (data) => {
-    // const dataKeys = Object.keys(data);
-    // const finalData = dataKeys.reduce((acc, key) => {
-    //   if (builderConstants.webpack[key]) {
-    //     acc[key] = data[key] || builderConstants.webpack[key];
-    //   } else {
-    //     acc[key] = data[key];
-    //   }
-    //
-    //   return acc;
-    // }, {});
-    // const toolConstants = builderConstants[tool];
-    // data.entry = data.entry || toolConstants.entry.def;
-    // data.output.path = data.output.path || toolConstants.output.path.def;
-    // data.output.filename = data.output.filename || toolConstants.output.filename.def;
-    console.log(data);
     dispatch(createSetup({ ...data, tool, ownerId: accountId }));
   };
 
@@ -84,13 +45,14 @@ function SetupCreator() {
             rows="5"
             placeholder="Description"
           />
-          {Object.keys(builderConstants.webpack.OPTIONS).map((optionKey) => {
-            const option = builderConstants.webpack.OPTIONS[optionKey];
-            const dataType = typeof option.defValue;
+          {Object.keys(builderConstants[tool].OPTIONS).map((optionKey) => {
+            const option = builderConstants[tool].OPTIONS[optionKey];
+            const dataType = typeof option.defaultValue;
 
             return (
               <label htmlFor={optionKey} key={optionKey}>
-                <div className="text-zinc-100">{capitalize(optionKey)}</div>
+                <h4 className="text-zinc-100">{option.label}</h4>
+                <p>{option.description}</p>
                 {dataType === 'boolean' ? (
                   <input
                     id={optionKey}
@@ -104,7 +66,7 @@ function SetupCreator() {
                     className="rounded border p-1 shadow"
                     type="text"
                     {...register(`options.${optionKey}`)}
-                    placeholder={option.defValue}
+                    placeholder={option.defaultValue}
                   />
                 )}
               </label>
@@ -115,36 +77,17 @@ function SetupCreator() {
           </button>
         </form>
         <div className="rounded border bg-zinc-50 p-2 shadow">
-          <pre>{parserUtil.formatJsonStr(JSON.stringify(watch()))}</pre>
+          <pre>{parserUtil.formatJsonToStr(watch())}</pre>
         </div>
         <div className="flex flex-col space-y-3">
           <div className="rounded border bg-zinc-50 p-2 shadow">
-            <pre>{parserUtil.formatJsStr(builderUtil.webpack(watch('options')))}</pre>
+            <pre>{parserUtil.formatJsStr(builderUtil[tool](watch('options')))}</pre>
           </div>
-          <a
-            ref={linkRef}
-            className="hidden"
-            href={`data:text/javascript;charset=utf-8,${encodeURIComponent(
-              parserUtil.formatJsStr(builderUtil.webpack(getValues('options')))
-            )}`}
-            download="webpack.config.js"
-          >
-            $nbsp;
-          </a>
-          <button
-            className="rounded bg-sky-300 py-1 shadow"
-            type="button"
-            onClick={() => {
-              // const webpackConfigJsContent = index.webpack(getValues('options'));
-              // const webpackConfigJs = new File([webpackConfigJsContent], 'webpack.config.js');
-              // console.log(webpackConfigJsContent);
-              // console.log(webpackConfigJs);
-              // console.log('download');
-              linkRef.current.click();
-            }}
-          >
-            Download
-          </button>
+          <DownloadBtn
+            filename={builderConstants[tool].filenames.CONFIG}
+            content={parserUtil.formatJsStr(builderUtil[tool](getValues('options')))}
+            contentType="text/javascript"
+          />
         </div>
       </div>
     </div>

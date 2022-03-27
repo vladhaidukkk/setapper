@@ -30,7 +30,7 @@ FilterOption.defaultProps = {
 FilterOption.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  Icon: PropTypes.node,
+  Icon: PropTypes.object,
   isSelected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };

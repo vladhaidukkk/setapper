@@ -1,37 +1,41 @@
 const webpackConstants = {
+  filenames: {
+    CONFIG: 'webpack.config.js',
+  },
+  CONFIG_NAME: 'webpack.config.js',
   OPTIONS: {
     entry: {
-      label: '',
+      label: 'Entry point:',
       description: '',
       defaultValue: 'src/index.js',
     },
     outputPath: {
-      label: '',
+      label: 'Output folder path:',
       description: '',
       defaultValue: 'dist',
     },
     outputFilename: {
-      label: '',
+      label: 'Output file name:',
       description: '',
       defaultValue: 'bundle.js',
     },
     clean: {
-      label: '',
+      label: 'Clean output folder:',
       description: '',
       defaultValue: true,
     },
     optimization: {
-      label: '',
+      label: 'Optimize application:',
       description: '',
       defaultValue: false,
     },
     cssLoader: {
-      label: '',
+      label: 'Allow importing CSS:',
       description: '',
       defaultValue: true,
     },
     sassLoader: {
-      label: '',
+      label: 'Allow using Sass(SCSS):',
       description: '',
       defaultValue: false,
     },

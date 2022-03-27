@@ -1,15 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
 import { builderUtil, parserUtil } from 'utils/core';
 import { removeSetup } from 'store/setups/setups.actions';
+import DownloadBtn from 'components/common/downloadBtn';
+import { builderConstants } from 'utils/constants';
 
 function SetupViewer() {
   const { tool, setupId } = useParams();
   const isSetupsLoading = useSelector(getSetupsLoadingStatus());
   const setup = useSelector(getSetupById(setupId));
-  const linkRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,34 +29,20 @@ function SetupViewer() {
         <div>
           <h3 className="mb-1 text-base text-zinc-200">Options</h3>
           <div className="rounded border bg-zinc-50 p-2 shadow">
-            <pre>{parserUtil.formatJsonStr(JSON.stringify(setup.options))}</pre>
+            <pre>{parserUtil.formatJsonToStr(setup.options)}</pre>
           </div>
         </div>
         <div>
-          <h3 className="mb-1 text-base text-zinc-200">webpack.config.js</h3>
+          <h3 className="mb-1 text-base text-zinc-200">{builderConstants[tool].filenames.CONFIG}</h3>
           <div className="flex flex-col space-y-3">
             <div className="rounded border bg-zinc-50 p-2 shadow">
-              <pre>{parserUtil.formatJsStr(builderUtil.webpack(setup.options))}</pre>
+              <pre>{parserUtil.formatJsStr(builderUtil[tool](setup.options))}</pre>
             </div>
-            <a
-              ref={linkRef}
-              className="hidden"
-              href={`data:text/javascript;charset=utf-8,${encodeURIComponent(
-                parserUtil.formatJsStr(builderUtil.webpack(setup.options))
-              )}`}
-              download="webpack.config.js"
-            >
-              $nbsp;
-            </a>
-            <button
-              className="rounded bg-sky-300 py-1 shadow"
-              type="button"
-              onClick={() => {
-                linkRef.current.click();
-              }}
-            >
-              Download
-            </button>
+            <DownloadBtn
+              filename={builderConstants[tool].filenames.CONFIG}
+              content={parserUtil.formatJsStr(builderUtil[tool](setup.options))}
+              contentType="text/javascript"
+            />
           </div>
         </div>
         <div className="pt-7">

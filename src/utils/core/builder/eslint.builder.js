@@ -1,3 +1,3 @@
-const eslintBuilder = {};
+const eslintBuilder = () => '';
 
 export default eslintBuilder;
