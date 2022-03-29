@@ -35,7 +35,11 @@ const appRoutes = [
   },
   {
     path: 'dashboard/',
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
   },
   {
     path: 'dashboard/*',
@@ -43,7 +47,11 @@ const appRoutes = [
   },
   {
     path: 'settings/*',
-    element: <Settings />,
+    element: (
+      <PrivateRoute>
+        <Settings />
+      </PrivateRoute>
+    ),
     children: settingsRoutes,
   },
   {
