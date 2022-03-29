@@ -1,9 +1,10 @@
 import React from 'react';
-import { Auth, Builder, Home, Presets } from 'pages';
+import { Auth, Builder, Dashboard, Home, Presets, Settings } from 'pages';
 import { Navigate } from 'react-router-dom';
 import authRoutes from 'routes/auth.routes';
 import builderRoutes from 'routes/builder.routes';
 import { PrivateRoute, PublicRoute } from 'hoc';
+import settingsRoutes from 'routes/settings.routes';
 
 const appRoutes = [
   {
@@ -31,6 +32,19 @@ const appRoutes = [
       </PrivateRoute>
     ),
     children: builderRoutes,
+  },
+  {
+    path: 'dashboard/',
+    element: <Dashboard />,
+  },
+  {
+    path: 'dashboard/*',
+    element: <Navigate to="" replace />,
+  },
+  {
+    path: 'settings/*',
+    element: <Settings />,
+    children: settingsRoutes,
   },
   {
     path: '*',

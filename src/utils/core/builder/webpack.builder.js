@@ -7,9 +7,9 @@ const webpackBuilder = (options) => {
   //   const path = require('path');
   //
   //   module.exports = ${JSON.stringify({
-  //     entry: `./${options.entry || initialOptions.entry.defaultValue}`,
-  //     filename: `${options.outputFilename || initialOptions.outputFilename.defaultValue}`
-  //     `${options.clean ? 'clean: true,' : ''}`
+  //     entry: `./${toolsIntro.entry || initialOptions.entry.defaultValue}`,
+  //     filename: `${toolsIntro.outputFilename || initialOptions.outputFilename.defaultValue}`
+  //     `${toolsIntro.clean ? 'clean: true,' : ''}`
   //   })}
   // `;
 
@@ -58,11 +58,11 @@ const webpackBuilder = (options) => {
   `;
 
   //   ${
-  //         options.cssLoader
+  //         toolsIntro.cssLoader
   //           ? `module: {
   //               rules: [
   //                 ${
-  //                   options.cssLoader
+  //                   toolsIntro.cssLoader
   //                     ? `{
   //                         test: /\.css$/i,
   //                         use: ['style-loader', 'css-loader'],

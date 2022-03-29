@@ -1,6 +1,6 @@
-import { v4 as uuid } from 'uuid';
 import httpService from 'services/http.service';
 import configKeys from 'config.json';
+import { nanoid } from 'nanoid';
 
 const setupsEndpoint = 'setups/';
 
@@ -17,7 +17,7 @@ const getUserSetups = async (userId) => {
 };
 
 const createSetup = async (payload) => {
-  const id = uuid();
+  const id = nanoid();
   const { data } = await httpService.put(setupsEndpoint + id, {
     id,
     ...payload,

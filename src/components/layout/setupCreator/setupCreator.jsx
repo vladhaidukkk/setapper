@@ -24,7 +24,7 @@ const getDefaults = () => ({
 
 function SetupCreator() {
   const dispatch = useDispatch();
-  const { handleSubmit, register, watch, getValues } = useForm(getDefaults()); // here put all options
+  const { handleSubmit, register, watch, getValues } = useForm(getDefaults()); // here put all toolsIntro
   const { tool } = useParams();
   const accountId = useSelector(getAccountId());
 
@@ -80,7 +80,7 @@ function SetupCreator() {
           <pre>{parserUtil.formatJsonToStr(watch())}</pre>
         </div>
         <div className="flex flex-col space-y-3">
-          <div className="rounded border bg-zinc-50 p-2 shadow">
+          <div className="rounded border bg-zinc-50 shadow">
             <pre>{parserUtil.formatJsStr(builderUtil[tool](watch('options')))}</pre>
           </div>
           <DownloadBtn

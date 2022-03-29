@@ -36,7 +36,7 @@ function SetupViewer() {
         <div>
           <h3 className="mb-1 text-base text-zinc-200">{builderConstants[tool].filenames.CONFIG}</h3>
           <div className="flex flex-col space-y-3">
-            <div className="rounded border bg-zinc-50 p-2 shadow">
+            <div className="rounded rounded">
               <Code content={parserUtil.formatJsStr(builderUtil[tool](setup.options))} language="javascript" />
             </div>
             <DownloadBtn

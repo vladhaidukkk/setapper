@@ -1,31 +1,22 @@
+const formsPlugin = require('@tailwindcss/forms');
+const lineClampPlugin = require('@tailwindcss/line-clamp');
+
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx}', './public/index.html'],
   theme: {
+    screens: {
+      sm: '560px',
+      md: '640px',
+      lg: '768px',
+      xl: '1024px',
+      '2xl': '1280px',
+    },
     extend: {
-      colors: {
-        gray: {
-          100: '#E0E6E9',
-          500: '#ABBBC2',
-          700: '#393C49',
-          900: '#1F1D2B',
-          800: '#252836',
-        },
-        primary: '#EB966A',
-        accent: {
-          blue: '#65B0F6',
-          orange: '#FFB572',
-          red: '#FF7CA3',
-          green: '#50D1AA',
-          purple: '#9290FE',
-        },
-      },
-      boxShadow: {
-        primary: '0px 0px 4px rgba(234, 124, 105, 0.32)',
-        'inverse-top': '4px 4px 0 #252836',
-        'inverse-bottom': '4px -4px 0 #252836',
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [formsPlugin, lineClampPlugin],
 };

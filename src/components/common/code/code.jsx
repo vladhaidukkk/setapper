@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import prism from 'prismjs';
+import 'prismjs/components/prism-json';
 import 'prismjs/themes/prism-tomorrow.min.css';
 
 function Code({ content, language }) {
@@ -10,7 +11,7 @@ function Code({ content, language }) {
 
   return (
     <div className="Code">
-      <pre>
+      <pre className="rounded-md bg-stone-900">
         <code className={`language-${language}`}>{content}</code>
       </pre>
     </div>

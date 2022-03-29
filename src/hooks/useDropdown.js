@@ -1,10 +1,10 @@
 import useEventListener from 'hooks/useEventListener';
 import { useEffect, useState } from 'react';
 
-const useDropdown = (id) => {
+const useDropdown = (parentId) => {
   const [isOpened, setOpened] = useState(false);
   const { addListener, removeListener } = useEventListener(window, 'click', ({ target }) => {
-    const parent = target.closest(`#${id}`);
+    const parent = target.closest(`#${parentId}`);
     if (!parent) setOpened(() => false);
   });
 

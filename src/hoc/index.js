@@ -5,6 +5,8 @@ import BuilderPathValidator from 'hoc/builderPathValidator/builderPathValidator'
 import SetupsUploader from 'hoc/setupsUploader/setupsUploader';
 import PrivateRoute from 'hoc/privateRoute/privateRoute';
 import PublicRoute from 'hoc/publicRoute/publicRoute';
+import PrivateElement from 'hoc/privateElement/privateElement';
+import PublicElement from 'hoc/publicElement/publicElement';
 
 export {
   ErrorHandler,
@@ -14,4 +16,6 @@ export {
   SetupsUploader,
   PrivateRoute,
   PublicRoute,
+  PrivateElement,
+  PublicElement,
 };
