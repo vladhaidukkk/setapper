@@ -9,8 +9,8 @@ function ToolsIntro() {
   return (
     <section className="bg-stone-50 dark:bg-stone-900">
       <Container>
-        <div className="flex flex-col items-center pt-24 pb-32 text-center text-black dark:text-white">
-          <h2 className="mb-20 max-w-5xl space-y-1 text-7xl font-bold drop-shadow">
+        <div className="flex flex-col items-center pt-16 pb-24 text-center text-black dark:text-white sm:pt-20 sm:pb-28 md:pt-24 md:pb-32">
+          <h2 className="mb-12 max-w-5xl space-y-1 px-4 text-5xl font-bold drop-shadow sm:mb-16 sm:text-6xl md:text-7xl">
             <div>
               We have builders for{' '}
               <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
@@ -23,7 +23,7 @@ function ToolsIntro() {
             </div>
           </h2>
           <div>
-            <ul className="grid grid-cols-3 gap-16">
+            <ul className="grid grid-cols-1 gap-6 px-2 sm:gap-8 md:gap-10 lg:grid-cols-2 lg:gap-6 lg:px-0 xl:gap-8 2xl:grid-cols-3">
               <ToolCard
                 name="Webpack"
                 icon={WebpackIcon}

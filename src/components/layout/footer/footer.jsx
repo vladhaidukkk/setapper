@@ -13,7 +13,7 @@ function Footer() {
           <Link to="/" className="block font-medium text-black outline-none dark:text-white">
             Setapper
           </Link>
-          <p className="text-sm text-stone-700 dark:text-stone-300">Copyright &copy; 2022 Setapper V.H.</p>
+          <p className="text-xs text-stone-700 dark:text-stone-300 sm:text-sm">Copyright &copy; 2022 Setapper V.H.</p>
         </div>
       </Container>
     </footer>

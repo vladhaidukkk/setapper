@@ -5,11 +5,14 @@ import { ReactComponent as EslintIcon } from 'assets/icons/eslint.svg';
 import { ReactComponent as WebpackIcon } from 'assets/icons/webpack.svg';
 import { ReactComponent as GulpIcon } from 'assets/icons/gulp.svg';
 import { PrivateElement, PublicElement } from 'hoc';
+import NavMenuDropdown from 'components/ui/headerNav/navMenuDropdown/navMenuDropdown';
+import { EyeIcon } from '@heroicons/react/solid';
 
 function HeaderNav() {
   return (
     <nav>
-      <ul className="flex items-center space-x-1">
+      <NavMenuDropdown />
+      <ul className="hidden items-center space-x-1 md:flex">
         <PublicElement>
           <NavItem path="auth/login">Log in</NavItem>
         </PublicElement>
@@ -25,7 +28,7 @@ function HeaderNav() {
             path="builder/inspector"
             pathPrefix="builder/"
             options={[
-              { path: 'inspector', label: 'Inspector', divided: true },
+              { path: 'inspector', label: 'Inspector', Icon: EyeIcon, divided: true },
               { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
               { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
               { path: 'eslint', label: 'Eslint', Icon: EslintIcon },

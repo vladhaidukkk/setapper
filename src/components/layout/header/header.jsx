@@ -10,18 +10,18 @@ function Header() {
   return (
     <header className="border-b border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-900">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className="flex h-10 items-center justify-between">
           {/* <Link to="/" className="font-medium"> */}
           {/*  <AdjustedImg alt="Logo" img={} /> */}
           {/* </Link> */}
-          <Link to="/" className="block font-medium text-black outline-none dark:text-white">
+          <Link to="/" className="hidden font-medium text-black outline-none dark:text-white md:block">
             Setapper
           </Link>
           <HeaderNav />
           <div className="flex items-center space-x-2">
-            <ThemeSelect id="theme-select" />
+            <ThemeSelect />
             <PrivateElement>
-              <AccountBox id="header-account-box" />
+              <AccountBox />
             </PrivateElement>
           </div>
         </div>

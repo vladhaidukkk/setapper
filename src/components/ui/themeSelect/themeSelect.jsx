@@ -1,10 +1,10 @@
 import React from 'react';
 import { DesktopComputerIcon, MoonIcon, SunIcon } from '@heroicons/react/solid';
-import { useDropdown, useTheme } from 'hooks';
-import PropTypes from 'prop-types';
+import { useDropdown, useRandomId, useTheme } from 'hooks';
 import { themeConstants } from 'utils/constants';
 
-function ThemeSelect({ id }) {
+function ThemeSelect() {
+  const id = useRandomId('dropdown-');
   const { isOpened, toggle } = useDropdown(id);
   const { theme, themeColor, changeTheme } = useTheme();
 
@@ -26,7 +26,7 @@ function ThemeSelect({ id }) {
         {themeColor === themeConstants.LIGHT ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-5 w-5" />}
       </button>
       <div
-        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-3.5 rounded-md border border-stone-300 bg-stone-50
+        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-4 rounded-md border border-stone-300 bg-stone-50
         p-2 shadow-md group-hover:block dark:border-stone-700 dark:bg-stone-900 ${isOpened ? 'block' : 'hidden'}`}
       >
         <ul className="flex flex-col space-y-0.5">
@@ -86,9 +86,5 @@ function ThemeSelect({ id }) {
     </div>
   );
 }
-
-ThemeSelect.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-};
 
 export default ThemeSelect;

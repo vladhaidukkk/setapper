@@ -30,7 +30,7 @@ function AccountBox() {
         />
       </button>
       <div
-        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-2.5 space-y-0.5 rounded-md border border-stone-300
+        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-3 space-y-0.5 rounded-md border border-stone-300
         bg-stone-50 p-2 shadow-md group-hover:block dark:border-stone-700 dark:bg-stone-900 ${
           isOpened ? 'block' : 'hidden'
         }`}
