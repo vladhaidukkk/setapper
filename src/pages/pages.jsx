@@ -4,7 +4,7 @@ import NotificationContainer from 'components/ui/notificationContainer';
 
 function Pages() {
   return (
-    <div className="bg-slate-50 text-zinc-900 dark:bg-slate-700 dark:text-zinc-50">
+    <div>
       <Outlet />
       <NotificationContainer />
     </div>

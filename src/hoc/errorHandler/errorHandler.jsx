@@ -11,7 +11,9 @@ function ErrorHandler({ children }) {
 
   useEffect(() => {
     if (errors) {
-      errors.forEach((error) => toast.error(error));
+      errors.forEach((error) => {
+        toast.error(error);
+      });
       dispatch(clearErrors());
     }
   }, [errors]);

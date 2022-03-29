@@ -1,31 +1,60 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'store/auth/auth.actions';
-import { Link, useLocation } from 'react-router-dom';
+import AuthForm, { AuthTextField } from 'components/ui/authForm';
 
 function Login() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { handleSubmit, register } = useForm();
 
-  const handleFormSubmit = (data) => {
+  const handleSubmit = (data) => {
+    console.log(data);
     dispatch(logIn(data, location));
   };
 
   return (
-    <div>
-      <form className="m-4 w-max space-y-1 rounded bg-slate-300 p-2" onSubmit={handleSubmit(handleFormSubmit)}>
-        <h1>Login</h1>
-        <input type="text" {...register('email')} />
-        <br />
-        <input type="password" {...register('password')} />
-        <br />
-        <button type="submit">log iin</button>
-        <div>
-          I&apos;m not registered: <Link to="/auth/registration">Sign Up</Link>
-        </div>
-      </form>
+    <div className="mt-6 flex items-center justify-center py-12 px-4 sm:px-6 md:mt-10 lg:px-8">
+      <AuthForm
+        btnText="Log in"
+        onSubmit={handleSubmit}
+        label="Log in to your account"
+        alt={{ text: 'register one to start', link: '/auth/registration' }}
+      >
+        <AuthTextField
+          label="Email address"
+          name="email"
+          autoComplete="email"
+          validation={{
+            required: 'Email address is required',
+            pattern: {
+              value: /^\S+@\S+\.\S+$/,
+              message: 'Email address is not correct',
+            },
+          }}
+        />
+        <AuthTextField
+          label="Password"
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          validation={{
+            required: 'Password is required',
+            minLength: {
+              value: 8,
+              message: 'Password must have at least 8 characters',
+            },
+            maxLength: {
+              value: 20,
+              message: "Password can't have more than 20 characters",
+            },
+            pattern: {
+              value: /\d/,
+              message: 'Password must have at least 1 digit',
+            },
+          }}
+        />
+      </AuthForm>
     </div>
   );
 }
