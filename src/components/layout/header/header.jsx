@@ -5,11 +5,12 @@ import ThemeSelect from 'components/ui/themeSelect';
 import AccountBox from 'components/ui/accountBox';
 import Container from 'components/common/container';
 import { PrivateElement } from 'hoc';
+import PropTypes from 'prop-types';
 
-function Header() {
+function Header({ fluid }) {
   return (
     <header className="border-b border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-900">
-      <Container>
+      <Container fluid={fluid}>
         <div className="flex h-10 items-center justify-between">
           {/* <Link to="/" className="font-medium"> */}
           {/*  <AdjustedImg alt="Logo" img={} /> */}
@@ -29,5 +30,13 @@ function Header() {
     </header>
   );
 }
+
+Header.defaultProps = {
+  fluid: false,
+};
+
+Header.propTypes = {
+  fluid: PropTypes.bool,
+};
 
 export default Header;

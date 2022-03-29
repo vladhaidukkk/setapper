@@ -3,14 +3,18 @@ import AdjustedImg from 'components/common/adjustedImg';
 import { Link, useLocation } from 'react-router-dom';
 import { useDropdown, useRandomId } from 'hooks';
 import { logOut } from 'store/auth/auth.actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CogIcon, LogoutIcon, UserIcon } from '@heroicons/react/solid';
+import { getAccountData, getAccountLoadingStatus } from 'store/account/account.selectors';
+import { PulsingLoader } from 'components/common/loaders';
 
 function AccountBox() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const id = useRandomId('dropdownBox-');
   const { isOpened, toggle } = useDropdown(id);
+  const accountData = useSelector(getAccountData());
+  const isAccountLoading = useSelector(getAccountLoadingStatus());
 
   const handleLogOut = () => {
     dispatch(logOut());
@@ -25,10 +29,11 @@ function AccountBox() {
         dark:border-stone-800 dark:focus-within:border-stone-700 dark:hover:border-stone-700"
         onClick={toggle}
       >
-        <AdjustedImg
-          alt="Avatar"
-          img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-        />
+        {!isAccountLoading && accountData ? (
+          <AdjustedImg alt="Avatar" img={accountData.avatarLink} />
+        ) : (
+          <PulsingLoader />
+        )}
       </button>
       <div
         className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-3 space-y-0.5 rounded-md border border-stone-300
