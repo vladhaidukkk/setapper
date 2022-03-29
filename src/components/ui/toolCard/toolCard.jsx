@@ -12,7 +12,7 @@ function ToolCard({ name, icon: Icon, text, link }) {
   return (
     <li>
       <div
-        className="overflow-hidden rounded-md border border-stone-300 bg-stone-200 p-3 shadow-md dark:border-stone-700
+        className="overflow-hidden rounded-md border border-stone-300 bg-stone-200 bg-opacity-40 p-3 shadow-md dark:border-stone-700
       dark:bg-stone-800 md:p-4 lg:p-3 xl:p-4 2xl:pt-3"
       >
         <div className="flex items-center justify-between border-b border-stone-300 pb-3 dark:border-stone-700 md:pb-4 lg:pb-3 xl:pb-4 2xl:pb-3">
@@ -23,9 +23,9 @@ function ToolCard({ name, icon: Icon, text, link }) {
           <button
             onClick={toggle}
             type="button"
-            className="rounded-md border border-stone-300 bg-stone-200 p-1 text-stone-700 outline-none
-            transition-all hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black  dark:border-stone-700
-            dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white dark:focus:bg-stone-700 dark:focus:text-white"
+            className="rounded-md border border-stone-300 bg-transparent p-1 text-stone-700
+            outline-none transition-all hover:bg-stone-300 hover:text-black focus:bg-stone-300  focus:text-black
+            dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white dark:focus:bg-stone-700 dark:focus:text-white"
           >
             {isOpened ? <ArrowCircleDownIcon className="h-5 w-5" /> : <ArrowCircleUpIcon className="h-5 w-5" />}
           </button>

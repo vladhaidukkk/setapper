@@ -7,7 +7,6 @@ function Registration() {
   const dispatch = useDispatch();
 
   const handleSubmit = (data) => {
-    console.log(data);
     dispatch(signUp(data));
   };
 

@@ -22,11 +22,15 @@ function AuthForm({ label, alt, onSubmit, btnText, children }) {
   return (
     <div className="w-full max-w-md space-y-8">
       <div>
-        <h2 className="text-center text-3xl font-bold text-black md:text-4xl">{label}</h2>
+        <h2 className="text-center text-3xl font-bold text-black dark:text-white md:text-4xl">{label}</h2>
         {alt && (
-          <p className="mt-2 text-center text-sm text-stone-700 md:text-base">
+          <p className="mt-2 text-center text-sm text-stone-700 dark:text-stone-300 md:text-base">
             Or{' '}
-            <Link to={alt.link} className="font-medium text-indigo-600 transition-colors hover:text-indigo-500">
+            <Link
+              to={alt.link}
+              className="font-medium text-indigo-600 transition-colors hover:text-indigo-500 focus:text-indigo-500
+              dark:text-indigo-400 dark:hover:text-indigo-500"
+            >
               {alt.text}
             </Link>
           </p>

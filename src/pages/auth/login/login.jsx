@@ -9,7 +9,6 @@ function Login() {
   const location = useLocation();
 
   const handleSubmit = (data) => {
-    console.log(data);
     dispatch(logIn(data, location));
   };
 

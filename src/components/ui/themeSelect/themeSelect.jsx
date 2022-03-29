@@ -18,7 +18,7 @@ function ThemeSelect() {
       <button
         type="button"
         className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-200 text-stone-700
-        shadow-md outline-none transition-all hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black
+        outline-none transition-all duration-200 hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black
         dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white
         dark:focus:bg-stone-700 dark:focus:text-white"
         onClick={toggle}
@@ -33,13 +33,13 @@ function ThemeSelect() {
           <li>
             <button
               type="button"
-              className={`flex w-full items-center rounded-md px-2.5 py-1 text-sm font-medium outline-none transition-all
-              transition-all hover:bg-stone-200 hover:text-black hover:ring-1 hover:ring-stone-300 focus:bg-stone-200
-              focus:text-black focus:ring-1 focus:ring-stone-300 dark:hover:bg-stone-800 dark:hover:text-white
-              dark:hover:ring-stone-700 dark:focus:bg-stone-800 dark:focus:text-white dark:focus:ring-stone-700 ${
+              className={`hover:stone-stone-300 focus:stone-stone-300 dark:hover:stone-stone-700 dark:focus:stone-stone-700 flex w-full items-center rounded-md border px-2.5 py-1
+              text-sm font-medium outline-none transition-all transition-all duration-200
+              hover:bg-stone-200 hover:text-black focus:bg-stone-200 focus:text-black
+              dark:hover:bg-stone-800 dark:hover:text-white dark:focus:bg-stone-800 dark:focus:text-white ${
                 theme === themeConstants.LIGHT
-                  ? 'bg-stone-200 text-black dark:bg-stone-800 dark:text-white'
-                  : 'text-stone-700 dark:text-stone-300'
+                  ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
+                  : 'border-transparent text-stone-700 dark:text-stone-300'
               }`}
               onClick={() => handleChange(themeConstants.LIGHT)}
             >
@@ -50,13 +50,13 @@ function ThemeSelect() {
           <li>
             <button
               type="button"
-              className={`flex w-full items-center rounded-md px-2.5 py-1 text-sm font-medium outline-none transition-all
-              transition-all hover:bg-stone-200 hover:text-black hover:ring-1 hover:ring-stone-300 focus:bg-stone-200
-              focus:text-black focus:ring-1 focus:ring-stone-300 dark:hover:bg-stone-800 dark:hover:text-white
-              dark:hover:ring-stone-700 dark:focus:bg-stone-800 dark:focus:text-white dark:focus:ring-stone-700 ${
+              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none transition-all
+              transition-all duration-200 hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300
+              focus:bg-stone-200 focus:text-black dark:hover:border-stone-700 dark:hover:bg-stone-800
+              dark:hover:text-white dark:focus:border-stone-700 dark:focus:bg-stone-800 dark:focus:text-white ${
                 theme === themeConstants.DARK
-                  ? 'bg-stone-200 text-black dark:bg-stone-800 dark:text-white'
-                  : 'text-stone-700 dark:text-stone-300'
+                  ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
+                  : 'border-transparent text-stone-700 dark:text-stone-300'
               }`}
               onClick={() => handleChange(themeConstants.DARK)}
             >
@@ -67,13 +67,13 @@ function ThemeSelect() {
           <li>
             <button
               type="button"
-              className={`flex w-full items-center rounded-md px-2.5 py-1 text-sm font-medium outline-none transition-all
-              transition-all hover:bg-stone-200 hover:text-black hover:ring-1 hover:ring-stone-300 focus:bg-stone-200
-              focus:text-black focus:ring-1 focus:ring-stone-300 dark:hover:bg-stone-800 dark:hover:text-white
-              dark:hover:ring-stone-700 dark:focus:bg-stone-800 dark:focus:text-white dark:focus:ring-stone-700 ${
+              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none transition-all
+              transition-all duration-200 hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300
+              focus:bg-stone-200 focus:text-black dark:hover:border-stone-700 dark:hover:bg-stone-800
+              dark:hover:text-white dark:focus:border-stone-700 dark:focus:bg-stone-800 dark:focus:text-white ${
                 theme === themeConstants.SYSTEM
-                  ? 'bg-stone-200 text-black dark:bg-stone-800 dark:text-white'
-                  : 'text-stone-700 dark:text-stone-300'
+                  ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
+                  : 'border-transparent text-stone-700 dark:text-stone-300'
               }`}
               onClick={() => handleChange(themeConstants.SYSTEM)}
             >

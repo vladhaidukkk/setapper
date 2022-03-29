@@ -46,7 +46,7 @@ const logOut = () => (dispatch) => {
   localStorageService.removeAccountId();
   dispatch(loggedOut());
   dispatch(removeAccountData());
-  historyUtil.push('/');
+  historyUtil.push('/auth/login');
 };
 
 export { signUp, logIn, logOut };

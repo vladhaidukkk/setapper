@@ -21,9 +21,9 @@ function AuthTextField({ name, type, label, register, position, autoComplete, va
         {...register(name, validation)}
         type={type}
         autoComplete={autoComplete}
-        className={`relative block w-full appearance-none rounded-none border border-stone-300 px-3 py-2 text-sm
-                text-black placeholder-stone-500 outline-none focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 md:text-base
-                ${getBorderRadius()}`}
+        className={`relative block w-full appearance-none rounded-none border border-stone-300 px-3 py-2 text-sm text-black placeholder-stone-500 outline-none
+                focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 dark:border-stone-500 dark:bg-stone-700 dark:text-white dark:placeholder-stone-400
+                md:text-base ${getBorderRadius()}`}
         placeholder={label}
       />
     </div>

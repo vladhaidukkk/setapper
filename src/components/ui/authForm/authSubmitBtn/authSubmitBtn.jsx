@@ -7,8 +7,9 @@ function AuthSubmitBtn({ children }) {
       <button
         type="submit"
         className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2
-              px-4 text-sm font-medium text-white shadow outline-none transition-colors
-              hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:text-base"
+              px-4 text-sm font-medium text-white shadow outline-none ring-offset-white transition-colors
+              hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:ring-offset-stone-800
+              dark:hover:bg-indigo-600 dark:focus:bg-indigo-600 dark:focus:ring-indigo-600 md:text-base"
       >
         {children || 'Submit'}
       </button>

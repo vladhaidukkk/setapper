@@ -20,8 +20,8 @@ function NavMenuDropdown() {
     <div id={id} className="relative block md:hidden">
       <button
         type="button"
-        className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-200 text-stone-700
-        shadow-md outline-none transition-all hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black
+        className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-200 text-stone-700 outline-none
+        transition-all duration-200 hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black
         dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white
         dark:focus:bg-stone-700 dark:focus:text-white"
         onClick={toggle}
@@ -33,30 +33,30 @@ function NavMenuDropdown() {
         p-2 shadow-md group-hover:block dark:border-stone-700 dark:bg-stone-900 ${isOpened ? 'block' : 'hidden'}`}
       >
         <ul className="flex flex-col space-y-0.5">
-          <NavMenuItem path="" icon={HomeIcon}>
+          <NavMenuItem path="/" icon={HomeIcon}>
             Home
           </NavMenuItem>
           <PublicElement>
-            <NavMenuItem path="auth/login" icon={LoginIcon}>
+            <NavMenuItem path="/auth/login" icon={LoginIcon}>
               Log in
             </NavMenuItem>
           </PublicElement>
           <PublicElement>
-            <NavMenuItem path="auth/registration" icon={UserAddIcon}>
+            <NavMenuItem path="/auth/registration" icon={UserAddIcon}>
               Sign up
             </NavMenuItem>
           </PublicElement>
           <PrivateElement>
-            <NavMenuItem path="dashboard" icon={ViewBoardsIcon}>
+            <NavMenuItem path="/dashboard" icon={ViewBoardsIcon}>
               Dashboard
             </NavMenuItem>
           </PrivateElement>
           <PrivateElement>
-            <NavMenuItem path="builder/inspector" icon={ViewGridAddIcon}>
+            <NavMenuItem path="/builder/inspector" icon={ViewGridAddIcon}>
               Builder
             </NavMenuItem>
           </PrivateElement>
-          <NavMenuItem path="presets/inspector" icon={ViewGridIcon}>
+          <NavMenuItem path="/presets" icon={ViewGridIcon}>
             Presets
           </NavMenuItem>
         </ul>

@@ -14,19 +14,19 @@ function HeaderNav() {
       <NavMenuDropdown />
       <ul className="hidden items-center space-x-1 md:flex">
         <PublicElement>
-          <NavItem path="auth/login">Log in</NavItem>
+          <NavItem path="/auth/login">Log in</NavItem>
         </PublicElement>
         <PublicElement>
-          <NavItem path="auth/registration">Sign up</NavItem>
+          <NavItem path="/auth/registration">Sign up</NavItem>
         </PublicElement>
         <PrivateElement>
-          <NavItem path="dashboard">Dashboard</NavItem>
+          <NavItem path="/dashboard">Dashboard</NavItem>
         </PrivateElement>
         <PrivateElement>
           <NavDropdown
             label="Builder"
-            path="builder/inspector"
-            pathPrefix="builder/"
+            path="/builder/inspector"
+            pathPrefix="/builder/"
             options={[
               { path: 'inspector', label: 'Inspector', Icon: EyeIcon, divided: true },
               { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
@@ -37,8 +37,8 @@ function HeaderNav() {
         </PrivateElement>
         <NavDropdown
           label="Presets"
-          path="presets"
-          pathPrefix="presets/"
+          path="/presets"
+          pathPrefix="/presets/"
           options={[
             { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
             { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
