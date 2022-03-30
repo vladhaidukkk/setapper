@@ -2,19 +2,23 @@ import { ReactComponent as EslintIcon } from 'assets/icons/eslint.svg';
 import { ReactComponent as WebpackIcon } from 'assets/icons/webpack.svg';
 import { ReactComponent as GulpIcon } from 'assets/icons/gulp.svg';
 
+// todo: add description and docLink
 const toolConstants = {
   LIST: [
     {
-      name: 'webpack',
-      Icon: WebpackIcon,
+      label: 'Webpack',
+      value: 'webpack',
+      icon: WebpackIcon,
     },
     {
-      name: 'gulp',
-      Icon: GulpIcon,
+      label: 'Gulp',
+      value: 'gulp',
+      icon: GulpIcon,
     },
     {
-      name: 'eslint',
-      Icon: EslintIcon,
+      label: 'Eslint',
+      value: 'eslint',
+      icon: EslintIcon,
     },
   ],
 };

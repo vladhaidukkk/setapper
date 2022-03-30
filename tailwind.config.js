@@ -16,6 +16,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      spacing: {
+        4.5: '1.125rem',
+      },
     },
   },
   plugins: [formsPlugin, lineClampPlugin],

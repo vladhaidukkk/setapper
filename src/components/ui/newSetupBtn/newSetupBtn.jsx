@@ -8,7 +8,7 @@ function NewSetupBtn() {
   return (
     <Link
       to={`/builder/${tool}`}
-      className="flex h-full basis-10 items-center justify-center rounded bg-sky-300 shadow"
+      className="flex h-full basis-10 items-center justify-center rounded-md border border-stone-300 shadow-sm"
     >
       <PlusIcon className="h-5 w-5" />
     </Link>

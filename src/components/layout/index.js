@@ -1,4 +1,3 @@
-import NavBar from 'components/layout/navBar/navBar';
 import SetupsBar from 'components/layout/setupsBar/setupsBar';
 import SetupViewer from 'components/layout/setupViewer/setupViewer';
 import SetupCreator from 'components/layout/setupCreator/setupCreator';
@@ -8,4 +7,4 @@ import Intro from 'components/layout/intro/intro';
 import ToolsIntro from 'components/layout/toolsIntro/toolsIntro';
 import Footer from 'components/layout/footer/footer';
 
-export { NavBar, SetupsBar, SetupViewer, SetupCreator, SetupEditor, Header, Intro, ToolsIntro, Footer };
+export { SetupsBar, SetupViewer, SetupCreator, SetupEditor, Header, Intro, ToolsIntro, Footer };

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, NavBar } from 'components/layout';
+import { Header, SetupsBar } from 'components/layout';
 
 function Builder() {
   return (
     <div className="flex h-screen flex-col">
       <Header fluid />
-      <div className="flex flex-auto bg-gray-800">
-        <NavBar />
+      <div className="flex flex-auto overflow-y-auto bg-white dark:bg-stone-800">
+        <SetupsBar />
         <Outlet />
       </div>
     </div>

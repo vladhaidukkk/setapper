@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SearchIcon } from '@heroicons/react/solid';
+import { useRandomId } from 'hooks';
 
-function Search({ id, value, onChange, placeholder }) {
+function Search({ value, onChange, placeholder }) {
+  const id = useRandomId('search-');
+
   const handleChange = ({ target }) => {
     onChange(target.value);
   };
@@ -10,16 +13,16 @@ function Search({ id, value, onChange, placeholder }) {
   return (
     <label
       htmlFor={id}
-      className="flex h-full flex-1 cursor-pointer items-center pl-2.5 pr-3.5 text-gray-400
-      focus-within:text-gray-600 hover:text-gray-600 dark:text-neutral-400 dark:focus-within:text-neutral-100
-      dark:hover:text-neutral-100"
+      className="flex h-full flex-1 cursor-pointer items-center pl-2.5 text-stone-600 transition-colors
+      duration-200 focus-within:text-stone-800 hover:text-stone-800 dark:text-stone-400
+      dark:focus-within:text-stone-100 dark:hover:text-stone-100"
     >
-      <SearchIcon className="mr-1.5 h-5 w-5 flex-none" />
+      <SearchIcon className="mr-1.5 h-4.5 w-4.5 flex-none" />
       <input
         id={id}
         type="text"
         value={value}
-        className="h-full w-full flex-1 border-none bg-transparent p-0 placeholder-gray-400 outline-none dark:placeholder-neutral-400"
+        className="h-full w-full flex-1 border-0 bg-transparent p-0 placeholder-stone-600 focus:ring-0 dark:placeholder-stone-400"
         onChange={handleChange}
         placeholder={placeholder}
         autoComplete="off"
@@ -33,7 +36,6 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

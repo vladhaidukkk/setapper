@@ -20,10 +20,10 @@ function NavMenuDropdown() {
     <div id={id} className="relative block md:hidden">
       <button
         type="button"
-        className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-200 text-stone-700 outline-none
-        transition-all duration-200 hover:bg-stone-300 hover:text-black focus:bg-stone-300 focus:text-black
-        dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white
-        dark:focus:bg-stone-700 dark:focus:text-white"
+        className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-200 text-stone-700 shadow-sm
+        outline-none transition-all duration-200 hover:bg-stone-300 hover:text-black focus:bg-stone-300
+        focus:text-black dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700
+        dark:hover:text-white dark:focus:bg-stone-700 dark:focus:text-white"
         onClick={toggle}
       >
         <MenuAlt2Icon className="h-6 w-6" />

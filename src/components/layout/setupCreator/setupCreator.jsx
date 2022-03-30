@@ -8,6 +8,7 @@ import { getAccountId } from 'store/auth/auth.selectors';
 import { builderConstants } from 'utils/constants';
 import { parserUtil, builderUtil } from 'utils/core';
 import DownloadBtn from 'components/common/downloadBtn';
+import Code from 'components/common/code';
 
 const getDefaults = () => ({
   defaultValues: {
@@ -33,9 +34,9 @@ function SetupCreator() {
   };
 
   return (
-    <div className="space-y-2.5 p-2.5">
-      <h1 className="text-2xl font-bold text-zinc-50">New {capitalize(tool)} setup</h1>
-      <div className="flex gap-x-4 text-zinc-800">
+    <div className="space-y-2.5 p-2.5 text-black dark:text-white">
+      <h1 className="text-2xl font-bold">New {capitalize(tool)} setup</h1>
+      <div className="flex gap-x-4">
         <form onSubmit={handleSubmit(handleFormSubmit)} className="flex flex-col space-y-2">
           <input className="rounded border p-1 shadow" type="text" {...register('title')} placeholder="Title" />
           <textarea
@@ -51,7 +52,7 @@ function SetupCreator() {
 
             return (
               <label htmlFor={optionKey} key={optionKey}>
-                <h4 className="text-zinc-100">{option.label}</h4>
+                <h4>{option.label}</h4>
                 <p>{option.description}</p>
                 {dataType === 'boolean' ? (
                   <input
@@ -72,17 +73,15 @@ function SetupCreator() {
               </label>
             );
           })}
-          <button className="rounded bg-sky-300 py-1 shadow" type="submit">
+          <button className="rounded bg-indigo-500 py-1 text-white shadow-sm" type="submit">
             Create setup
           </button>
         </form>
-        <div className="rounded border bg-zinc-50 p-2 shadow">
+        <div className="rounded border bg-stone-50 p-2 shadow">
           <pre>{parserUtil.formatJsonToStr(watch())}</pre>
         </div>
         <div className="flex flex-col space-y-3">
-          <div className="rounded border bg-zinc-50 shadow">
-            <pre>{parserUtil.formatJsStr(builderUtil[tool](watch('options')))}</pre>
-          </div>
+          <Code content={parserUtil.formatJsStr(builderUtil[tool](watch('options')))} language="javascript" />
           <DownloadBtn
             filename={builderConstants[tool].filenames.CONFIG}
             content={parserUtil.formatJsStr(builderUtil[tool](getValues('options')))}

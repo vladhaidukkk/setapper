@@ -4,10 +4,10 @@ import NotificationContainer from 'components/ui/notificationContainer';
 
 function Pages() {
   return (
-    <div>
+    <>
       <Outlet />
       <NotificationContainer />
-    </div>
+    </>
   );
 }
 

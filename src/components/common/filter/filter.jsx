@@ -1,10 +1,11 @@
 import React from 'react';
-import { useDropdown } from 'hooks';
+import { useDropdown, useRandomId } from 'hooks';
 import FilterToggler from 'components/common/filter/filterToggler/filterToggler';
 import FilterList from 'components/common/filter/filterList/filterList';
 import PropTypes from 'prop-types';
 
-function Filter({ id, value, onChange, iterTitle, iterOptions, orderTitle, orderOptions }) {
+function Filter({ value, onChange, iterTitle, iterOptions, orderTitle, orderOptions }) {
+  const id = useRandomId('filter-');
   const { isOpened, toggle } = useDropdown(id);
 
   const handleIterChange = (newIter) => {
@@ -16,15 +17,16 @@ function Filter({ id, value, onChange, iterTitle, iterOptions, orderTitle, order
   };
 
   return (
-    <div id={id} className="group relative h-full w-10">
+    <div id={id} className="group relative flex h-full w-10 items-center justify-center">
       <FilterToggler onToggle={toggle} />
       <div
-        className={`absolute top-12 right-0 w-32 space-y-2 rounded-lg bg-red-100 bg-gradient-to-r
-      from-sky-400 to-sky-500 px-3 py-2 drop-shadow-md ${isOpened ? 'block' : 'hidden'}`}
+        className={`absolute top-full right-0 z-20 min-w-[11rem] translate-y-2.5 rounded-md border border-stone-300 bg-white p-2
+        shadow-md dark:border-stone-700 dark:bg-stone-800 ${isOpened ? 'block' : 'hidden'}`}
       >
         {iterOptions && (
           <FilterList onChange={handleIterChange} title={iterTitle} options={iterOptions} value={value.iter} />
         )}
+        {iterOptions && orderOptions && <div className="my-1 h-px w-full bg-stone-300 dark:bg-stone-700" />}
         {orderOptions && (
           <FilterList onChange={handleOrderChange} title={orderTitle} options={orderOptions} value={value.order} />
         )}
@@ -41,7 +43,6 @@ Filter.defaultProps = {
 };
 
 Filter.propTypes = {
-  id: PropTypes.string.isRequired,
   value: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   iterTitle: PropTypes.string,

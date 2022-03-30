@@ -16,7 +16,7 @@ function DownloadBtn({ filename, content, contentType, label }) {
         href={`data:${contentType};charset=utf-8,${encodeURIComponent(content)}`}
         download={filename}
       />
-      <button type="button" className="rounded bg-sky-300 py-1 shadow" onClick={handleClick}>
+      <button type="button" className="rounded bg-indigo-500 py-1 text-white shadow-sm" onClick={handleClick}>
         {label}
       </button>
     </>

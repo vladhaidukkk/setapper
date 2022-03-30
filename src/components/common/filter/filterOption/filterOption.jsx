@@ -10,13 +10,17 @@ function FilterOption({ value, label, Icon, isSelected, onClick }) {
     <li>
       <button
         type="button"
-        className={`flex items-center text-gray-50 outline-none transition-all
-        hover:translate-x-0.5 hover:translate-x-0.5 hover:text-gray-50 hover:text-opacity-100
-        focus:translate-x-px focus:text-gray-50
-        focus:text-opacity-100 ${isSelected ? 'text-gray-50' : 'text-gray-200 text-opacity-80'}`}
+        className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none transition-all
+              duration-200 hover:border-stone-300 hover:bg-stone-100 hover:text-black focus:border-stone-300
+              focus:bg-stone-100 focus:text-black dark:hover:border-stone-700 dark:hover:bg-stone-900
+              dark:hover:text-white dark:focus:border-stone-700 dark:focus:bg-stone-900 dark:focus:text-white ${
+                isSelected
+                  ? 'border-stone-300 bg-stone-100 text-black dark:border-stone-700 dark:bg-stone-900 dark:text-white'
+                  : 'border-transparent text-stone-700 dark:text-stone-300'
+              }`}
         onClick={handleClick}
       >
-        {Icon && <Icon className="mr-1 h-3.5 w-3.5 flex-none" />}
+        {Icon && <Icon className="mr-1.5 h-4 w-4" />}
         {label}
       </button>
     </li>

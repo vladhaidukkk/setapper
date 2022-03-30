@@ -29,7 +29,7 @@ function Intro() {
             <PublicElement>
               <Link
                 to="auth/login"
-                className="text-md group flex items-center justify-between rounded-md border border-indigo-500 bg-indigo-500 px-4 py-2 text-white shadow-md outline-none
+                className="text-md group flex items-center justify-between rounded-md border border-indigo-500 bg-indigo-500 px-4 py-2 text-white shadow outline-none
               transition-all dark:bg-transparent dark:hover:bg-indigo-500 dark:focus:bg-indigo-500 sm:text-lg md:text-xl"
               >
                 Log into Account
@@ -39,7 +39,7 @@ function Intro() {
             <PrivateElement>
               <Link
                 to="builder/inspector"
-                className="text-md group flex items-center justify-between rounded-md border border-indigo-500 bg-indigo-500 px-4 py-2 text-white shadow-md
+                className="text-md group flex items-center justify-between rounded-md border border-indigo-500 bg-indigo-500 px-4 py-2 text-white shadow
               outline-none transition-all dark:bg-transparent dark:hover:bg-indigo-500 dark:focus:bg-indigo-500 sm:text-lg md:text-xl"
               >
                 Create custom Setup
@@ -49,7 +49,7 @@ function Intro() {
             <Link
               to="presets/inspector"
               className="text-md group flex items-center justify-between rounded-md border border-violet-500 bg-violet-500 px-4 py-2 text-white
-              shadow-md outline-none transition-all dark:bg-transparent dark:hover:bg-violet-500 dark:focus:bg-violet-500 sm:text-lg md:text-xl"
+              shadow outline-none transition-all dark:bg-transparent dark:hover:bg-violet-500 dark:focus:bg-violet-500 sm:text-lg md:text-xl"
             >
               Choose a Preset
               <ArrowSmRightIcon className="ml-2.5 h-6 w-6 text-white transition-all group-hover:w-0 group-focus:w-0 dark:text-violet-500" />

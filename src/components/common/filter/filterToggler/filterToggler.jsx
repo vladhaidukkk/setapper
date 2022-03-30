@@ -7,11 +7,12 @@ function FilterToggler({ onToggle }) {
     <button
       type="button"
       onClick={onToggle}
-      className="flex h-full w-full items-center justify-center text-gray-400 outline-none
-      hover:text-gray-600 group-focus-within:text-gray-600 dark:text-neutral-400
-      dark:hover:text-neutral-100 dark:group-focus-within:text-neutral-100"
+      className="flex h-full w-full items-center justify-center rounded text-stone-600
+      outline-none duration-200 hover:text-stone-800
+      group-focus-within:text-stone-800 dark:text-stone-400
+      dark:hover:text-stone-100 dark:group-focus-within:text-stone-100"
     >
-      <FilterIcon className="h-5 w-5" />
+      <FilterIcon className="h-4.5 w-4.5" />
     </button>
   );
 }

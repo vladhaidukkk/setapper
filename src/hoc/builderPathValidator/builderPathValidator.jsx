@@ -13,7 +13,7 @@ function BuilderPathValidator({ children }) {
 
   useEffect(() => {
     if (tool) {
-      const isSectionValid = toolConstants.LIST.find((item) => item.name === tool);
+      const isSectionValid = toolConstants.LIST.find((item) => item.value === tool);
 
       if (!isSectionValid) {
         navigate(`/builder/inspector`, { replace: true });

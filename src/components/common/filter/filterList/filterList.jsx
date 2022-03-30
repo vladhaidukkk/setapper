@@ -4,9 +4,9 @@ import FilterOption from 'components/common/filter/filterOption/filterOption';
 
 function FilterList({ title, options, value, onChange }) {
   return (
-    <div className="space-y-0.5">
-      <h4 className="text-sm font-bold text-gray-50">{title}</h4>
-      <ul className="pl-1">
+    <div className="space-y-1">
+      <h4 className="text-sm font-medium text-stone-700 dark:text-stone-300">{title}</h4>
+      <ul className="flex flex-col space-y-0.5">
         {options.map((option) => (
           <FilterOption
             key={option.value}

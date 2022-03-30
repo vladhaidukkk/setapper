@@ -24,9 +24,9 @@ function AccountBox() {
     <div id={id} className="relative">
       <button
         type="button"
-        className="block h-10 w-10 overflow-hidden rounded-md border border-stone-200 text-xs outline-none transition-all
-        duration-200 focus-within:scale-95 focus-within:border-stone-300 hover:scale-95 hover:border-stone-300
-        dark:border-stone-800 dark:focus-within:border-stone-700 dark:hover:border-stone-700"
+        className="block h-10 w-10 overflow-hidden rounded-md border border-stone-200 text-xs text-stone-300 shadow-sm outline-none
+        transition-all duration-200 focus-within:scale-95 focus-within:border-stone-300 hover:scale-95
+        hover:border-stone-300 dark:border-stone-800 dark:text-stone-700 dark:focus-within:border-stone-700 dark:hover:border-stone-700"
         onClick={toggle}
       >
         {!isAccountLoading && accountData ? (

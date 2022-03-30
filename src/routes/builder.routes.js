@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { SetupViewer, SetupsBar, SetupCreator, SetupEditor } from 'components/layout';
+import { SetupViewer, SetupCreator, SetupEditor } from 'components/layout';
 import { Inspector } from 'pages';
 import { BuilderPathValidator } from 'hoc';
 
@@ -17,7 +17,6 @@ const builderRoutes = [
     path: ':tool/',
     element: (
       <BuilderPathValidator>
-        <SetupsBar />
         <SetupCreator />
       </BuilderPathValidator>
     ),
@@ -26,7 +25,6 @@ const builderRoutes = [
     path: ':tool/:setupId/',
     element: (
       <BuilderPathValidator>
-        <SetupsBar />
         <SetupViewer />
       </BuilderPathValidator>
     ),
@@ -39,7 +37,6 @@ const builderRoutes = [
     path: ':tool/:setupId/edit/',
     element: (
       <BuilderPathValidator>
-        <SetupsBar />
         <SetupEditor />
       </BuilderPathValidator>
     ),
