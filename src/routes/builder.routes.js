@@ -1,45 +1,19 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { SetupViewer, SetupCreator, SetupEditor } from 'components/layout';
-import { Inspector } from 'pages';
-import { BuilderPathValidator } from 'hoc';
 
 const builderRoutes = [
   {
-    path: `inspector/`,
-    element: <Inspector />,
-  },
-  {
-    path: `inspector/*`,
-    element: <Navigate to="" replace />,
-  },
-  {
     path: ':tool/',
-    element: (
-      <BuilderPathValidator>
-        <SetupCreator />
-      </BuilderPathValidator>
-    ),
+    element: <SetupCreator />,
   },
   {
     path: ':tool/:setupId/',
-    element: (
-      <BuilderPathValidator>
-        <SetupViewer />
-      </BuilderPathValidator>
-    ),
-  },
-  {
-    path: ':tool/:setupId/*',
-    element: <Navigate to="" replace />,
+    element: <SetupViewer />,
   },
   {
     path: ':tool/:setupId/:edit/',
-    element: (
-      <BuilderPathValidator>
-        <SetupEditor />
-      </BuilderPathValidator>
-    ),
+    element: <SetupEditor />,
   },
   {
     path: ':tool/:setupId/:edit/*',
@@ -47,7 +21,7 @@ const builderRoutes = [
   },
   {
     path: '*',
-    element: <Navigate to="inspector" replace />,
+    element: <Navigate to="" replace />,
   },
 ];
 

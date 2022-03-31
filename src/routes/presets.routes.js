@@ -1,29 +1,15 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { PresetViewer, ToolPresetsViewer } from 'components/layout';
-import { PresetsHome } from 'pages';
-import { PresetsPathValidator } from 'hoc';
 
 const presetsRoutes = [
   {
-    index: true,
-    element: <PresetsHome />,
-  },
-  {
     path: ':tool/',
-    element: (
-      <PresetsPathValidator>
-        <ToolPresetsViewer />
-      </PresetsPathValidator>
-    ),
+    element: <ToolPresetsViewer />,
   },
   {
     path: ':tool/:presetId/',
-    element: (
-      <PresetsPathValidator>
-        <PresetViewer />
-      </PresetsPathValidator>
-    ),
+    element: <PresetViewer />,
   },
   {
     path: ':tool/:presetId/*',

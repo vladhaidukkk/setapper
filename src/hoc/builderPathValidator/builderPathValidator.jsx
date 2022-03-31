@@ -16,7 +16,7 @@ function BuilderPathValidator({ children }) {
   useEffect(() => {
     if (tool) {
       if (!isToolValid) {
-        navigate(`/builder/inspector`, { replace: true });
+        navigate(`/builder`, { replace: true });
       } else if (setupId && !setup && !isSetupsLoading) {
         navigate(`/builder/${tool}`, { replace: true });
       } else if (setup && !isSetupsLoading && edit && edit !== 'edit') {

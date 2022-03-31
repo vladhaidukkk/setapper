@@ -25,10 +25,10 @@ function HeaderNav() {
         <PrivateElement>
           <NavDropdown
             label="Builder"
-            path="/builder/inspector"
+            path="/builder/"
             pathPrefix="/builder/"
             options={[
-              { path: 'inspector', label: 'Inspector', Icon: EyeIcon, divided: true },
+              { path: '', label: 'Inspector', Icon: EyeIcon, divided: true },
               { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
               { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
               { path: 'eslint', label: 'Eslint', Icon: EslintIcon },
@@ -37,9 +37,10 @@ function HeaderNav() {
         </PrivateElement>
         <NavDropdown
           label="Presets"
-          path="/presets"
+          path="/presets/"
           pathPrefix="/presets/"
           options={[
+            { path: '', label: 'Inspector', Icon: EyeIcon, divided: true },
             { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
             { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
             { path: 'eslint', label: 'Eslint', Icon: EslintIcon },

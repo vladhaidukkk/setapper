@@ -1,9 +1,9 @@
 import React from 'react';
-import { Auth, Builder, Dashboard, Home, Presets, Settings } from 'pages';
+import { Auth, Builder, BuilderInspector, Dashboard, Home, Presets, PresetsInspector, Settings } from 'pages';
 import { Navigate } from 'react-router-dom';
 import authRoutes from 'routes/auth.routes';
 import builderRoutes from 'routes/builder.routes';
-import { PrivateRoute, PublicRoute } from 'hoc';
+import { BuilderPathValidator, PresetsPathValidator, PrivateRoute, PublicRoute } from 'hoc';
 import settingsRoutes from 'routes/settings.routes';
 import presetsRoutes from 'routes/presets.routes';
 
@@ -18,15 +18,33 @@ const appRoutes = [
     children: authRoutes,
   },
   {
+    path: 'presets/',
+    element: <PresetsInspector />,
+  },
+  {
     path: 'presets/*',
-    element: <Presets />,
+    element: (
+      <PresetsPathValidator>
+        <Presets />
+      </PresetsPathValidator>
+    ),
     children: presetsRoutes,
+  },
+  {
+    path: 'builder/',
+    element: (
+      <PrivateRoute>
+        <BuilderInspector />
+      </PrivateRoute>
+    ),
   },
   {
     path: 'builder/*',
     element: (
       <PrivateRoute>
-        <Builder />
+        <BuilderPathValidator>
+          <Builder />
+        </BuilderPathValidator>
       </PrivateRoute>
     ),
     children: builderRoutes,

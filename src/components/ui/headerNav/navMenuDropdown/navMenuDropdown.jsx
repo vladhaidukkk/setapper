@@ -52,7 +52,7 @@ function NavMenuDropdown() {
             </NavMenuItem>
           </PrivateElement>
           <PrivateElement>
-            <NavMenuItem path="/builder/inspector" icon={ViewGridAddIcon}>
+            <NavMenuItem path="/builder" icon={ViewGridAddIcon}>
               Builder
             </NavMenuItem>
           </PrivateElement>
