@@ -26,7 +26,7 @@ function ToolsMenu({ label, pathPrefix, options }) {
         <SelectedTool onToggle={toggle} label={selectedOption?.label} icon={selectedOption?.icon} />
         <ul
           className={`absolute top-full left-0 z-10 flex w-full translate-y-2 flex-col space-y-0.5 overflow-auto rounded-md border
-          border-stone-300 bg-white p-2 shadow-md dark:border-stone-700 dark:bg-stone-800 ${
+          border-stone-300 bg-white p-2 shadow-lg dark:border-stone-700 dark:bg-stone-800 ${
             isOpened ? 'block' : 'hidden'
           }`}
         >

@@ -10,9 +10,11 @@ import Filter from 'components/common/filter';
 import NewSetupBtn from 'components/ui/newSetupBtn';
 import ToolsMenu from 'components/common/toolsMenu';
 import toolConstants from 'utils/constants/tool.constants';
-import SetupsList from 'components/ui/setupsList/setupsList';
+import SetupsList from 'components/ui/setupsList';
+import { SpinLoader } from 'components/common/loaders';
+import PropTypes from 'prop-types';
 
-function SetupsBar() {
+function SetupsBar({ pathPrefix }) {
   const { tool, setupId } = useParams();
   const isSetupsLoading = useSelector(getSetupsLoadingStatus());
   const setups = useSelector(getSetupsByTool(tool));
@@ -34,7 +36,7 @@ function SetupsBar() {
   };
 
   return (
-    <aside className="flex h-full w-80 flex-col space-y-2.5 border-r border-stone-200 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900">
+    <aside className="flex h-full w-72 flex-col space-y-2.5 border-r border-stone-200 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900">
       <div className="flex h-10 min-h-[2.5rem] items-center space-x-2.5">
         <div
           className="flex h-full flex-1 items-center rounded-md border border-stone-300 bg-white shadow-sm outline-none
@@ -51,10 +53,29 @@ function SetupsBar() {
         </div>
         {setupId && <NewSetupBtn />}
       </div>
-      <ToolsMenu label="Select tool" pathPrefix="/builder/" options={toolConstants.LIST} />
-      {!isSetupsLoading ? <SetupsList list={sortedSetups} matchString={searchValue} /> : <div>loading...</div>}
+      <ToolsMenu label="Select tool" pathPrefix={pathPrefix} options={toolConstants.LIST} />
+      <div className="mb-2.5 h-px w-full bg-stone-300 dark:bg-stone-700" />
+      {!isSetupsLoading ? (
+        <SetupsList
+          list={sortedSetups}
+          pathPrefix={pathPrefix}
+          notFound={sortedSetups?.length === 0 && setups?.length !== 0}
+          matchString={searchValue}
+        />
+      ) : (
+        tool && (
+          <div className="flex w-max items-center rounded-md border border-stone-300 bg-white p-1.5 pr-2.5 text-sm text-stone-600 shadow-sm dark:border-stone-700 dark:bg-stone-800 dark:text-stone-400">
+            <SpinLoader className="mr-1.5 h-4.5 w-4.5" />
+            <div>Loading setups...</div>
+          </div>
+        )
+      )}
     </aside>
   );
 }
+
+SetupsBar.propTypes = {
+  pathPrefix: PropTypes.string.isRequired,
+};
 
 export default SetupsBar;

@@ -4,10 +4,10 @@ import { Header, SetupsBar } from 'components/layout';
 
 function Builder() {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="relative flex h-screen flex-col">
       <Header fluid />
       <div className="flex flex-auto overflow-y-auto bg-white dark:bg-stone-800">
-        <SetupsBar />
+        <SetupsBar pathPrefix="/builder/" />
         <Outlet />
       </div>
     </div>

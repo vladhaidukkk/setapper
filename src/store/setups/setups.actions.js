@@ -3,6 +3,7 @@ import { handleError } from 'store/errors/errors.actions';
 import { setupsService } from 'services';
 import { errorConstants } from 'utils/constants';
 import { createAction } from '@reduxjs/toolkit';
+import { historyUtil } from 'utils/core';
 
 const { requested, received, failed, created, removed } = setupsSlice.actions;
 const creationRequested = createAction('setups/creationRequested');
@@ -32,11 +33,12 @@ const createSetup = (payload) => async (dispatch) => {
   }
 };
 
-const removeSetup = (id) => async (dispatch) => {
+const removeSetup = (id, redirectPath) => async (dispatch) => {
   dispatch(removalRequested());
   try {
     await setupsService.removeSetup(id);
     dispatch(removed(id));
+    historyUtil.replace(redirectPath);
   } catch (error) {
     dispatch(removalFailed());
     dispatch(handleError({ type: errorConstants.types.SETUPS, error }));

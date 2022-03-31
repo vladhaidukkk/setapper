@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
 
 function BuilderPathValidator({ children }) {
-  const { tool, setupId } = useParams();
+  const { tool, setupId, edit } = useParams();
   const isSetupsLoading = useSelector(getSetupsLoadingStatus());
   const setup = useSelector(getSetupById(setupId));
   const navigate = useNavigate();
@@ -19,6 +19,8 @@ function BuilderPathValidator({ children }) {
         navigate(`/builder/inspector`, { replace: true });
       } else if (setupId && !setup && !isSetupsLoading) {
         navigate(`/builder/${tool}`, { replace: true });
+      } else if (setup && !isSetupsLoading && edit && edit !== 'edit') {
+        navigate(`/builder/${tool}/${setupId}`, { replace: true });
       }
     }
   }, [tool, setupId, isSetupsLoading]);

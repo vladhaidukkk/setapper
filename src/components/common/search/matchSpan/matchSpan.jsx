@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function MatchSpan({ children }) {
-  return <span className="bg-sky-400 bg-opacity-30">{children}</span>;
+  return <span className="bg-violet-500 bg-opacity-25">{children}</span>;
 }
 
 MatchSpan.defaultProps = {

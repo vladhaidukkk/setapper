@@ -34,7 +34,7 @@ const builderRoutes = [
     element: <Navigate to="" replace />,
   },
   {
-    path: ':tool/:setupId/edit/',
+    path: ':tool/:setupId/:edit/',
     element: (
       <BuilderPathValidator>
         <SetupEditor />
@@ -42,7 +42,7 @@ const builderRoutes = [
     ),
   },
   {
-    path: ':tool/:setupId/edit/*',
+    path: ':tool/:setupId/:edit/*',
     element: <Navigate to="" replace />,
   },
   {
