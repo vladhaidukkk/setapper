@@ -19,6 +19,7 @@ function ThemeProvider({ children }) {
 
   useEffect(() => {
     localStorageService.setTheme(theme);
+    document.body.className = `antialiased ${themeColor === themeConstants.LIGHT ? 'bg-stone-50' : 'bg-stone-900'}`;
   }, [theme]);
 
   const changeTheme = (newTheme) => {
