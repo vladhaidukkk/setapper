@@ -4,11 +4,11 @@ import Container from 'components/common/container';
 
 function BuilderInspector() {
   return (
-    <div>
+    <div className="flex h-screen flex-col">
       <Header />
-      <main className="bg-white dark:bg-stone-800">
+      <main className="flex-auto bg-white dark:bg-stone-800">
         <Container>
-          <h1>Builder Inspector</h1>
+          <h1 className="text-black dark:text-white">Builder Inspector</h1>
         </Container>
       </main>
     </div>

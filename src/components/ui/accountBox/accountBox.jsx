@@ -45,8 +45,8 @@ function AccountBox() {
           <li>
             <Link
               to="/settings/profile"
-              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium text-stone-700 outline-none transition-all duration-200
-                hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300 focus:bg-stone-200 focus:text-black dark:text-stone-300 dark:hover:border-stone-700
+              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none transition-all duration-200
+                hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300 focus:bg-stone-200 focus:text-black dark:hover:border-stone-700
                 dark:hover:bg-stone-800 dark:hover:text-white dark:focus:border-stone-700 dark:focus:bg-stone-800 dark:focus:text-white ${
                   pathname === `/settings/profile`
                     ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
@@ -60,8 +60,8 @@ function AccountBox() {
           <li>
             <Link
               to="/settings"
-              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium text-stone-700 outline-none transition-all
-                duration-200 hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300 focus:bg-stone-200 focus:text-black dark:text-stone-300 dark:hover:border-stone-700
+              className={`flex w-full items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none transition-all
+                duration-200 hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300 focus:bg-stone-200 focus:text-black dark:hover:border-stone-700
                 dark:hover:bg-stone-800 dark:hover:text-white dark:focus:border-stone-700 dark:focus:bg-stone-800 dark:focus:text-white ${
                   pathname === `/settings`
                     ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
