@@ -1,11 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Header } from 'components/layout';
+import Container from 'components/common/container';
 
 function Settings() {
   return (
     <div>
-      <h1>Settings</h1>
-      <Outlet />
+      <Header />
+      <main className="bg-white dark:bg-stone-800">
+        <Container>
+          <Outlet />
+        </Container>
+      </main>
     </div>
   );
 }

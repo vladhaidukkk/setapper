@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 function NavDropdown({ label, path, pathPrefix, options }) {
   const { pathname } = useLocation();
 
-  console.log(pathname, path);
-
   return (
     <li className="group relative">
       <Link
@@ -17,7 +15,7 @@ function NavDropdown({ label, path, pathPrefix, options }) {
         group-hover:bg-stone-200 group-hover:text-black dark:text-stone-300 dark:focus-within:border-stone-700
         dark:focus-within:bg-stone-800 dark:focus-within:text-white dark:group-hover:border-stone-700 dark:group-hover:bg-stone-800
         dark:group-hover:text-white ${
-          pathname === `${path}`
+          pathname === path
             ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
             : 'border-transparent text-stone-700 dark:text-stone-300'
         }`}
@@ -31,39 +29,39 @@ function NavDropdown({ label, path, pathPrefix, options }) {
         after:top-full after:block after:h-2 after:w-full after:bg-transparent group-hover:block dark:border-stone-700 dark:bg-stone-900"
       >
         <ul className="flex flex-col space-y-0.5">
-          {options.map((option) => (
-            <li key={option.path}>
-              <Link
-                to={`${pathPrefix}${option.path}`}
-                className={`flex items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none
+          {options.map((option) => {
+            const optionPath = option.index ? pathPrefix : `${pathPrefix}/${option.path}`;
+
+            return (
+              <li key={option.label}>
+                <Link
+                  to={optionPath}
+                  className={`flex items-center rounded-md border px-2.5 py-1 text-sm font-medium outline-none
                 transition-colors duration-200 hover:border-stone-300 hover:bg-stone-200 hover:text-black focus:border-stone-300 focus:bg-stone-200 focus:text-black
                 dark:text-stone-300 dark:hover:border-stone-700 dark:hover:bg-stone-800 dark:hover:text-white dark:focus:border-stone-700
                 dark:focus:bg-stone-800 dark:focus:text-white ${
-                  pathname === `${pathPrefix}${option.path}`
+                  pathname === optionPath
                     ? 'border-stone-300 bg-stone-200 text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white'
                     : 'border-transparent text-stone-700 dark:text-stone-300'
                 }`}
-              >
-                {option.Icon && <option.Icon className="mr-1.5 h-4 w-4" />}
-                {option.label}
-              </Link>
-              {option.divided && <div className="mb-1 mt-1.5 h-px w-full bg-stone-300 dark:bg-stone-700" />}
-            </li>
-          ))}
+                >
+                  {option.Icon && <option.Icon className="mr-1.5 h-4 w-4" />}
+                  {option.label}
+                </Link>
+                {option.divided && <div className="mb-1 mt-1.5 h-px w-full bg-stone-300 dark:bg-stone-700" />}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </li>
   );
 }
 
-NavDropdown.defaultProps = {
-  pathPrefix: '',
-};
-
 NavDropdown.propTypes = {
   label: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  pathPrefix: PropTypes.string,
+  pathPrefix: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

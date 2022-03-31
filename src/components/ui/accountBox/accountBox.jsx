@@ -41,7 +41,7 @@ function AccountBox() {
           isOpened ? 'block' : 'hidden'
         }`}
       >
-        <ul className="flex flex-col">
+        <ul className="flex flex-col space-y-0.5">
           <li>
             <Link
               to="/settings/profile"

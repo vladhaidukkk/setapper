@@ -1,11 +1,16 @@
 import React from 'react';
 import { Header } from 'components/layout';
+import Container from 'components/common/container';
 
 function BuilderInspector() {
   return (
     <div>
       <Header />
-      <h1>Builder Inspector</h1>
+      <main className="bg-white dark:bg-stone-800">
+        <Container>
+          <h1>Builder Inspector</h1>
+        </Container>
+      </main>
     </div>
   );
 }
