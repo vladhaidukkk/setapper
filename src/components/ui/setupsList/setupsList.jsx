@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { removeSetup } from 'store/setups/setups.actions';
 import { useLocation, useParams } from 'react-router-dom';
 
-function SetupsList({ list, matchString, notFound, pathPrefix }) {
+function SetupsList({ list, matchString, notFound }) {
   const dispatch = useDispatch();
   const { tool, setupId, edit } = useParams();
   const { pathname } = useLocation();
@@ -27,7 +27,7 @@ function SetupsList({ list, matchString, notFound, pathPrefix }) {
   };
 
   const handleConfirmDeletion = () => {
-    const redirectPath = setupId === deletionSetupId ? `${pathPrefix}${tool}` : pathname;
+    const redirectPath = setupId === deletionSetupId ? `/builder/${tool}` : pathname;
     dispatch(removeSetup(deletionSetupId, redirectPath));
     setDeletionSetupId(() => null);
   };
@@ -74,7 +74,6 @@ SetupsList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object),
   matchString: PropTypes.string.isRequired,
   notFound: PropTypes.bool,
-  pathPrefix: PropTypes.string.isRequired,
 };
 
 export default SetupsList;

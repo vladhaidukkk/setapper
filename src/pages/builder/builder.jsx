@@ -7,7 +7,7 @@ function Builder() {
     <div className="relative flex h-screen flex-col">
       <Header fluid />
       <div className="flex flex-auto overflow-y-auto bg-white dark:bg-stone-800">
-        <SetupsBar pathPrefix="/builder/" />
+        <SetupsBar />
         <Outlet />
       </div>
     </div>

@@ -29,7 +29,7 @@ function Setup({
   return (
     <li className="mr-3.5">
       <div
-        className={`block space-y-0.5 rounded-md border border-stone-300 bg-white p-2.5 shadow-sm transition-all duration-200
+        className={`block space-y-0.5 rounded-md border bg-white p-2.5 shadow-sm transition-all duration-200
         hover:scale-[97%] hover:shadow-md dark:bg-stone-800 ${
           isDeleting ? 'border-rose-600 dark:border-rose-500' : 'border-stone-300 dark:border-stone-700'
         }`}

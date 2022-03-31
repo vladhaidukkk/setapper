@@ -46,8 +46,8 @@ function SetupCreator() {
             rows="5"
             placeholder="Description"
           />
-          {Object.keys(builderConstants[tool].OPTIONS).map((optionKey) => {
-            const option = builderConstants[tool].OPTIONS[optionKey];
+          {Object.keys(builderConstants[tool]?.OPTIONS).map((optionKey) => {
+            const option = builderConstants[tool]?.OPTIONS[optionKey];
             const dataType = typeof option.defaultValue;
 
             return (

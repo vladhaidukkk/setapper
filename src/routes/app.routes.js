@@ -5,6 +5,7 @@ import authRoutes from 'routes/auth.routes';
 import builderRoutes from 'routes/builder.routes';
 import { PrivateRoute, PublicRoute } from 'hoc';
 import settingsRoutes from 'routes/settings.routes';
+import presetsRoutes from 'routes/presets.routes';
 
 const appRoutes = [
   {
@@ -17,12 +18,9 @@ const appRoutes = [
     children: authRoutes,
   },
   {
-    path: 'presets/',
-    element: <Presets />,
-  },
-  {
     path: 'presets/*',
-    element: <Navigate to="" replace />,
+    element: <Presets />,
+    children: presetsRoutes,
   },
   {
     path: 'builder/*',

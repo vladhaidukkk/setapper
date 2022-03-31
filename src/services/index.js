@@ -4,5 +4,6 @@ import authService from 'services/auth.service';
 import storageService from 'services/storage.service';
 import usersService from 'services/users.service';
 import setupsService from 'services/setups.service';
+import presetsService from 'services/presets.service';
 
-export { httpService, authService, localStorageService, storageService, usersService, setupsService };
+export { httpService, authService, localStorageService, storageService, usersService, setupsService, presetsService };

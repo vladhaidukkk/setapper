@@ -9,6 +9,7 @@ import Presets from 'pages/presets/presets';
 import Dashboard from 'pages/dashboard/dashboard';
 import Settings from 'pages/settings/settings';
 import Profile from 'pages/settings/profile/profile';
+import PresetsHome from 'pages/presets/presetsHome/presetsHome';
 
 export default Pages;
-export { Auth, Login, Registration, Builder, Inspector, Home, Presets, Dashboard, Settings, Profile };
+export { Auth, Login, Registration, Builder, Inspector, Home, Presets, Dashboard, Settings, Profile, PresetsHome };

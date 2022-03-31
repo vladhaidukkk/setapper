@@ -7,6 +7,8 @@ import PrivateRoute from 'hoc/privateRoute/privateRoute';
 import PublicRoute from 'hoc/publicRoute/publicRoute';
 import PrivateElement from 'hoc/privateElement/privateElement';
 import PublicElement from 'hoc/publicElement/publicElement';
+import PresetsPathValidator from 'hoc/presetsPathValidator/presetsPathValidator';
+import PresetsUploader from 'hoc/presetsUploader/presetsUploader';
 
 export {
   ErrorHandler,
@@ -18,4 +20,6 @@ export {
   PublicRoute,
   PrivateElement,
   PublicElement,
+  PresetsPathValidator,
+  PresetsUploader,
 };

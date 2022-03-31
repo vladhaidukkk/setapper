@@ -11,11 +11,11 @@ function BuilderPathValidator({ children }) {
   const setup = useSelector(getSetupById(setupId));
   const navigate = useNavigate();
 
+  const isToolValid = tool && toolConstants.LIST.find((item) => item.value === tool);
+
   useEffect(() => {
     if (tool) {
-      const isSectionValid = toolConstants.LIST.find((item) => item.value === tool);
-
-      if (!isSectionValid) {
+      if (!isToolValid) {
         navigate(`/builder/inspector`, { replace: true });
       } else if (setupId && !setup && !isSetupsLoading) {
         navigate(`/builder/${tool}`, { replace: true });
@@ -25,7 +25,7 @@ function BuilderPathValidator({ children }) {
     }
   }, [tool, setupId, isSetupsLoading]);
 
-  return children;
+  return isToolValid ? children : null;
 }
 
 BuilderPathValidator.propTypes = {
