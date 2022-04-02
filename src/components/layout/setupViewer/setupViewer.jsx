@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
-import { builderUtil, parserUtil } from 'utils/core';
+import { builderUtil, formatterUtil } from 'utils/core';
 import { removeSetup } from 'store/setups/setups.actions';
 import DownloadBtn from 'components/common/downloadBtn';
 import { builderConstants } from 'utils/constants';
@@ -30,18 +30,18 @@ function SetupViewer() {
         <div>
           <h3 className="mb-1 text-base text-zinc-200">Options</h3>
           <div className="rounded border bg-zinc-50 p-2 shadow">
-            <pre>{parserUtil.formatJsonToStr(setup.options)}</pre>
+            <pre>{formatterUtil.formatJsonToStr(setup.options)}</pre>
           </div>
         </div>
         <div>
           <h3 className="mb-1 text-base text-zinc-200">{builderConstants[tool].filenames.CONFIG}</h3>
           <div className="flex flex-col space-y-3">
             <div className="rounded rounded">
-              <Code content={parserUtil.formatJsStr(builderUtil[tool](setup.options))} language="javascript" />
+              <Code content={formatterUtil.formatJsStr(builderUtil[tool](setup.options))} language="javascript" />
             </div>
             <DownloadBtn
               filename={builderConstants[tool].filenames.CONFIG}
-              content={parserUtil.formatJsStr(builderUtil[tool](setup.options))}
+              content={formatterUtil.formatJsStr(builderUtil[tool](setup.options))}
               contentType="text/javascript"
             />
           </div>

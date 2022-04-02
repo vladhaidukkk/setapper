@@ -13,9 +13,9 @@ function Search({ value, onChange, placeholder }) {
   return (
     <label
       htmlFor={id}
-      className="flex h-full flex-1 cursor-pointer items-center pl-2.5 text-stone-600 transition-colors
-      duration-200 focus-within:text-stone-800 hover:text-stone-800 dark:text-stone-400
-      dark:focus-within:text-stone-100 dark:hover:text-stone-100"
+      className="flex h-full flex-1 cursor-pointer items-center pl-2.5 text-stone-700 transition-colors
+      duration-200 focus-within:text-black hover:text-black dark:text-stone-300
+      dark:focus-within:text-white dark:hover:text-white"
     >
       <SearchIcon className="mr-1.5 h-4.5 w-4.5 flex-none" />
       <input

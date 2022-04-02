@@ -29,7 +29,7 @@ function AuthForm({ label, alt, onSubmit, btnText, children }) {
             <Link
               to={alt.link}
               className="font-medium text-indigo-600 transition-colors hover:text-indigo-500 focus:text-indigo-500
-              dark:text-indigo-400 dark:hover:text-indigo-500"
+              dark:text-indigo-500 dark:hover:text-indigo-400 dark:focus:text-indigo-400"
             >
               {alt.text}
             </Link>
