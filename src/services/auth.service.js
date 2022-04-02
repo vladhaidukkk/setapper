@@ -1,8 +1,9 @@
 import axios from 'axios';
 import localStorageService from 'services/localStorage.service';
+import configKeys from 'config.json';
 
 const authHttp = axios.create({
-  baseURL: 'https://identitytoolkit.googleapis.com/v1/',
+  baseURL: configKeys.useFirebase ? configKeys.firebaseAuthApiEndpoint : '',
   params: {
     key: process.env.REACT_APP_FIREBASE_API_KEY,
   },

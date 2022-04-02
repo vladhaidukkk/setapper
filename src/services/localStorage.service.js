@@ -15,9 +15,9 @@ const remove = (key) => {
 };
 
 // JwtData
-const setJwtData = ({ idToken, refreshToken, expiresIn = 3600 }) => {
+const setJwtData = ({ accessToken, refreshToken, expiresIn = 3600 }) => {
   const data = {
-    accessToken: idToken,
+    accessToken,
     refreshToken,
     expiresDate: Date.now() + Number(expiresIn) * 1000,
   };

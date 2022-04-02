@@ -1,9 +1,9 @@
 import React from 'react';
 import NavItem from 'components/ui/headerNav/navItem/navItem';
 import NavDropdown from 'components/ui/headerNav/navDropdown/navDropdown';
-import { ReactComponent as EslintIcon } from 'assets/icons/eslint.svg';
-import { ReactComponent as WebpackIcon } from 'assets/icons/webpack.svg';
-import { ReactComponent as GulpIcon } from 'assets/icons/gulp.svg';
+import { ReactComponent as EslintIcon } from 'assets/icons/tools/eslint.svg';
+import { ReactComponent as WebpackIcon } from 'assets/icons/tools/webpack.svg';
+import { ReactComponent as GulpIcon } from 'assets/icons/tools/gulp.svg';
 import { PrivateElement, PublicElement } from 'hoc';
 import NavMenuDropdown from 'components/ui/headerNav/navMenuDropdown/navMenuDropdown';
 import { EyeIcon } from '@heroicons/react/solid';

@@ -15,7 +15,11 @@ const signUp = (payload) => async (dispatch) => {
   dispatch(requested());
   try {
     const jwtData = await authService.signUp(payload);
-    localStorageService.setJwtData(jwtData);
+    localStorageService.setJwtData({
+      accessToken: jwtData.idToken,
+      refreshToken: jwtData.refreshToken,
+      expiresIn: jwtData.expiresIn,
+    });
     localStorageService.setAccountId(jwtData.localId);
     dispatch(succeed(jwtData.localId));
     dispatch(createAccount(jwtData.localId, { id: jwtData.localId, ...payload, password: undefined }));
@@ -30,7 +34,11 @@ const logIn = (payload, location) => async (dispatch) => {
   dispatch(requested());
   try {
     const jwtData = await authService.logIn(payload);
-    localStorageService.setJwtData(jwtData);
+    localStorageService.setJwtData({
+      accessToken: jwtData.idToken,
+      refreshToken: jwtData.refreshToken,
+      expiresIn: jwtData.expiresIn,
+    });
     localStorageService.setAccountId(jwtData.localId);
     dispatch(succeed(jwtData.localId));
     dispatch(loadAccountById(jwtData.localId));

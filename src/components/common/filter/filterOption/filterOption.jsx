@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FilterOption({ value, label, Icon, isSelected, onClick }) {
+function FilterOption({ value, label, icon: Icon, isSelected, onClick }) {
   const handleClick = () => {
     onClick(value);
   };
@@ -28,13 +28,13 @@ function FilterOption({ value, label, Icon, isSelected, onClick }) {
 }
 
 FilterOption.defaultProps = {
-  Icon: undefined,
+  icon: undefined,
 };
 
 FilterOption.propTypes = {
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  Icon: PropTypes.object,
+  icon: PropTypes.object,
   isSelected: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };

@@ -10,24 +10,24 @@ import {
 const sortConstants = {
   SETUPS: {
     iterOptions: [
-      { value: 'title', label: 'Title', Icon: PencilIcon },
-      { value: 'description', label: 'Description', Icon: PencilAltIcon },
-      { value: 'createdAt', label: 'Creation', Icon: CalendarIcon },
-      { value: 'modifiedAt', label: 'Modification', Icon: ClockIcon },
+      { value: 'title', label: 'Title', icon: PencilIcon },
+      { value: 'description', label: 'Description', icon: PencilAltIcon },
+      { value: 'createdAt', label: 'Creation', icon: CalendarIcon },
+      { value: 'modifiedAt', label: 'Modification', icon: ClockIcon },
     ],
     orderOptions: [
-      { value: 'asc', label: 'Asc', Icon: SortAscendingIcon },
-      { value: 'desc', label: 'Desc', Icon: SortDescendingIcon },
+      { value: 'asc', label: 'Asc', icon: SortAscendingIcon },
+      { value: 'desc', label: 'Desc', icon: SortDescendingIcon },
     ],
   },
   PRESETS: {
     iterOptions: [
-      { value: 'title', label: 'Title', Icon: PencilIcon },
-      { value: 'description', label: 'Description', Icon: PencilAltIcon },
+      { value: 'title', label: 'Title', icon: PencilIcon },
+      { value: 'description', label: 'Description', icon: PencilAltIcon },
     ],
     orderOptions: [
-      { value: 'asc', label: 'Asc', Icon: SortAscendingIcon },
-      { value: 'desc', label: 'Desc', Icon: SortDescendingIcon },
+      { value: 'asc', label: 'Asc', icon: SortAscendingIcon },
+      { value: 'desc', label: 'Desc', icon: SortDescendingIcon },
     ],
   },
 };

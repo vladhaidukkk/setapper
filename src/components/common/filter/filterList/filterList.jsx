@@ -12,7 +12,7 @@ function FilterList({ title, options, value, onChange }) {
             key={option.value}
             value={option.value}
             label={option.label}
-            Icon={option.Icon}
+            icon={option.icon}
             onClick={onChange}
             isSelected={option.value === value}
           />

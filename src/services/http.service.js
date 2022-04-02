@@ -5,9 +5,8 @@ import localStorageService from 'services/localStorage.service';
 import authService from 'services/auth.service';
 
 const http = axios.create({
-  baseURL: configKeys.apiEndpoint,
+  baseURL: configKeys.useFirebase ? configKeys.firebaseRDBApiEndpoint : '',
 });
-// todo: make request auth checked (rules in rtdb + here push something(token mb))
 
 http.interceptors.request.use(
   async (config) => {
@@ -21,10 +20,15 @@ http.interceptors.request.use(
     if (jwtRefreshToken && jwtExpiresDate < Date.now()) {
       const jwtData = await authService.exchangeRefreshToken();
       localStorageService.setJwtData({
-        idToken: jwtData.id_token,
+        accessToken: jwtData.id_token,
         refreshToken: jwtData.refresh_token,
         expiresIn: jwtData.expires_in,
       });
+    }
+
+    const accessToken = localStorageService.getJwtAccessToken();
+    if (configKeys.useFirebase && accessToken) {
+      config.params = { ...config.params, auth: accessToken };
     }
 
     return config;
