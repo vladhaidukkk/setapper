@@ -1,8 +1,7 @@
 import React from 'react';
 import Container from 'components/common/container';
-import { Link } from 'react-router-dom';
-import { ArrowSmRightIcon } from '@heroicons/react/solid';
 import { PrivateElement, PublicElement } from 'hoc';
+import ActionLink from 'components/ui/actionLink';
 
 function Intro() {
   return (
@@ -27,33 +26,12 @@ function Intro() {
           </h3>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8">
             <PublicElement>
-              <Link
-                to="auth/login"
-                className="text-md group flex items-center justify-between rounded-md border border-indigo-600 bg-indigo-500 px-4 py-2 text-white shadow outline-none transition-all
-              dark:border-indigo-500 dark:bg-transparent dark:hover:bg-indigo-600 dark:focus:bg-indigo-600 sm:text-lg md:text-xl"
-              >
-                Log into Account
-                <ArrowSmRightIcon className="ml-2.5 h-6 w-6 text-white transition-all group-hover:w-0 group-focus:w-0 dark:text-indigo-500" />
-              </Link>
+              <ActionLink path="/auth/login" text="Log into Account" />
             </PublicElement>
             <PrivateElement>
-              <Link
-                to="builder/inspector"
-                className="text-md group flex items-center justify-between rounded-md border border-indigo-600 bg-indigo-500 px-4 py-2 text-white shadow outline-none
-              transition-all dark:border-indigo-500 dark:bg-transparent dark:hover:bg-indigo-600 dark:focus:bg-indigo-600 sm:text-lg md:text-xl"
-              >
-                Create custom Setup
-                <ArrowSmRightIcon className="ml-2.5 h-6 w-6 text-white transition-all group-hover:w-0 group-focus:w-0 dark:text-indigo-500" />
-              </Link>
+              <ActionLink path="/builder/inspector" text="Create custom Setup" />
             </PrivateElement>
-            <Link
-              to="presets/inspector"
-              className="text-md group flex items-center justify-between rounded-md border border-violet-600 bg-violet-500 px-4 py-2 text-white shadow
-              outline-none transition-all dark:border-violet-500 dark:bg-transparent dark:hover:bg-violet-600 dark:focus:bg-violet-600 sm:text-lg md:text-xl"
-            >
-              Choose a Preset
-              <ArrowSmRightIcon className="ml-2.5 h-6 w-6 text-white transition-all group-hover:w-0 group-focus:w-0 dark:text-violet-500" />
-            </Link>
+            <ActionLink path="/presets/inspector" text="Choose a Preset" color="violet" />
           </div>
         </div>
       </Container>
