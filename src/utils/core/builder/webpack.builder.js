@@ -17,6 +17,7 @@ const webpackBuilder = (options) => {
   }.js',
       ${options.cleanOutput ? 'clean: true' : ''}
     },
+    field:function(name){console.log('hello');/dghgd/.test('sygjsghs')}/*ddhggdhjhdg*/
   };`;
 
   // const webpackConfigJs = `

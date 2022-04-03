@@ -10,7 +10,7 @@ function SetupPanel({ data }) {
   const { tool } = useParams();
 
   return (
-    <div className="flex flex-col overflow-y-auto">
+    <div className="flex flex-col space-y-2.5">
       <Code content={formatterUtil.formatJsonToStr(data)} language="json" />
       <Code content={formatterUtil.formatJsStr(builderUtil[tool](data.options))} language="javascript" />
       <div className="flex flex-col">
