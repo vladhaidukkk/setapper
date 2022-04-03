@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ErrorField from 'components/common/form/errorField/errorField';
 
-function TextareaField({ name, label, register, validation, placeholder, error }) {
+function TextareaField({ name, label, register, validation, placeholder, error, desc }) {
   return (
     <div className="col-span-2">
       <label htmlFor={name} className="mb-1 block text-sm font-medium text-stone-800 dark:text-stone-200">
@@ -16,6 +16,7 @@ function TextareaField({ name, label, register, validation, placeholder, error }
         placeholder={placeholder}
         rows={3}
       />
+      {desc && <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">{desc}</p>}
       {error && <ErrorField error={error.message} />}
     </div>
   );
@@ -26,6 +27,7 @@ TextareaField.defaultProps = {
   validation: undefined,
   placeholder: undefined,
   error: undefined,
+  desc: undefined,
 };
 
 TextareaField.propTypes = {
@@ -35,6 +37,7 @@ TextareaField.propTypes = {
   validation: PropTypes.object,
   placeholder: PropTypes.string,
   error: PropTypes.object,
+  desc: PropTypes.string,
 };
 
 export default TextareaField;

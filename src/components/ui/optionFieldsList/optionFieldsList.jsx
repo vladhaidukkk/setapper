@@ -25,6 +25,7 @@ function OptionFieldsList({ register, name }) {
         register={register}
         label={option.label}
         name={`${name}.${optionKey}`}
+        desc={option.description}
         placeholder={option.defaultValue.toString()}
       />
     );
