@@ -1,6 +1,8 @@
 import { builderConstants } from 'utils/constants';
 
-// const buildSetapperJson = (data) => {};
+const buildSetapperJson = (data) => {
+  return { content: JSON.stringify(data), language: 'json' };
+};
 //
 // const buildInstructionTxt = (data) => {};
 //
@@ -32,20 +34,28 @@ const buildWebpackConfig = (options, initialOptions) => {
   }.js',
       ${options.cleanOutput ? 'clean: true' : ''}
     },
-    field:function(name){console.log('hello');/dghgd/.test('sygjsghs')}/*ddhggdhjhdg*/
   };`;
 
   return { content, language: 'javascript' };
 };
 
-const buildPackageJson = () => {
+const buildPackageJson = (data) => {
   const content = `
   {
-    "name":"package.json",
-    "version":"1.0.0",
-    "private":true
+    "name":"${data.title}",
+    "version":"${data.version || '1.0.0'}",
+    "private":true,
+    "scripts":{
+      "build":"webpack"
+    },
+    "devDependencies":{
+      "webpack":"^5.70.0",
+      "webpack-cli":"^4.9.2"
+    }
   }
   `;
+
+  console.log(content);
 
   return { content, language: 'json' };
 };
@@ -55,11 +65,14 @@ const buildPackageJson = () => {
 // const buildBabelConfig = (data) => {};
 
 const webpackBuilder = (data) => {
+  const commonFiles = builderConstants.common.FILES;
+  const webpackFiles = builderConstants.webpack.FILES;
   const initialOptions = builderConstants.webpack.OPTIONS;
 
-  console.log(data);
+  const setapperJson = buildSetapperJson(data);
+
   const webpackConfig = buildWebpackConfig(data.options, initialOptions);
-  const packageJson = buildPackageJson(data.options, initialOptions);
+  const packageJson = buildPackageJson(data);
 
   // const webpackConfigJs = `
   //   const path = require('path');
@@ -107,12 +120,9 @@ const webpackBuilder = (data) => {
 
   return {
     metaFiles: {
-      default: 'setapper.json',
-      list: ['setapper.json', 'instruction.txt', 'structure.json'],
-      'setapper.json': {
-        content: '{}',
-        language: 'json',
-      },
+      default: commonFiles.setapperJson,
+      list: [commonFiles.setapperJson, commonFiles.instructionTxt, commonFiles.structureJson],
+      [commonFiles.setapperJson]: setapperJson,
       'instruction.txt': {
         content: 'hello',
         language: 'txt',
@@ -123,10 +133,10 @@ const webpackBuilder = (data) => {
       },
     },
     setupFiles: {
-      default: 'webpack.config.js',
-      list: ['webpack.config.js', 'package.json'],
-      [builderConstants.webpack.FILES.webpackConfig]: webpackConfig,
-      [builderConstants.webpack.FILES.packageJson]: packageJson,
+      default: webpackFiles.webpackConfig,
+      list: [webpackFiles.webpackConfig, commonFiles.packageJson],
+      [webpackFiles.webpackConfig]: webpackConfig,
+      [commonFiles.packageJson]: packageJson,
     },
   };
 };

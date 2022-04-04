@@ -9,9 +9,8 @@ function OptionFieldsList({ register, name }) {
 
   return Object.keys(builderConstants[tool]?.OPTIONS).map((optionKey) => {
     const option = builderConstants[tool]?.OPTIONS[optionKey];
-    const dataType = typeof option.defaultValue;
 
-    return dataType === 'boolean' ? (
+    return option.dataType === 'boolean' ? (
       <CheckboxField
         key={optionKey}
         register={register}

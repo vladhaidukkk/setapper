@@ -20,7 +20,7 @@ function CodeBox({ language, code, options, selectedOption, onChange }) {
   };
 
   return (
-    <div className="flex-1 rounded-md border border-stone-300 shadow-sm dark:border-stone-700">
+    <div className="flex flex-col rounded-md border border-stone-300 shadow-sm dark:border-stone-700">
       <CodeBoxOptionsList onChange={onChange} selectedOption={selectedOption} options={options} />
       <Code content={getFormattedCode()} language={language} />
     </div>
