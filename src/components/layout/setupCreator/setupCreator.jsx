@@ -38,7 +38,7 @@ function SetupCreator() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5">
-      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
+      <div className="flex-col col-span-7 flex space-y-2.5 overflow-y-auto">
         <h3 className="px-1 text-2xl font-medium text-black dark:text-white">New {capitalize(tool)} setup</h3>
         <div className="overflow-y-auto px-1 pb-2.5">
           <Form onSubmit={handleSubmit(handleFormSubmit)} register={register}>

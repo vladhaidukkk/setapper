@@ -9,13 +9,13 @@ const formatJsStr = (str) => {
   });
 };
 
-const formatJsonToStr = (json) => {
-  return JSON.stringify(json, null, 2);
+const formatJsonStr = (str) => {
+  return JSON.stringify(JSON.parse(str), null, 2);
 };
 
 const formatterUtil = {
   formatJsStr,
-  formatJsonToStr,
+  formatJsonStr,
 };
 
 export default formatterUtil;

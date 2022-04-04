@@ -1,8 +1,10 @@
 const webpackConstants = {
-  filenames: {
-    CONFIG: 'webpack.config.js',
+  FILES: {
+    webpackConfig: 'webpack.config.js',
+    packageJson: 'package.json',
+    postcssConfig: 'postcss.config.js',
+    babelConfig: 'babel.config.js',
   },
-  CONFIG_NAME: 'webpack.config.js',
   OPTIONS: {
     entryFolder: {
       // done

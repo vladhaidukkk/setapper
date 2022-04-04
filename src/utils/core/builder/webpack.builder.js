@@ -1,9 +1,24 @@
 import { builderConstants } from 'utils/constants';
 
-const webpackBuilder = (options) => {
-  const initialOptions = builderConstants.webpack.OPTIONS;
+// const buildSetapperJson = (data) => {};
+//
+// const buildInstructionTxt = (data) => {};
+//
+// const buildStructureJson = (data) => {};
 
-  const webpackConfigJs = `
+// const buildProjectStructure = () => {
+//   return {
+//     defaultFile: builderConstants.webpack.FILES.webpackConfig,
+//     files: {
+//       webpackConfig: builderConstants.webpack.FILES.webpackConfig,
+//       packageJson: builderConstants.webpack.FILES.packageJson,
+//     },
+//     folders: {},
+//   };
+// };
+
+const buildWebpackConfig = (options, initialOptions) => {
+  const content = `
   const path=require('path');
 
   module.exports={
@@ -19,6 +34,32 @@ const webpackBuilder = (options) => {
     },
     field:function(name){console.log('hello');/dghgd/.test('sygjsghs')}/*ddhggdhjhdg*/
   };`;
+
+  return { content, language: 'javascript' };
+};
+
+const buildPackageJson = () => {
+  const content = `
+  {
+    "name":"package.json",
+    "version":"1.0.0",
+    "private":true
+  }
+  `;
+
+  return { content, language: 'json' };
+};
+
+// const buildPostcssConfig = (data) => {};
+
+// const buildBabelConfig = (data) => {};
+
+const webpackBuilder = (data) => {
+  const initialOptions = builderConstants.webpack.OPTIONS;
+
+  console.log(data);
+  const webpackConfig = buildWebpackConfig(data.options, initialOptions);
+  const packageJson = buildPackageJson(data.options, initialOptions);
 
   // const webpackConfigJs = `
   //   const path = require('path');
@@ -64,7 +105,30 @@ const webpackBuilder = (options) => {
   //   };
   // `;
 
-  return webpackConfigJs;
+  return {
+    metaFiles: {
+      default: 'setapper.json',
+      list: ['setapper.json', 'instruction.txt', 'structure.json'],
+      'setapper.json': {
+        content: '{}',
+        language: 'json',
+      },
+      'instruction.txt': {
+        content: 'hello',
+        language: 'txt',
+      },
+      'structure.json': {
+        content: '{}',
+        language: 'json',
+      },
+    },
+    setupFiles: {
+      default: 'webpack.config.js',
+      list: ['webpack.config.js', 'package.json'],
+      [builderConstants.webpack.FILES.webpackConfig]: webpackConfig,
+      [builderConstants.webpack.FILES.packageJson]: packageJson,
+    },
+  };
 };
 
 export default webpackBuilder;
