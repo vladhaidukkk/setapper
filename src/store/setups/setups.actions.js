@@ -22,10 +22,11 @@ const loadUserSetups = (userId) => async (dispatch) => {
   }
 };
 
-const createSetup = (payload) => async (dispatch) => {
+const createSetup = (payload) => async (dispatch, getState) => {
   dispatch(creationRequested());
   try {
-    const data = await setupsService.createSetup(payload);
+    const { accountId } = getState().auth;
+    const data = await setupsService.createSetup({ ...payload, ownerId: accountId });
     dispatch(created(data));
   } catch (error) {
     dispatch(creationFailed());

@@ -1,17 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';
-import { useSelector } from 'react-redux';
-// import { createSetup } from 'store/setups/setups.actions';
-import { getAccountId } from 'store/auth/auth.selectors';
+import { createSetup } from 'store/setups/setups.actions';
 import Form, { SubmitBtn, TextareaField, TextField } from 'components/common/form';
 import OptionFieldsList from 'components/ui/optionFieldsList';
 import { useForm } from 'react-hook-form';
 import SetupPanel from 'components/ui/setupPanel';
 import { getDefaultSetupDataHelper, validateSetupOptionsHelper } from 'utils/helpers';
+import { useDispatch } from 'react-redux';
 
 function SetupCreator() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { tool } = useParams();
   const {
     handleSubmit,
@@ -21,23 +20,13 @@ function SetupCreator() {
   } = useForm({
     defaultValues: getDefaultSetupDataHelper(tool),
   });
-  const accountId = useSelector(getAccountId());
-
-  console.log(errors);
 
   const handleFormSubmit = (data) => {
-    const newSetupData = {
-      ...data,
-      tool,
-      ownerId: accountId,
-      options: validateSetupOptionsHelper(data.options),
-    };
-    console.log(newSetupData);
-    // dispatch(createSetup({ ...data, tool, ownerId: accountId }));
+    dispatch(createSetup({ ...data, tool, options: validateSetupOptionsHelper(tool, data.options) }));
   };
 
   return (
-    <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5">
+    <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
       <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
         <h3 className="px-1 text-2xl font-medium text-black dark:text-white">New {capitalize(tool)} setup</h3>
         <div className="overflow-y-auto px-1 pb-2.5">
@@ -74,7 +63,7 @@ function SetupCreator() {
           </Form>
         </div>
       </div>
-      <div className="col-span-5 flex flex-col overflow-y-auto">
+      <div className="col-span-5 -mx-2.5 flex flex-col overflow-y-auto p-2.5 pt-0">
         <SetupPanel data={watch()} />
       </div>
     </div>

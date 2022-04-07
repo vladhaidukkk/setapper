@@ -3,59 +3,83 @@ import { builderConstants } from 'utils/constants';
 const buildSetapperJson = (data) => {
   return { content: JSON.stringify(data), language: 'json' };
 };
-//
-// const buildInstructionTxt = (data) => {};
-//
-// const buildStructureJson = (data) => {};
 
-// const buildProjectStructure = () => {
-//   return {
-//     defaultFile: builderConstants.webpack.FILES.webpackConfig,
-//     files: {
-//       webpackConfig: builderConstants.webpack.FILES.webpackConfig,
-//       packageJson: builderConstants.webpack.FILES.packageJson,
-//     },
-//     folders: {},
-//   };
-// };
+const buildInstructionTxt = () => ({ content: 'hello', language: 'txt' });
+
+const buildStructureJson = (options, initialOptions) => {
+  const commonFiles = builderConstants.common.FILES;
+  const webpackFiles = builderConstants.webpack.FILES;
+
+  const content = `
+  {
+    "root":{
+      "${options.entryFolder || initialOptions.entryFolder.defaultValue}":{
+        "files":[
+          "${options.entryFilename || initialOptions.entryFilename.defaultValue}.js"
+        ]
+      },
+      "files":[
+        "${webpackFiles.webpackConfig}",
+        "${commonFiles.packageJson}"
+      ]
+    }
+  }
+  `;
+
+  return { content, language: 'json' };
+};
 
 const buildWebpackConfig = (options, initialOptions) => {
   const content = `
   const path=require('path');
+  ${options.htmlPlugin ? "const HtmlWebpackPlugin=require('html-webpack-plugin');" : ''}${
+    options.cssPlugin ? "const MiniCssExtractPlugin=require('mini-css-extract-plugin');" : ''
+  }${options.eslintPlugin ? "const ESLintPlugin=require('eslint-webpack-plugin');" : ''}${
+    options.stylelintPlugin ? "const StylelintPlugin=require('stylelint-webpack-plugin');" : ''
+  }${options.dotenvPlugin ? "const Dotenv=require('dotenv-webpack');" : ''}${
+    options.manifestPlugin ? "const {WebpackManifestPlugin}=require('webpack-manifest-plugin');" : ''
+  }${options.robotstxtPlugin ? "const RobotstxtPlugin=require('robotstxt-webpack-plugin');" : ''}
 
   module.exports={
     entry:'./${options.entryFolder || initialOptions.entryFolder.defaultValue}/${
-    options.entryFile || options.entryFile.defaultValue
+    options.entryFilename || options.entryFilename.defaultValue
   }',
     output:{
       path:path.resolve(__dirname,'${options.outputFolder || initialOptions.outputFolder.defaultValue}'),
-      filename:'${options.outputFile || initialOptions.outputFile.defaultValue}${
-    options.hashOutputFiles ? '.[contenthash:12]' : ''
+      filename:'${options.outputFilename || initialOptions.outputFilename.defaultValue}${
+    options.hashOutputFilenames ? '.[contenthash:12]' : ''
   }.js',
-      ${options.cleanOutput ? 'clean: true' : ''}
+      ${options.cleanOutputFolder ? 'clean: true' : ''}
     },
   };`;
 
   return { content, language: 'javascript' };
 };
 
-const buildPackageJson = (data) => {
+const buildPackageJson = (data, initialOptions) => {
+  const { title, version, options } = data;
+
   const content = `
   {
-    "name":"${data.title}",
-    "version":"${data.version || '1.0.0'}",
+    "name":"${title}",
+    "version":"${version || '1.0.0'}",
     "private":true,
     "scripts":{
-      "build":"webpack"
+      "build":"webpack ${options.entryFolder || initialOptions.entryFolder.defaultValue}"
     },
     "devDependencies":{
       "webpack":"^5.70.0",
       "webpack-cli":"^4.9.2"
+      ${options.htmlPlugin ? ',"html-webpack-plugin":"^5.5.0"' : ''}
+      ${options.cssPlugin ? ',"mini-css-extract-plugin":"^2.6.0"' : ''}
+      ${options.eslintPlugin ? ',"eslint":"^8.11.0","eslint-webpack-plugin":"^3.1.1"' : ''}
+      ${options.stylelintPlugin ? ',"stylelint": "^14.6.0","stylelint-webpack-plugin":"^3.1.1"' : ''}
+      ${options.dotenvPlugin ? ',"dotenv-webpack":"^7.1.0"' : ''}
+      ${options.manifestPlugin ? ',"webpack-manifest-plugin":"^5.0.0"' : ''}
+      ${options.robotstxtPlugin ? ',"robotstxt-webpack-plugin":"^7.0.0"' : ''}
     }
   }
   `;
-
-  console.log(content);
 
   return { content, language: 'json' };
 };
@@ -70,9 +94,11 @@ const webpackBuilder = (data) => {
   const initialOptions = builderConstants.webpack.OPTIONS;
 
   const setapperJson = buildSetapperJson(data);
+  const instructionTxt = buildInstructionTxt();
+  const structureJson = buildStructureJson(data.options, initialOptions);
 
   const webpackConfig = buildWebpackConfig(data.options, initialOptions);
-  const packageJson = buildPackageJson(data);
+  const packageJson = buildPackageJson(data, initialOptions);
 
   // const webpackConfigJs = `
   //   const path = require('path');
@@ -123,14 +149,8 @@ const webpackBuilder = (data) => {
       default: commonFiles.setapperJson,
       list: [commonFiles.setapperJson, commonFiles.instructionTxt, commonFiles.structureJson],
       [commonFiles.setapperJson]: setapperJson,
-      'instruction.txt': {
-        content: 'hello',
-        language: 'txt',
-      },
-      'structure.json': {
-        content: '{}',
-        language: 'json',
-      },
+      [commonFiles.instructionTxt]: instructionTxt,
+      [commonFiles.structureJson]: structureJson,
     },
     setupFiles: {
       default: webpackFiles.webpackConfig,

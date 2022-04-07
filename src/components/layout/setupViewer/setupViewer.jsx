@@ -29,7 +29,7 @@ function SetupViewer() {
         <div>
           <h3 className="mb-1 text-base text-zinc-200">Options</h3>
           <div className="rounded border bg-zinc-50 p-2 shadow">
-            <pre>{formatterUtil.formatJsonToStr(setup.options)}</pre>
+            <pre>{formatterUtil.formatJsonStr(JSON.stringify(setup.options))}</pre>
           </div>
         </div>
         <div>

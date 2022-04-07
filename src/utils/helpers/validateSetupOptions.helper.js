@@ -1,14 +1,17 @@
 import { builderConstants } from 'utils/constants';
 
 const validateSetupOptionsHelper = (tool, options) => {
-  return Object.keys(options).map((optionKey) => {
+  return Object.keys(options).reduce((acc, optionKey) => {
     const initialOption = builderConstants[tool].OPTIONS[optionKey];
 
     if (initialOption.required) {
-      return options[optionKey] || initialOption.defaultValue;
+      acc[optionKey] = options[optionKey] || initialOption.defaultValue;
+    } else {
+      acc[optionKey] = options[optionKey];
     }
-    return options[optionKey];
-  });
+
+    return acc;
+  }, {});
 };
 
 export default validateSetupOptionsHelper;
