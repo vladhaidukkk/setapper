@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { SetupViewer, SetupCreator, SetupEditor } from 'components/layout';
+import { SetupLoader } from 'hoc';
 
 const builderRoutes = [
   {
@@ -9,11 +10,19 @@ const builderRoutes = [
   },
   {
     path: ':tool/:setupId/',
-    element: <SetupViewer />,
+    element: (
+      <SetupLoader>
+        <SetupViewer />
+      </SetupLoader>
+    ),
   },
   {
     path: ':tool/:setupId/:edit/',
-    element: <SetupEditor />,
+    element: (
+      <SetupLoader>
+        <SetupEditor />
+      </SetupLoader>
+    ),
   },
   {
     path: ':tool/:setupId/:edit/*',

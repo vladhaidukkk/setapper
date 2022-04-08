@@ -33,10 +33,16 @@ const removeSetup = async (id) => {
   return data;
 };
 
+const updateSetup = async (id, payload) => {
+  const { data } = await httpService.patch(setupsEndpoint + id, payload);
+  return data;
+};
+
 const setupsService = {
   getUserSetups,
   createSetup,
   removeSetup,
+  updateSetup,
 };
 
 export default setupsService;

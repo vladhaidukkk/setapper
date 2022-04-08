@@ -22,6 +22,8 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-a11y/no-interactive-element-to-noninteractive-role': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
   },

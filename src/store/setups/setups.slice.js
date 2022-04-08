@@ -25,6 +25,10 @@ const setupsSlice = createSlice({
     removed: (state, action) => {
       state.entities = state.entities.filter((entity) => entity.id !== action.payload);
     },
+    updated: (state, action) => {
+      const entityIndex = state.entities.findIndex((entity) => entity.id === action.payload.id);
+      state.entities[entityIndex] = action.payload.data;
+    },
   },
 });
 

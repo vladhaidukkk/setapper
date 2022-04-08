@@ -9,6 +9,8 @@ import PrivateElement from 'hoc/privateElement/privateElement';
 import PublicElement from 'hoc/publicElement/publicElement';
 import PresetsPathValidator from 'hoc/presetsPathValidator/presetsPathValidator';
 import PresetsUploader from 'hoc/presetsUploader/presetsUploader';
+import ModalProvider from 'hoc/modalProvider/modalProvider';
+import SetupLoader from 'hoc/setupLoader/setupLoader';
 
 export {
   ErrorHandler,
@@ -22,4 +24,6 @@ export {
   PublicElement,
   PresetsPathValidator,
   PresetsUploader,
+  ModalProvider,
+  SetupLoader,
 };

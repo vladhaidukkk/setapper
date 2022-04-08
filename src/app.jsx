@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccountUploader, ErrorHandler, PresetsUploader, SetupsUploader, ThemeProvider } from 'hoc';
+import { AccountUploader, ErrorHandler, ModalProvider, PresetsUploader, SetupsUploader, ThemeProvider } from 'hoc';
 import routes from 'routes';
 import { useRoutes } from 'react-router-dom';
 
@@ -9,7 +9,9 @@ function App() {
       <ErrorHandler>
         <AccountUploader>
           <SetupsUploader>
-            <PresetsUploader>{useRoutes(routes)}</PresetsUploader>
+            <PresetsUploader>
+              <ModalProvider>{useRoutes(routes)}</ModalProvider>
+            </PresetsUploader>
           </SetupsUploader>
         </AccountUploader>
       </ErrorHandler>

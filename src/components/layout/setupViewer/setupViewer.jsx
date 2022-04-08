@@ -1,63 +1,34 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
-import { builderUtil, formatterUtil } from 'utils/core';
-import { removeSetup } from 'store/setups/setups.actions';
-import DownloadBtn from 'components/common/downloadBtn';
-import { builderConstants } from 'utils/constants';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getSetupById } from 'store/setups/setups.selectors';
+import SetupPanel from 'components/ui/setupPanel';
+import moment from 'moment';
+import SetupMenu from 'components/ui/setupMenu';
 
 function SetupViewer() {
-  const { tool, setupId } = useParams();
-  const isSetupsLoading = useSelector(getSetupsLoadingStatus());
+  const { setupId } = useParams();
   const setup = useSelector(getSetupById(setupId));
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const handleDelete = () => {
-    dispatch(removeSetup(setupId));
-    navigate(`/builder/${tool}`, { replace: true });
-  };
-
-  return !isSetupsLoading && setup ? (
-    <div className="flex-1 space-y-2 p-2.5">
-      <h2 className="text-4xl font-medium text-zinc-50">{setup.title}</h2>
-      <p className="text-lg text-zinc-100">
-        <span className="text-zinc-400">Description:</span> {setup.description}
-      </p>
-      <div className="flex gap-x-4 text-zinc-800">
+  return (
+    <div className="grid flex-1 grid-cols-12 gap-x-2.5 py-2.5 px-3.5 pb-0">
+      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
+        <div className="flex items-start justify-between space-x-2.5">
+          <h2 className="text-2xl font-medium text-black dark:text-white">{setup.title}</h2>
+          <SetupMenu />
+        </div>
+        <p className="text-sm text-stone-600 dark:text-stone-400">version: {setup.version}</p>
+        <p className="text-lg text-stone-800 dark:text-stone-200">{setup.description}</p>
         <div>
-          <h3 className="mb-1 text-base text-zinc-200">Options</h3>
-          <div className="rounded border bg-zinc-50 p-2 shadow">
-            <pre>{formatterUtil.formatJsonStr(JSON.stringify(setup.options))}</pre>
-          </div>
+          <span>created: {moment(setup.createdAt).format('MMM Do YY')}</span>
+          <span>modified:{moment(setup.modifiedAt).format('MMM Do YY')}</span>
         </div>
-        <div>
-          <h3 className="mb-1 text-base text-zinc-200">{builderConstants[tool].filenames.CONFIG}</h3>
-          <div className="flex flex-col space-y-3">
-            {/* <div className="rounded rounded"> */}
-            {/*  <Code content={formatterUtil.formatJsStr(builderUtil[tool](setup.options))} language="javascript" /> */}
-            {/* </div> */}
-            <DownloadBtn
-              filename={builderConstants[tool].filenames.CONFIG}
-              content={formatterUtil.formatJsStr(builderUtil[tool](setup.options))}
-              contentType="text/javascript"
-            />
-          </div>
-        </div>
-        <div className="pt-7">
-          <button
-            type="button"
-            className="flex items-center justify-center rounded bg-red-400 px-1.5 shadow"
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-        </div>
+        <div className="overflow-y-auto px-1 pb-2.5">comments</div>
+      </div>
+      <div className="col-span-5 -mx-2.5 flex flex-col overflow-y-auto p-2.5 pt-0">
+        <SetupPanel data={setup} />
       </div>
     </div>
-  ) : (
-    <div>loading</div>
   );
 }
 
