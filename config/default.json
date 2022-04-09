@@ -1,0 +1,4 @@
+{
+  "port": 8080,
+  "mongodbUri": "mongodb+srv://vladhaidukkk:pOQu1mOGUvYRa7s5@cluster0.rvx62.mongodb.net/setapper?retryWrites=true&w=majority"
+}

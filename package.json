@@ -1,0 +1,21 @@
+{
+  "name": "setapper",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node server/app.js",
+    "serve": "cross-env NODE_ENV=development nodemon server/app.js"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "config": "^3.3.7",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2"
+  }
+}
