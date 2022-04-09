@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function ModalBtn({ onClick, color, children }) {
   const getClasses = () => {
     let classes =
-      'flex flex-1 justify-center rounded-md border border-stone-300 bg-stone-100 px-2.5 py-1 text-sm text-stone-600 outline-none transition-colors duration-200 hover:text-white focus:text-white dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400 dark:hover:text-white dark:focus:text-white';
+      'flex flex-1 justify-center rounded-md border border-stone-300 bg-stone-100 px-2.5 py-1.5 text-sm text-stone-600 outline-none transition-colors duration-200 hover:text-white focus:text-white dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400 dark:hover:text-white dark:focus:text-white';
 
     switch (color) {
       case 'indigo':
@@ -22,6 +22,10 @@ function ModalBtn({ onClick, color, children }) {
       case 'rose':
         classes +=
           ' hover:border-rose-600 hover:bg-rose-500 focus:border-rose-600 focus:bg-rose-500 dark:hover:border-rose-500 dark:hover:bg-rose-600 dark:focus:border-rose-500 dark:focus:bg-rose-600';
+        break;
+      case 'stone':
+        classes +=
+          ' hover:border-stone-600 hover:bg-stone-500 focus:border-stone-600 focus:bg-stone-500 dark:hover:border-stone-500 dark:hover:bg-stone-600 dark:focus:border-stone-500 dark:focus:bg-stone-600';
         break;
       default:
         classes +=

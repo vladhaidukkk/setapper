@@ -30,6 +30,7 @@ const buildStructureJson = (options, initialOptions) => {
 };
 
 const buildWebpackConfig = (options, initialOptions) => {
+  console.log(options, initialOptions);
   const content = `
   const path=require('path');
   ${options.htmlPlugin ? "const HtmlWebpackPlugin=require('html-webpack-plugin');" : ''}${
@@ -42,7 +43,7 @@ const buildWebpackConfig = (options, initialOptions) => {
 
   module.exports={
     entry:'./${options.entryFolder || initialOptions.entryFolder.defaultValue}/${
-    options.entryFilename || options.entryFilename.defaultValue
+    options.entryFilename || initialOptions.entryFilename.defaultValue
   }',
     output:{
       path:path.resolve(__dirname,'${options.outputFolder || initialOptions.outputFolder.defaultValue}'),

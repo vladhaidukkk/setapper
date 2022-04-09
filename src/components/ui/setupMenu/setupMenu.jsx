@@ -6,7 +6,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { removeSetup } from 'store/setups/setups.actions';
 import { useDispatch } from 'react-redux';
 import useModal from 'hooks/useModal';
-import { ModalBtn, ModalSubtitle, ModalTitle } from 'components/common/modal';
+import ConfirmDeletionPopup from 'components/ui/confirmDeletionPopup';
+import ShareSetupPopup from 'components/ui/shareSetupPopup';
 
 function SetupMenu() {
   const { tool, setupId } = useParams();
@@ -16,13 +17,12 @@ function SetupMenu() {
   const { isOpened, toggle } = useDropdown(id);
   const { open, close } = useModal();
 
+  const handleShareSubmit = (data) => {
+    console.log(data);
+  };
+
   const handleShare = () => {
-    open(
-      <>
-        <ModalTitle>Do you want to delete this Setup?</ModalTitle>
-        <ModalSubtitle>To confirm</ModalSubtitle>
-      </>
-    );
+    open(<ShareSetupPopup onSubmit={handleShareSubmit} />);
     toggle();
   };
 
@@ -35,25 +35,8 @@ function SetupMenu() {
     dispatch(removeSetup(setupId, `/builder/${tool}`));
   };
 
-  const handleCancelDeletion = () => {
-    close();
-  };
-
   const handleDelete = () => {
-    open(
-      <>
-        <ModalTitle>Confirm setup deletion</ModalTitle>
-        <ModalSubtitle>Are you sure you want to delete this setup?</ModalSubtitle>
-        <div className="flex items-center space-x-2.5">
-          <ModalBtn onClick={handleConfirmDeletion} color="rose">
-            Confirm
-          </ModalBtn>
-          <ModalBtn onClick={handleCancelDeletion} color="emerald">
-            Cancel
-          </ModalBtn>
-        </div>
-      </>
-    );
+    open(<ConfirmDeletionPopup onConfirm={handleConfirmDeletion} onCancel={close} />);
     toggle();
   };
 
@@ -61,16 +44,16 @@ function SetupMenu() {
     <div id={id} className="relative">
       <button
         type="button"
-        className="flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-100 text-stone-700
-        shadow-sm outline-none transition-all duration-200 hover:bg-stone-300 hover:text-black focus:bg-stone-300
-        focus:text-black dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300 dark:hover:bg-stone-700
-        dark:hover:text-white dark:focus:bg-stone-700 dark:focus:text-white"
+        className="dark flex h-8 w-8 items-center justify-center rounded-md border border-stone-300 bg-stone-100
+        text-stone-700 shadow-sm outline-none transition-all duration-200 hover:bg-stone-200 hover:text-black
+        focus:bg-stone-200 focus:text-black dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300 dark:hover:border-stone-600 dark:hover:bg-stone-700 dark:hover:text-white
+        dark:focus:border-stone-600 dark:focus:bg-stone-700 dark:focus:text-white"
         onClick={toggle}
       >
         <DotsHorizontalIcon className="h-5 w-5" />
       </button>
       <div
-        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-3 rounded-md border border-stone-300 bg-stone-50
+        className={`absolute top-full right-0 z-10 min-w-[8rem] translate-y-2 rounded-md border border-stone-300 bg-stone-50
         p-2 shadow-md dark:border-stone-700 dark:bg-stone-900 ${isOpened ? 'block' : 'hidden'}`}
       >
         <SetupMenuOptionsList

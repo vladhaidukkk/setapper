@@ -1,6 +1,6 @@
 const gulpConstants = {
-  filenames: {
-    CONFIG: 'gulp.js',
+  FILES: {
+    gulpConfig: 'gulpfile.js',
   },
   OPTIONS: {},
 };

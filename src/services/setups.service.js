@@ -34,7 +34,7 @@ const removeSetup = async (id) => {
 };
 
 const updateSetup = async (id, payload) => {
-  const { data } = await httpService.patch(setupsEndpoint + id, payload);
+  const { data } = await httpService.patch(setupsEndpoint + id, { ...payload, modifiedAt: Date.now() });
   return data;
 };
 

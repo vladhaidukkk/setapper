@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { builderUtil } from 'utils/core';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { builderUtil } from 'utils/core';
 import CodeBox from 'components/common/codeBox';
 import DownloadBtn from 'components/common/downloadBtn';
+import PropTypes from 'prop-types';
 
-function SetupPanel({ data }) {
+function PresetPanel({ data }) {
   const { tool } = useParams();
   const [buildingResult, setBuildingResult] = useState(null);
   const [metaFile, setMetaFile] = useState(null);
@@ -43,14 +43,14 @@ function SetupPanel({ data }) {
         options={buildingResult.metaFiles.list}
       />
       <div className="flex flex-col">
-        <DownloadBtn data={data} label="Download setup" />
+        <DownloadBtn data={data} label="Download preset" />
       </div>
     </div>
   ) : null;
 }
 
-SetupPanel.propTypes = {
+PresetPanel.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default SetupPanel;
+export default PresetPanel;

@@ -1,6 +1,6 @@
 const eslintConstants = {
-  filenames: {
-    CONFIG: 'rollup.config.js',
+  FILES: {
+    eslintConfig: 'eslint.config.js',
   },
   OPTIONS: {},
 };

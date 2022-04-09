@@ -5,9 +5,11 @@ import ErrorField from 'components/common/form/errorField/errorField';
 function TextField({ name, label, register, validation, error, placeholder, desc }) {
   return (
     <div className="col-span-1">
-      <label htmlFor={name} className="mb-1 block text-sm font-medium text-stone-800 dark:text-stone-200">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={name} className="mb-1 block text-sm font-medium text-stone-800 dark:text-stone-200">
+          {label}
+        </label>
+      )}
       <input
         type="text"
         id={name}
@@ -28,11 +30,12 @@ TextField.defaultProps = {
   placeholder: undefined,
   error: undefined,
   desc: undefined,
+  label: undefined,
 };
 
 TextField.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   register: PropTypes.func,
   validation: PropTypes.object,
   placeholder: PropTypes.string,
