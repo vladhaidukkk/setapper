@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const config = require('config');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const initDatabase = require('./startUp/initDatabase');
 
 const PORT = config.get('port') ?? 8080;
 
@@ -19,10 +20,13 @@ if (process.env.NODE_ENV === 'production') {
 
 const start = async () => {
   try {
+    mongoose.connection.once('open', async () => {
+      await initDatabase();
+    });
     await mongoose.connect(config.get('mongodbUri'));
     console.log(chalk.green('MongoDB is connected'));
     app.listen(PORT, () => {
-      console.log(chalk.green(`Server is running on port ${PORT}`));
+      console.log(chalk.green(`Server is running on PORT ${PORT}`));
     });
   } catch (error) {
     console.log(chalk.red('Server was not started:', error.message));

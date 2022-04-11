@@ -1,0 +1,8 @@
+[
+  {
+    "description": "description",
+    "title": "title",
+    "version": "1.0.0",
+    "tool": "webpack"
+  }
+]

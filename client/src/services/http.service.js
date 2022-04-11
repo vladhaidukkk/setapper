@@ -17,8 +17,10 @@ http.interceptors.request.use(
     const jwtRefreshToken = localStorageService.getJwtRefreshToken();
     const jwtExpiresDate = localStorageService.getJwtExpiresDate();
 
-    if (jwtRefreshToken && jwtExpiresDate < Date.now()) {
+    if (jwtRefreshToken && jwtExpiresDate > Date.now()) {
       const jwtData = await authService.exchangeRefreshToken();
+      console.log('last:', jwtRefreshToken);
+      console.log('refresh:', jwtData);
       localStorageService.setJwtData({
         accessToken: jwtData.id_token,
         refreshToken: jwtData.refresh_token,
