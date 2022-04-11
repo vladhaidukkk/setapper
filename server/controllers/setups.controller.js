@@ -88,7 +88,7 @@ const updateSetup = async (req, res) => {
       });
     }
 
-    const updatedSetup = await setup.findByIdAndUpdate(setupId, req.body, { new: true });
+    const updatedSetup = await Setup.findByIdAndUpdate(setupId, req.body, { new: true });
     res.send(updatedSetup);
   } catch (error) {
     res.status(500).send({
