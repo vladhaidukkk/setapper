@@ -13,12 +13,9 @@ const getUserById = async (req, res) => {
   }
 };
 
-const createUser = async (req, res) => {};
-
 const updateUserById = async (req, res) => {};
 
 module.exports = {
   getUserById,
-  createUser,
   updateUserById,
 };

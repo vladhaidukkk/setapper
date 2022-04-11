@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const { getUserById, createUser, updateUserById } = require('../controllers/users.controller');
+const { getUserById, updateUserById } = require('../controllers/users.controller');
 
-const userRouter = Router({ mergeParams: true });
+const usersRouter = Router({ mergeParams: true });
 
-userRouter.route('/:id').get(getUserById).patch(updateUserById);
-userRouter.post('/', createUser);
+usersRouter.get('/');
+usersRouter.route('/:id').get(getUserById).patch(updateUserById);
 
-module.exports = userRouter;
+module.exports = usersRouter;

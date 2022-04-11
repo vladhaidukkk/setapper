@@ -1,5 +1,6 @@
 const { Router } = require('express');
+const {} = require('../controllers/setups.controller');
 
-const setupRouter = Router({ mergeParams: true });
+const setupsRouter = Router({ mergeParams: true });
 
-module.exports = setupRouter;
+module.exports = setupsRouter;
