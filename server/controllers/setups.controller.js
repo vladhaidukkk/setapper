@@ -2,9 +2,7 @@ const Setup = require('../models/setup.model');
 
 const getUserSetups = async (req, res) => {
   try {
-    const { orderBy, equalTo } = req.query;
-    const setups = await Setup.find({ [orderBy]: equalTo });
-
+    const setups = await Setup.find({ ownerId: req.userId });
     res.send(setups);
   } catch (error) {
     res.status(500).send({
@@ -30,7 +28,7 @@ const createSetup = async (req, res) => {
   }
 };
 
-const deleteSetup = async (req, res) => {
+const deleteSetupById = async (req, res) => {
   try {
     const { setupId } = req.params;
 
@@ -65,7 +63,7 @@ const deleteSetup = async (req, res) => {
   }
 };
 
-const updateSetup = async (req, res) => {
+const updateSetupById = async (req, res) => {
   try {
     const { setupId } = req.params;
 
@@ -103,6 +101,6 @@ const updateSetup = async (req, res) => {
 module.exports = {
   getUserSetups,
   createSetup,
-  deleteSetup,
-  updateSetup,
+  deleteSetupById,
+  updateSetupById,
 };
