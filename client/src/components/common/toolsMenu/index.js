@@ -1,3 +1,3 @@
-import ToolsMenu from 'components/common/toolsMenu/toolsMenu';
+import ToolsMenu from './toolsMenu';
 
 export default ToolsMenu;

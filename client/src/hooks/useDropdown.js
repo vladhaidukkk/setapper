@@ -1,5 +1,5 @@
-import useEventListener from 'hooks/useEventListener';
 import { useEffect, useState } from 'react';
+import useEventListener from './useEventListener';
 
 const useDropdown = (parentId) => {
   const [isOpened, setOpened] = useState(false);

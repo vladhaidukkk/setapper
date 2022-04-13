@@ -1,10 +1,10 @@
 import React from 'react';
-import AdjustedImg from 'components/common/adjustedImg';
-import { useDropdown, useRandomId } from 'hooks';
 import { useSelector } from 'react-redux';
-import { getAccountData, getAccountLoadingStatus } from 'store/account/account.selectors';
-import { PulsingLoader } from 'components/common/loaders';
-import AccountBoxOptions from 'components/ui/accountBox/accountBoxOptions/accountBoxOptions';
+import AdjustedImg from '../../common/adjustedImg';
+import { useDropdown, useRandomId } from '../../../hooks';
+import { getAccountData, getAccountLoadingStatus } from '../../../store/account/account.selectors';
+import { PulsingLoader } from '../../common/loaders';
+import AccountBoxOptions from './accountBoxOptions/accountBoxOptions';
 
 function AccountBox() {
   const id = useRandomId('dropdownBox-');

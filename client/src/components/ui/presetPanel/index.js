@@ -1,3 +1,3 @@
-import PresetPanel from 'components/ui/presetPanel/presetPanel';
+import PresetPanel from './presetPanel';
 
 export default PresetPanel;

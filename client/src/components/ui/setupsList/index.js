@@ -1,3 +1,3 @@
-import SetupsList from 'components/ui/setupsList/setupsList';
+import SetupsList from './setupsList';
 
 export default SetupsList;

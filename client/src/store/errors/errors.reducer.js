@@ -1,4 +1,4 @@
-import errorsSlice from 'store/errors/errors.slice';
+import errorsSlice from './errors.slice';
 
 const errorsReducer = errorsSlice.reducer;
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'store/auth/auth.actions';
-import AuthForm, { AuthTextField } from 'components/ui/authForm';
+import { logIn } from '../../../store/auth/auth.actions';
+import AuthForm, { AuthTextField } from '../../../components/ui/authForm';
 
 function Login() {
   const dispatch = useDispatch();

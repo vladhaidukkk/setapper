@@ -1,4 +1,4 @@
-import presetsSlice from 'store/presets/presets.slice';
+import presetsSlice from './presets.slice';
 
 const presetsReducer = presetsSlice.reducer;
 

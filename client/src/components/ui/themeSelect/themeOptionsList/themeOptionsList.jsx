@@ -1,8 +1,8 @@
 import React from 'react';
-import { themeConstants } from 'utils/constants';
-import ThemeOption from 'components/ui/themeSelect/themeOption/themeOption';
 import PropTypes from 'prop-types';
-import { useTheme } from 'hooks';
+import { themeConstants } from '../../../../utils/constants';
+import ThemeOption from '../themeOption/themeOption';
+import { useTheme } from '../../../../hooks';
 
 function ThemeOptionsList({ onChange }) {
   const { theme } = useTheme();

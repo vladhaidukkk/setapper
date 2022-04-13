@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import localStorageService from 'services/localStorage.service';
+import { localStorageService } from '../../services';
 
 const crudRequested = (state) => {
   state.isLoading = true;

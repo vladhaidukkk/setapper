@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from 'components/layout';
-import BuilderIntro from 'components/layout/builderIntro/builderIntro';
+import { Header } from '../../components/layout';
+import BuilderIntro from '../../components/layout/builderIntro/builderIntro';
 
 function BuilderInspector() {
   return (

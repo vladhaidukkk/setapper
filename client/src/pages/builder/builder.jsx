@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, SetupsBar } from 'components/layout';
+import { Header, SetupsBar } from '../../components/layout';
 
 function Builder() {
   return (

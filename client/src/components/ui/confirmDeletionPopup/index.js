@@ -1,3 +1,3 @@
-import ConfirmDeletionPopup from 'components/ui/confirmDeletionPopup/confirmDeletionPopup';
+import ConfirmDeletionPopup from './confirmDeletionPopup';
 
 export default ConfirmDeletionPopup;

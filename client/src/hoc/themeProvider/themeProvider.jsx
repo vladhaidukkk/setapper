@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ThemeContext } from 'contexts';
 import PropTypes from 'prop-types';
-import { localStorageService } from 'services';
-import { themeUtil } from 'utils/core';
-import { themeConstants } from 'utils/constants';
+import { ThemeContext } from '../../contexts';
+import { localStorageService } from '../../services';
+import { themeUtil } from '../../utils/core';
+import { themeConstants } from '../../utils/constants';
 
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(localStorageService.getTheme() || themeConstants.SYSTEM);

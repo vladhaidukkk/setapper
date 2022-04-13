@@ -1,6 +1,7 @@
-import useTheme from 'hooks/useTheme';
-import useEventListener from 'hooks/useEventListener';
-import useDropdown from 'hooks/useDropdown';
-import useRandomId from 'hooks/useRandomId';
+import useTheme from './useTheme';
+import useEventListener from './useEventListener';
+import useDropdown from './useDropdown';
+import useRandomId from './useRandomId';
+import useModal from './useModal';
 
-export { useTheme, useEventListener, useDropdown, useRandomId };
+export { useTheme, useEventListener, useDropdown, useRandomId, useModal };

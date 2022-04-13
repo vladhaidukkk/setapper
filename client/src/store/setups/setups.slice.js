@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import localStorageService from 'services/localStorage.service';
+import { localStorageService } from '../../services';
 
 const setupsSlice = createSlice({
   name: 'setups',
@@ -23,9 +23,11 @@ const setupsSlice = createSlice({
       state.entities.push(action.payload);
     },
     removed: (state, action) => {
+      // todo: id -> _id
       state.entities = state.entities.filter((entity) => entity.id !== action.payload);
     },
     updated: (state, action) => {
+      // todo: id -> _id
       const entityIndex = state.entities.findIndex((entity) => entity.id === action.payload.id);
       state.entities[entityIndex] = action.payload.data;
     },

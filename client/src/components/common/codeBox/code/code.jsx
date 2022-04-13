@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import prism from 'prismjs';
 import 'prismjs/components/prism-json';
-import 'components/common/codeBox/code/code-theme.css';
+import './code-theme.css';
 
 function Code({ content, language }) {
   useEffect(() => {

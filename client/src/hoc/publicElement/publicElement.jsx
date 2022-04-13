@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getLoggedInStatus } from 'store/auth/auth.selectors';
+import { getLoggedInStatus } from '../../store/auth/auth.selectors';
 
 function PublicElement({ children }) {
   const isLoggedIn = useSelector(getLoggedInStatus());

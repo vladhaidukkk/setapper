@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CodeBoxOption from 'components/common/codeBox/codeBoxOption/codeBoxOption';
+import CodeBoxOption from '../codeBoxOption/codeBoxOption';
 
 function CodeBoxOptionsList({ selectedOption, options, onChange }) {
   return (

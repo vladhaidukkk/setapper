@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { PresetViewer, ToolPresetsViewer } from 'components/layout';
+import { PresetViewer, ToolPresetsViewer } from '../components/layout';
 
 const presetsRoutes = [
   {

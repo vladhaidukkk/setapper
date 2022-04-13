@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getErrors } from 'store/errors/errors.selectors';
-import { clearErrors } from 'store/errors/errors.actions';
 import { toast } from 'react-toastify';
+import { getErrors } from '../../store/errors/errors.selectors';
+import { clearErrors } from '../../store/errors/errors.actions';
 
 function ErrorHandler({ children }) {
   const dispatch = useDispatch();

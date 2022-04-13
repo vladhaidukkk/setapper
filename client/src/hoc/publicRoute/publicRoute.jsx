@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getLoggedInStatus } from 'store/auth/auth.selectors';
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { getLoggedInStatus } from '../../store/auth/auth.selectors';
 
 function PublicRoute({ children }) {
   const isLoggedIn = useSelector(getLoggedInStatus());

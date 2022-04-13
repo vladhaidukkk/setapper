@@ -1,3 +1,3 @@
-import ThemeSelect from 'components/ui/themeSelect/themeSelect';
+import ThemeSelect from './themeSelect';
 
 export default ThemeSelect;

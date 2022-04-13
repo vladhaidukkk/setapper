@@ -45,7 +45,7 @@ function NavDropdown({ label, path, pathPrefix, options }) {
                     : 'border-transparent text-stone-700 dark:text-stone-300'
                 }`}
                 >
-                  {option.Icon && <option.Icon className="mr-1.5 h-4 w-4" />}
+                  {option.icon && <option.icon className="mr-1.5 h-4 w-4" />}
                   {option.label}
                 </Link>
                 {option.divided && <div className="mb-1 mt-1.5 h-px w-full bg-stone-300 dark:bg-stone-700" />}

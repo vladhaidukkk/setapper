@@ -1,7 +1,7 @@
-import webpackConstants from 'utils/constants/builder/webpack.constants';
-import gulpConstants from 'utils/constants/builder/gulp.constants';
-import eslintConstants from 'utils/constants/builder/eslint.constants';
-import commonConstants from 'utils/constants/builder/common.constants';
+import webpackConstants from './webpack.constants';
+import gulpConstants from './gulp.constants';
+import eslintConstants from './eslint.constants';
+import commonConstants from './common.constants';
 
 const builderConstants = {
   common: commonConstants,

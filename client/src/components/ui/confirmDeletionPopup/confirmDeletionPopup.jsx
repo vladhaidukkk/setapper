@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalBtn, ModalSubtitle, ModalTitle } from 'components/common/modal';
+import { ModalBtn, ModalSubtitle, ModalTitle } from '../../common/modal';
 import PropTypes from 'prop-types';
 
 function ConfirmDeletionPopup({ onConfirm, onCancel }) {

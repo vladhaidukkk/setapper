@@ -1,4 +1,4 @@
-import { localStorageConstants } from 'utils/constants';
+import { localStorageConstants } from '../utils/constants';
 
 const set = (key, value, stringify = false) => {
   const data = stringify ? JSON.stringify(value) : value;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ModalSubtitle, ModalTitle } from 'components/common/modal';
-import { SubmitBtn, TextField } from 'components/common/form';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import { ModalSubtitle, ModalTitle } from '../../common/modal';
+import { SubmitBtn, TextField } from '../../common/form';
 
 function ShareSetupPopup({ onSubmit }) {
   const {

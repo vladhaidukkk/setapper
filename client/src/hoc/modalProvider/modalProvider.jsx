@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ModalContext } from 'contexts';
 import PropTypes from 'prop-types';
-import Modal from 'components/common/modal';
+import { ModalContext } from '../../contexts';
+import Modal from '../../components/common/modal';
 
 function ModalProvider({ children }) {
   const [isOpened, setOpened] = useState(false);

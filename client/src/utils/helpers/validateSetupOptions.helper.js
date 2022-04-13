@@ -1,4 +1,4 @@
-import { builderConstants } from 'utils/constants';
+import { builderConstants } from '../constants';
 
 const validateSetupOptionsHelper = (tool, options) => {
   return Object.keys(options).reduce((acc, optionKey) => {

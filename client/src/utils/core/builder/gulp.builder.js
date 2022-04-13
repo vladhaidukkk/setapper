@@ -1,4 +1,4 @@
-import { builderConstants } from 'utils/constants';
+import { builderConstants } from '../../constants';
 
 const buildSetapperJson = (data) => {
   return { content: JSON.stringify(data), language: 'json' };

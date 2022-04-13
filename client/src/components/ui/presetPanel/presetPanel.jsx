@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { builderUtil } from 'utils/core';
-import CodeBox from 'components/common/codeBox';
-import DownloadBtn from 'components/common/downloadBtn';
 import PropTypes from 'prop-types';
+import { builderUtil } from '../../../utils/core';
+import CodeBox from '../../common/codeBox';
+import DownloadBtn from '../../common/downloadBtn';
 
 function PresetPanel({ data }) {
   const { tool } = useParams();

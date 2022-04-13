@@ -1,7 +1,7 @@
-import accountSlice from 'store/account/account.slice';
-import { usersService } from 'services';
-import { handleError } from 'store/errors/errors.actions';
-import { errorConstants } from 'utils/constants';
+import accountSlice from './account.slice';
+import { usersService } from '../../services';
+import { handleError } from '../errors/errors.actions';
+import { errorConstants } from '../../utils/constants';
 
 const { requested, received, failed, creationRequested, created, creationFailed, dataRemoved } = accountSlice.actions;
 

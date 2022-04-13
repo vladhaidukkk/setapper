@@ -1,3 +1,3 @@
-import OptionFieldsList from 'components/ui/optionFieldsList/optionFieldsList';
+import OptionFieldsList from './optionFieldsList';
 
 export default OptionFieldsList;

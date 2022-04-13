@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { parserUtil } from 'utils/core';
-import { MatchSpan } from 'components/common/search';
-import { truncateOnIndexHelper } from 'utils/helpers';
 import PropTypes from 'prop-types';
+import { parserUtil } from '../../../../utils/core';
+import { MatchSpan } from '../../../common/search';
+import { truncateOnIndexHelper } from '../../../../utils/helpers';
 
 function Setup({
   id,

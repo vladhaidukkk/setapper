@@ -1,3 +1,3 @@
-import CodeBox from 'components/common/codeBox/codeBox';
+import CodeBox from './codeBox';
 
 export default CodeBox;

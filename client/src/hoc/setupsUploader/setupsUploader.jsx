@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUserSetups } from 'store/setups/setups.actions';
-import { getAccountId } from 'store/auth/auth.selectors';
 import PropTypes from 'prop-types';
+import { loadAccountSetups } from '../../store/setups/setups.actions';
+import { getAccountId } from '../../store/auth/auth.selectors';
 
 function SetupsUploader({ children }) {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ function SetupsUploader({ children }) {
 
   useEffect(() => {
     if (accountId) {
-      dispatch(loadUserSetups(accountId));
+      dispatch(loadAccountSetups(accountId));
     }
   }, [accountId]);
 

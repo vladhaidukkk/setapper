@@ -1,3 +1,3 @@
-import NotificationContainer from 'components/ui/notificationContainer/notificationContainer';
+import NotificationContainer from './notificationContainer';
 
 export default NotificationContainer;

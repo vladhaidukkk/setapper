@@ -1,10 +1,10 @@
-import isErrorExpectedHelper from 'utils/helpers/isErrorExpected.helper';
-import getErrorMessageHelper from 'utils/helpers/getErrorMessage.helper';
-import formatUrlForFirebaseHelper from 'utils/helpers/formatUrlForFirebase.helper';
-import hasMatchHelper from 'utils/helpers/hasMatch.helper';
-import truncateOnIndexHelper from 'utils/helpers/truncateOnIndex.helper';
-import validateSetupOptionsHelper from 'utils/helpers/validateSetupOptions.helper';
-import getDefaultSetupDataHelper from 'utils/helpers/getDefaultSetupData.helper';
+import isErrorExpectedHelper from './isErrorExpected.helper';
+import getErrorMessageHelper from './getErrorMessage.helper';
+import formatUrlForFirebaseHelper from './formatUrlForFirebase.helper';
+import hasMatchHelper from './hasMatch.helper';
+import truncateOnIndexHelper from './truncateOnIndex.helper';
+import validateSetupOptionsHelper from './validateSetupOptions.helper';
+import getDefaultSetupDataHelper from './getDefaultSetupData.helper';
 
 export {
   isErrorExpectedHelper,

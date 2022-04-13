@@ -1,6 +1,6 @@
 import React from 'react';
-import Container from 'components/common/container';
-import Logo from 'components/ui/logo';
+import Container from '../../common/container';
+import Logo from '../../ui/logo';
 
 function Footer() {
   return (

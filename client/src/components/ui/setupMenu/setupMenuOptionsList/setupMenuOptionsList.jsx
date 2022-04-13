@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SetupMenuOption from 'components/ui/setupMenu/setupMenuOption/setupMenuOption';
+import SetupMenuOption from '../setupMenuOption/setupMenuOption';
 
 function SetupMenuOptionsList({ options }) {
   return (

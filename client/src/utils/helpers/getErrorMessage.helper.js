@@ -1,4 +1,4 @@
-import errorConstants from 'utils/constants/error.constants';
+import { errorConstants } from '../constants';
 
 const getErrorMessageHelper = (error) => {
   const initialMessage = error.response?.data.error.message || error.message;

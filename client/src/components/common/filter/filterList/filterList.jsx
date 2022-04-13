@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterOption from 'components/common/filter/filterOption/filterOption';
+import FilterOption from '../filterOption/filterOption';
 
 function FilterList({ title, options, value, onChange }) {
   return (

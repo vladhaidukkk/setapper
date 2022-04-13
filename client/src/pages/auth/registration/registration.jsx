@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { signUp } from 'store/auth/auth.actions';
-import AuthForm, { AuthTextField } from 'components/ui/authForm';
+import { signUp } from '../../../store/auth/auth.actions';
+import AuthForm, { AuthTextField } from '../../../components/ui/authForm';
 
 function Registration() {
   const dispatch = useDispatch();

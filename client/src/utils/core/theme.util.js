@@ -1,4 +1,4 @@
-import { themeConstants } from 'utils/constants';
+import { themeConstants } from '../constants';
 
 const getSystemTheme = () => {
   const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;

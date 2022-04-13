@@ -1,3 +1,3 @@
-import newSetupBtn from 'components/ui/newSetupBtn/newSetupBtn';
+import newSetupBtn from './newSetupBtn';
 
 export default newSetupBtn;

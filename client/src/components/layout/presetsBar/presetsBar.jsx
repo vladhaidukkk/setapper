@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getPresetsByTool, getPresetsLoadingStatus } from 'store/presets/presets.selectors';
-import { hasMatchHelper } from 'utils/helpers';
 import { orderBy } from 'lodash';
-import Search from 'components/common/search';
-import Filter from 'components/common/filter';
-import { sortConstants } from 'utils/constants';
-import ToolsMenu from 'components/common/toolsMenu';
-import toolConstants from 'utils/constants/tool.constants';
-import { SpinLoader } from 'components/common/loaders';
-import PresetsList from 'components/ui/presetsList';
+import { getPresetsByTool, getPresetsLoadingStatus } from '../../../store/presets/presets.selectors';
+import { hasMatchHelper } from '../../../utils/helpers';
+import Search from '../../common/search';
+import Filter from '../../common/filter';
+import { sortConstants } from '../../../utils/constants';
+import ToolsMenu from '../../common/toolsMenu';
+import toolConstants from '../../../utils/constants/tool.constants';
+import { SpinLoader } from '../../common/loaders';
+import PresetsList from '../../ui/presetsList';
 
 function PresetsBar() {
   const { tool } = useParams();

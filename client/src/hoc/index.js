@@ -1,16 +1,16 @@
-import ErrorHandler from 'hoc/errorHandler/errorHandler';
-import ThemeProvider from 'hoc/themeProvider/themeProvider';
-import AccountUploader from 'hoc/accoutUploader/accountUploader';
-import BuilderPathValidator from 'hoc/builderPathValidator/builderPathValidator';
-import SetupsUploader from 'hoc/setupsUploader/setupsUploader';
-import PrivateRoute from 'hoc/privateRoute/privateRoute';
-import PublicRoute from 'hoc/publicRoute/publicRoute';
-import PrivateElement from 'hoc/privateElement/privateElement';
-import PublicElement from 'hoc/publicElement/publicElement';
-import PresetsPathValidator from 'hoc/presetsPathValidator/presetsPathValidator';
-import PresetsUploader from 'hoc/presetsUploader/presetsUploader';
-import ModalProvider from 'hoc/modalProvider/modalProvider';
-import SetupLoader from 'hoc/setupLoader/setupLoader';
+import ErrorHandler from './errorHandler/errorHandler';
+import ThemeProvider from './themeProvider/themeProvider';
+import AccountUploader from './accoutUploader/accountUploader';
+import BuilderPathValidator from './builderPathValidator/builderPathValidator';
+import SetupsUploader from './setupsUploader/setupsUploader';
+import PrivateRoute from './privateRoute/privateRoute';
+import PublicRoute from './publicRoute/publicRoute';
+import PrivateElement from './privateElement/privateElement';
+import PublicElement from './publicElement/publicElement';
+import PresetsPathValidator from './presetsPathValidator/presetsPathValidator';
+import PresetsUploader from './presetsUploader/presetsUploader';
+import ModalProvider from './modalProvider/modalProvider';
+import SetupLoader from './setupLoader/setupLoader';
 
 export {
   ErrorHandler,

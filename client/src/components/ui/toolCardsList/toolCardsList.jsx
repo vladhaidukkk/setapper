@@ -1,6 +1,6 @@
 import React from 'react';
-import ToolCard from 'components/ui/toolCardsList/toolCard/toolCard';
-import { toolConstants } from 'utils/constants';
+import ToolCard from './toolCard/toolCard';
+import { toolConstants } from '../../../utils/constants';
 
 function ToolCardsList() {
   return (

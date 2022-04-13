@@ -1,7 +1,7 @@
 import React from 'react';
-import Container from 'components/common/container';
-import { PrivateElement, PublicElement } from 'hoc';
-import ActionLink from 'components/ui/actionLink';
+import Container from '../../common/container';
+import { PrivateElement, PublicElement } from '../../../hoc';
+import ActionLink from '../../ui/actionLink';
 
 function Intro() {
   return (

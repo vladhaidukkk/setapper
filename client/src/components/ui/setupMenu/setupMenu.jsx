@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDropdown, useRandomId } from 'hooks';
 import { DotsHorizontalIcon, PencilAltIcon, ShareIcon, TrashIcon } from '@heroicons/react/solid';
-import SetupMenuOptionsList from 'components/ui/setupMenu/setupMenuOptionsList/setupMenuOptionsList';
 import { useParams, useNavigate } from 'react-router-dom';
-import { removeSetup } from 'store/setups/setups.actions';
 import { useDispatch } from 'react-redux';
-import useModal from 'hooks/useModal';
-import ConfirmDeletionPopup from 'components/ui/confirmDeletionPopup';
-import ShareSetupPopup from 'components/ui/shareSetupPopup';
+import SetupMenuOptionsList from './setupMenuOptionsList/setupMenuOptionsList';
+import { removeSetup } from '../../../store/setups/setups.actions';
+import { useModal } from '../../../hooks';
+import ConfirmDeletionPopup from '../confirmDeletionPopup';
+import ShareSetupPopup from '../shareSetupPopup';
 
 function SetupMenu() {
   const { tool, setupId } = useParams();

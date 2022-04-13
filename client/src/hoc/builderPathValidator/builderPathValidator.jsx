@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
-import { toolConstants } from 'utils/constants';
 import { useSelector } from 'react-redux';
-import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
+import { toolConstants } from '../../utils/constants';
+import { getSetupById, getSetupsLoadingStatus } from '../../store/setups/setups.selectors';
 
 function BuilderPathValidator({ children }) {
   const { tool, setupId, edit } = useParams();

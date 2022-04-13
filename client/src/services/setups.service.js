@@ -1,30 +1,41 @@
-import httpService from 'services/http.service';
-import configKeys from 'config.json';
 import { nanoid } from 'nanoid';
+import httpService from './http.service';
+import configKeys from '../config.json';
+import localStorageService from './localStorage.service';
 
 const setupsEndpoint = 'setups/';
 
-const getUserSetups = async (userId) => {
-  const params = configKeys.useFirebase
+const getAccountSetups = async () => {
+  const accountId = localStorageService.getAccountId();
+  const requestParams = configKeys.useFirebase
     ? {
         orderBy: '"ownerId"',
-        equalTo: `"${userId}"`,
+        equalTo: `"${accountId}"`,
       }
-    : { ownerId: userId };
-  const { data } = await httpService.get(setupsEndpoint, { params });
+    : undefined;
 
+  const { data } = await httpService.get(setupsEndpoint, { params: requestParams });
   return data;
 };
 
 const createSetup = async (payload) => {
   const id = nanoid();
-  const { data } = await httpService.put(setupsEndpoint + id, {
-    id,
-    ...payload,
-    createdAt: Date.now(),
-    modifiedAt: Date.now(),
-  });
+  const accountId = localStorageService.getAccountId();
 
+  const requestMethod = configKeys.useFirebase ? 'put' : 'post';
+  const requestUrl = configKeys.useFirebase ? setupsEndpoint + id : setupsEndpoint;
+  // todo: id -> _id
+  const requestBody = configKeys.useFirebase
+    ? {
+        id,
+        ...payload,
+        ownerId: accountId,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      }
+    : payload;
+
+  const { data } = await httpService[requestMethod](requestUrl, requestBody);
   return data;
 };
 
@@ -34,12 +45,18 @@ const removeSetup = async (id) => {
 };
 
 const updateSetup = async (id, payload) => {
-  const { data } = await httpService.patch(setupsEndpoint + id, { ...payload, modifiedAt: Date.now() });
+  const requestBody = configKeys.useFirebase
+    ? {
+        ...payload,
+        updatedAt: Date.now(),
+      }
+    : payload;
+  const { data } = await httpService.patch(setupsEndpoint + id, requestBody);
   return data;
 };
 
 const setupsService = {
-  getUserSetups,
+  getAccountSetups,
   createSetup,
   removeSetup,
   updateSetup,

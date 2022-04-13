@@ -1,4 +1,4 @@
-import { builderConstants } from 'utils/constants';
+import { builderConstants } from '../constants';
 
 const getDefaultSetupDataHelper = (tool) => {
   const initialOptions = builderConstants[tool].OPTIONS;

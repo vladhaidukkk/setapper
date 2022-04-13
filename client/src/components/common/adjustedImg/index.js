@@ -1,3 +1,3 @@
-import AdjustedImg from 'components/common/adjustedImg/adjustedImg';
+import AdjustedImg from './adjustedImg';
 
 export default AdjustedImg;

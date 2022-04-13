@@ -1,3 +1,3 @@
-import SetupPanel from 'components/ui/setupPanel/setupPanel';
+import SetupPanel from './setupPanel';
 
 export default SetupPanel;

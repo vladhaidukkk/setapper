@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from 'components/layout';
-import Container from 'components/common/container';
+import { Header } from '../../components/layout';
+import Container from '../../components/common/container';
 
 function Dashboard() {
   return (

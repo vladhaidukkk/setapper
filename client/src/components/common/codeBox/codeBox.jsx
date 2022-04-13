@@ -1,8 +1,8 @@
 import React from 'react';
-import Code from 'components/common/codeBox/code/code';
-import { formatterUtil } from 'utils/core';
 import PropTypes from 'prop-types';
-import CodeBoxOptionsList from 'components/common/codeBox/codeBoxOptionsList/codeBoxOptionsList';
+import Code from './code/code';
+import { formatterUtil } from '../../../utils/core';
+import CodeBoxOptionsList from './codeBoxOptionsList/codeBoxOptionsList';
 
 function CodeBox({ language, code, options, selectedOption, onChange }) {
   const getFormattedCode = () => {

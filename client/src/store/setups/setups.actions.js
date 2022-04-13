@@ -1,9 +1,9 @@
-import setupsSlice from 'store/setups/setups.slice';
-import { handleError } from 'store/errors/errors.actions';
-import { setupsService } from 'services';
-import { errorConstants } from 'utils/constants';
 import { createAction } from '@reduxjs/toolkit';
-import { historyUtil } from 'utils/core';
+import setupsSlice from './setups.slice';
+import { handleError } from '../errors/errors.actions';
+import { setupsService } from '../../services';
+import { errorConstants } from '../../utils/constants';
+import { historyUtil } from '../../utils/core';
 
 const { requested, received, failed, created, removed, updated } = setupsSlice.actions;
 const creationRequested = createAction('setups/creationRequested');
@@ -13,10 +13,10 @@ const removalFailed = createAction('setups/removalFailed');
 const updateRequested = createAction('setups/updateRequested');
 const updateFailed = createAction('setups/updateFailed');
 
-const loadUserSetups = (userId) => async (dispatch) => {
+const loadAccountSetups = () => async (dispatch) => {
   dispatch(requested());
   try {
-    const data = await setupsService.getUserSetups(userId);
+    const data = await setupsService.getAccountSetups();
     dispatch(received(data));
   } catch (error) {
     dispatch(failed());
@@ -24,11 +24,10 @@ const loadUserSetups = (userId) => async (dispatch) => {
   }
 };
 
-const createSetup = (payload) => async (dispatch, getState) => {
+const createSetup = (payload) => async (dispatch) => {
   dispatch(creationRequested());
   try {
-    const { accountId } = getState().auth;
-    const data = await setupsService.createSetup({ ...payload, ownerId: accountId });
+    const data = await setupsService.createSetup(payload);
     dispatch(created(data));
     historyUtil.push(`/builder/${data.tool}/${data.id}`);
   } catch (error) {
@@ -54,11 +53,11 @@ const updateSetup = (id, payload) => async (dispatch) => {
   try {
     const data = await setupsService.updateSetup(id, payload);
     dispatch(updated({ id, data }));
-    historyUtil.push(`/builder/${data.tool}/${data.id}`);
+    historyUtil.push(`/builder/${data.tool}/${id}`);
   } catch (error) {
     dispatch(updateFailed());
     dispatch(handleError({ type: errorConstants.types.SETUPS, error }));
   }
 };
 
-export { loadUserSetups, createSetup, removeSetup, updateSetup };
+export { loadAccountSetups, createSetup, removeSetup, updateSetup };

@@ -1,3 +1,3 @@
-import HeaderNav from 'components/ui/headerNav/headerNav';
+import HeaderNav from './headerNav';
 
 export default HeaderNav;

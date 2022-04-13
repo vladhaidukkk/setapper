@@ -1,6 +1,6 @@
-import { ReactComponent as EslintIcon } from 'assets/icons/tools/eslint.svg';
-import { ReactComponent as WebpackIcon } from 'assets/icons/tools/webpack.svg';
-import { ReactComponent as GulpIcon } from 'assets/icons/tools/gulp.svg';
+import { ReactComponent as EslintIcon } from '../../assets/icons/tools/eslint.svg';
+import { ReactComponent as WebpackIcon } from '../../assets/icons/tools/webpack.svg';
+import { ReactComponent as GulpIcon } from '../../assets/icons/tools/gulp.svg';
 
 const toolConstants = {
   LIST: [

@@ -1,10 +1,10 @@
 import React from 'react';
-import DetailInfo from 'components/ui/detailInfo';
 import moment from 'moment';
-import SetupPanel from 'components/ui/presetPanel';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getPresetById } from 'store/presets/presets.selectors';
+import SetupPanel from '../../ui/presetPanel';
+import DetailInfo from '../../ui/detailInfo';
+import { getPresetById } from '../../../store/presets/presets.selectors';
 
 function PresetViewer() {
   const { presetId } = useParams();

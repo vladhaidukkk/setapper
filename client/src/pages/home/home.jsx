@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Intro, ToolsIntro, Footer } from 'components/layout';
+import { Header, Intro, ToolsIntro, Footer } from '../../components/layout';
 
 function Home() {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import { SpinLoader } from 'components/common/loaders';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getSetupById, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
 import { useParams } from 'react-router-dom';
+import { getSetupById, getSetupsLoadingStatus } from '../../store/setups/setups.selectors';
+import { SpinLoader } from '../../components/common/loaders';
 
 function SetupLoader({ children }) {
   const { setupId } = useParams();

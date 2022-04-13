@@ -8,9 +8,9 @@ import {
   ViewGridAddIcon,
   ViewGridIcon,
 } from '@heroicons/react/solid';
-import { PrivateElement, PublicElement } from 'hoc';
-import { useDropdown, useRandomId } from 'hooks';
-import NavMenuItem from 'components/ui/headerNav/navMenuItem/navMenuItem';
+import { PrivateElement, PublicElement } from '../../../../hoc';
+import { useDropdown, useRandomId } from '../../../../hooks';
+import NavMenuItem from '../navMenuItem/navMenuItem';
 
 function NavMenuDropdown() {
   const id = useRandomId('dropdown-');

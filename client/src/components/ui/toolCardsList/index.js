@@ -1,3 +1,3 @@
-import ToolCardsList from 'components/ui/toolCardsList/toolCardsList';
+import ToolCardsList from './toolCardsList';
 
 export default ToolCardsList;

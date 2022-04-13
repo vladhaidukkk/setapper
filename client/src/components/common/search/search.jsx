@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SearchIcon } from '@heroicons/react/solid';
-import { useRandomId } from 'hooks';
+import { useRandomId } from '../../../hooks';
 
 function Search({ value, onChange, placeholder }) {
   const id = useRandomId('search-');

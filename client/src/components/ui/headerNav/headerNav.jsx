@@ -1,12 +1,10 @@
 import React from 'react';
-import NavItem from 'components/ui/headerNav/navItem/navItem';
-import NavDropdown from 'components/ui/headerNav/navDropdown/navDropdown';
-import { ReactComponent as EslintIcon } from 'assets/icons/tools/eslint.svg';
-import { ReactComponent as WebpackIcon } from 'assets/icons/tools/webpack.svg';
-import { ReactComponent as GulpIcon } from 'assets/icons/tools/gulp.svg';
-import { PrivateElement, PublicElement } from 'hoc';
-import NavMenuDropdown from 'components/ui/headerNav/navMenuDropdown/navMenuDropdown';
 import { EyeIcon } from '@heroicons/react/solid';
+import NavDropdown from './navDropdown/navDropdown';
+import { PrivateElement, PublicElement } from '../../../hoc';
+import NavMenuDropdown from './navMenuDropdown/navMenuDropdown';
+import NavItem from './navItem/navItem';
+import { toolConstants } from '../../../utils/constants';
 
 function HeaderNav() {
   return (
@@ -29,9 +27,7 @@ function HeaderNav() {
             pathPrefix="/builder"
             options={[
               { index: true, label: 'Inspector', Icon: EyeIcon, divided: true },
-              { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
-              { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
-              { path: 'eslint', label: 'Eslint', Icon: EslintIcon },
+              ...toolConstants.LIST.map((item) => ({ ...item, path: item.value })),
             ]}
           />
         </PrivateElement>
@@ -41,9 +37,7 @@ function HeaderNav() {
           pathPrefix="/presets"
           options={[
             { index: true, label: 'Inspector', Icon: EyeIcon, divided: true },
-            { path: 'webpack', label: 'Webpack', Icon: WebpackIcon },
-            { path: 'gulp', label: 'Gulp', Icon: GulpIcon },
-            { path: 'eslint', label: 'Eslint', Icon: EslintIcon },
+            ...toolConstants.LIST.map((item) => ({ ...item, path: item.value })),
           ]}
         />
       </ul>

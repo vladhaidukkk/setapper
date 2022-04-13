@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ErrorField from 'components/common/form/errorField/errorField';
+import ErrorField from '../errorField/errorField';
 
 function TextField({ name, label, register, validation, error, placeholder, desc }) {
   return (

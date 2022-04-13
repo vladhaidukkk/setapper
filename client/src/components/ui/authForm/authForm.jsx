@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import AuthSubmitBtn from 'components/ui/authForm/authSubmitBtn/authSubmitBtn';
-import AuthErrorsField from 'components/ui/authForm/authErrorsField/authErrorsField';
+import AuthSubmitBtn from './authSubmitBtn/authSubmitBtn';
+import AuthErrorsField from './authErrorsField/authErrorsField';
 
 function AuthForm({ label, alt, onSubmit, btnText, children }) {
   const {

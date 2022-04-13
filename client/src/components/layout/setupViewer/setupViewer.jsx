@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getSetupById } from 'store/setups/setups.selectors';
-import SetupPanel from 'components/ui/setupPanel';
 import moment from 'moment';
-import SetupMenu from 'components/ui/setupMenu';
+import { getSetupById } from '../../../store/setups/setups.selectors';
+import SetupPanel from '../../ui/setupPanel';
+import SetupMenu from '../../ui/setupMenu';
 // import Form, { SubmitBtn, TextareaField, TextField } from 'components/common/form';
 // import { useForm } from 'react-hook-form';
-import DetailInfo from 'components/ui/detailInfo';
+import DetailInfo from '../../ui/detailInfo';
 
 function SetupViewer() {
   const { setupId } = useParams();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PresetsHint from 'components/ui/presetsList/presetsHint/presetsHint';
-import Preset from 'components/ui/presetsList/preset/preset';
+import PresetsHint from './presetsHint/presetsHint';
+import Preset from './preset/preset';
 
 function PresetsList({ list, matchString, notFound }) {
   const { tool } = useParams();

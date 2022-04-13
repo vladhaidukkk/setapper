@@ -1,3 +1,3 @@
-import SetupMenu from 'components/ui/setupMenu/setupMenu';
+import SetupMenu from './setupMenu';
 
 export default SetupMenu;

@@ -1,3 +1,3 @@
-import DownloadBtn from 'components/common/downloadBtn/downloadBtn';
+import DownloadBtn from './downloadBtn';
 
 export default DownloadBtn;

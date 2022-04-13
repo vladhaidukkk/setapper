@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderNav from 'components/ui/headerNav';
-import ThemeSelect from 'components/ui/themeSelect';
-import AccountBox from 'components/ui/accountBox';
-import Container from 'components/common/container';
-import { PrivateElement } from 'hoc';
 import PropTypes from 'prop-types';
-import Logo from 'components/ui/logo';
+import HeaderNav from '../../ui/headerNav';
+import ThemeSelect from '../../ui/themeSelect';
+import AccountBox from '../../ui/accountBox';
+import Container from '../../common/container';
+import { PrivateElement } from '../../../hoc';
+import Logo from '../../ui/logo';
 
 function Header({ fluid }) {
   return (

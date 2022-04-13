@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { toolConstants } from 'utils/constants';
-import { getPresetById, getPresetsLoadingStatus } from 'store/presets/presets.selectors';
+import { toolConstants } from '../../utils/constants';
+import { getPresetById, getPresetsLoadingStatus } from '../../store/presets/presets.selectors';
 
 function PresetsPathValidator({ children }) {
   const { tool, presetId } = useParams();

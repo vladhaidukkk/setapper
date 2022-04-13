@@ -1,4 +1,4 @@
-import accountSlice from 'store/account/account.slice';
+import accountSlice from './account.slice';
 
 const accountReducer = accountSlice.reducer;
 

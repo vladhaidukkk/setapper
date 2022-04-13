@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDropdown, useRandomId } from 'hooks';
-import FilterToggler from 'components/common/filter/filterToggler/filterToggler';
-import FilterList from 'components/common/filter/filterList/filterList';
 import PropTypes from 'prop-types';
+import { useDropdown, useRandomId } from '../../../hooks';
+import FilterToggler from './filterToggler/filterToggler';
+import FilterList from './filterList/filterList';
 
 function Filter({ value, onChange, iterTitle, iterOptions, orderTitle, orderOptions }) {
   const id = useRandomId('filter-');

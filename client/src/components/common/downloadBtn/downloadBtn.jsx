@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import JSZip from 'jszip';
 import { useParams } from 'react-router-dom';
-import { builderUtil } from 'utils/core';
-import { builderConstants } from 'utils/constants';
 import { saveAs } from 'file-saver';
+import { builderUtil } from '../../../utils/core';
+import { builderConstants } from '../../../utils/constants';
 
 function DownloadBtn({ data, label }) {
   const { tool } = useParams();

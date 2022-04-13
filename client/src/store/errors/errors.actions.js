@@ -1,5 +1,5 @@
-import errorsSlice from 'store/errors/errors.slice';
-import { getErrorMessageHelper } from 'utils/helpers';
+import errorsSlice from './errors.slice';
+import { getErrorMessageHelper } from '../../utils/helpers';
 
 const { handled, cleared } = errorsSlice.actions;
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Auth, Builder, BuilderInspector, Dashboard, Home, Presets, PresetsInspector, Settings } from 'pages';
 import { Navigate } from 'react-router-dom';
-import authRoutes from 'routes/auth.routes';
-import builderRoutes from 'routes/builder.routes';
-import { BuilderPathValidator, PresetsPathValidator, PrivateRoute, PublicRoute } from 'hoc';
-import settingsRoutes from 'routes/settings.routes';
-import presetsRoutes from 'routes/presets.routes';
+import { Auth, Builder, BuilderInspector, Dashboard, Home, Presets, PresetsInspector, Settings } from '../pages';
+import authRoutes from './auth.routes';
+import builderRoutes from './builder.routes';
+import { BuilderPathValidator, PresetsPathValidator, PrivateRoute, PublicRoute } from '../hoc';
+import settingsRoutes from './settings.routes';
+import presetsRoutes from './presets.routes';
 
 const appRoutes = [
   {

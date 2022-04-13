@@ -1,7 +1,7 @@
-import presetsSlice from 'store/presets/presets.slice';
-import { presetsService } from 'services';
-import { handleError } from 'store/errors/errors.actions';
-import { errorConstants } from 'utils/constants';
+import presetsSlice from './presets.slice';
+import { presetsService } from '../../services';
+import { handleError } from '../errors/errors.actions';
+import { errorConstants } from '../../utils/constants';
 
 const { requested, received, failed } = presetsSlice.actions;
 

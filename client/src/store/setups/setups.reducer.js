@@ -1,4 +1,4 @@
-import setupsSlice from 'store/setups/setups.slice';
+import setupsSlice from './setups.slice';
 
 const setupsReducer = setupsSlice.reducer;
 

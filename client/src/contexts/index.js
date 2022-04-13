@@ -1,4 +1,4 @@
-import ThemeContext from 'contexts/theme.context';
-import ModalContext from 'contexts/modal.context';
+import ThemeContext from './theme.context';
+import ModalContext from './modal.context';
 
 export { ThemeContext, ModalContext };

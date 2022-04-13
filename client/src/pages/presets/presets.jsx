@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header, PresetsBar } from 'components/layout';
 import { Outlet } from 'react-router-dom';
+import { Header, PresetsBar } from '../../components/layout';
 
 function Presets() {
   return (

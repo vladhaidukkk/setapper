@@ -1,3 +1,3 @@
-import PresetsList from 'components/ui/presetsList/presetsList';
+import PresetsList from './presetsList';
 
 export default PresetsList;

@@ -1,6 +1,6 @@
 import React from 'react';
-import Pages from 'pages';
-import appRoutes from 'routes/app.routes';
+import Pages from '../pages';
+import appRoutes from './app.routes';
 
 const routes = [
   {

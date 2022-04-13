@@ -1,3 +1,3 @@
-import Logo from 'components/ui/logo/logo';
+import Logo from './logo';
 
 export default Logo;

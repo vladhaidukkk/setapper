@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { orderBy } from 'lodash';
 import { useSelector } from 'react-redux';
-import { getSetupsByTool, getSetupsLoadingStatus } from 'store/setups/setups.selectors';
-import { hasMatchHelper } from 'utils/helpers';
-import { sortConstants } from 'utils/constants';
-import Search from 'components/common/search';
-import Filter from 'components/common/filter';
-import NewSetupBtn from 'components/ui/newSetupBtn';
-import ToolsMenu from 'components/common/toolsMenu';
-import toolConstants from 'utils/constants/tool.constants';
-import SetupsList from 'components/ui/setupsList';
-import { SpinLoader } from 'components/common/loaders';
+import { getSetupsByTool, getSetupsLoadingStatus } from '../../../store/setups/setups.selectors';
+import { hasMatchHelper } from '../../../utils/helpers';
+import { sortConstants } from '../../../utils/constants';
+import Search from '../../common/search';
+import Filter from '../../common/filter';
+import NewSetupBtn from '../../ui/newSetupBtn';
+import ToolsMenu from '../../common/toolsMenu';
+import toolConstants from '../../../utils/constants/tool.constants';
+import SetupsList from '../../ui/setupsList';
+import { SpinLoader } from '../../common/loaders';
 
 function SetupsBar() {
   const { tool, setupId } = useParams();

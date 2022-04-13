@@ -1,9 +1,9 @@
 import React from 'react';
 import { CogIcon, LogoutIcon, UserIcon } from '@heroicons/react/solid';
-import { logOut } from 'store/auth/auth.actions';
 import { useDispatch } from 'react-redux';
-import AccountBoxLink from 'components/ui/accountBox/accountBoxLink/accountBoxLink';
-import AccountBoxBtn from 'components/ui/accountBox/accountBoxBtn/accountBoxBtn';
+import { logOut } from '../../../../store/auth/auth.actions';
+import AccountBoxLink from '../accountBoxLink/accountBoxLink';
+import AccountBoxBtn from '../accountBoxBtn/accountBoxBtn';
 
 function AccountBoxOptions() {
   const dispatch = useDispatch();

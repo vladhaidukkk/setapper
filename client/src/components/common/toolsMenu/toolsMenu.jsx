@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDropdown, useRandomId } from 'hooks';
-import ToolOption from 'components/common/toolsMenu/toolOption/toolOption';
-import SelectedTool from 'components/common/toolsMenu/selectedTool/selectedTool';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDropdown, useRandomId } from '../../../hooks';
+import ToolOption from './toolOption/toolOption';
+import SelectedTool from './selectedTool/selectedTool';
 
 function ToolsMenu({ label, pathPrefix, options }) {
   const { tool } = useParams();

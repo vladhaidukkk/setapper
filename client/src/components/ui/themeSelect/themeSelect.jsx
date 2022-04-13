@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDropdown, useRandomId, useTheme } from 'hooks';
-import { themeConstants } from 'utils/constants';
-import ThemeOptionsList from 'components/ui/themeSelect/themeOptionsList/themeOptionsList';
+import { useDropdown, useRandomId, useTheme } from '../../../hooks';
+import { themeConstants } from '../../../utils/constants';
+import ThemeOptionsList from './themeOptionsList/themeOptionsList';
 
 function ThemeSelect() {
   const id = useRandomId('dropdown-');

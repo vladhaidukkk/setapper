@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/layout';
-import Container from 'components/common/container';
+import { Header } from '../../components/layout';
+import Container from '../../components/common/container';
 
 function Settings() {
   return (

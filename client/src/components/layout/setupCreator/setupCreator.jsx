@@ -1,13 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';
-import { createSetup } from 'store/setups/setups.actions';
-import Form, { SubmitBtn, TextareaField, TextField } from 'components/common/form';
-import OptionFieldsList from 'components/ui/optionFieldsList';
 import { useForm } from 'react-hook-form';
-import SetupPanel from 'components/ui/setupPanel';
-import { getDefaultSetupDataHelper, validateSetupOptionsHelper } from 'utils/helpers';
 import { useDispatch } from 'react-redux';
+import { createSetup } from '../../../store/setups/setups.actions';
+import Form, { SubmitBtn, TextareaField, TextField } from '../../common/form';
+import OptionFieldsList from '../../ui/optionFieldsList';
+import SetupPanel from '../../ui/setupPanel';
+import { getDefaultSetupDataHelper, validateSetupOptionsHelper } from '../../../utils/helpers';
 
 function SetupCreator() {
   const dispatch = useDispatch();

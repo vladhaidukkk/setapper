@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Setup from 'components/ui/setupsList/setup/setup';
-import SetupsHint from 'components/ui/setupsList/setupsHint/setupsHint';
 import { useDispatch } from 'react-redux';
-import { removeSetup } from 'store/setups/setups.actions';
 import { useLocation, useParams } from 'react-router-dom';
+import Setup from './setup/setup';
+import SetupsHint from './setupsHint/setupsHint';
+import { removeSetup } from '../../../store/setups/setups.actions';
 
 function SetupsList({ list, matchString, notFound }) {
   const dispatch = useDispatch();

@@ -1,3 +1,3 @@
-import DetailInfo from 'components/ui/detailInfo/detailInfo';
+import DetailInfo from './detailInfo';
 
 export default DetailInfo;

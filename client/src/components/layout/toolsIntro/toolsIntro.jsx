@@ -1,6 +1,6 @@
 import React from 'react';
-import Container from 'components/common/container';
-import ToolCardsList from 'components/ui/toolCardsList';
+import ToolCardsList from '../../ui/toolCardsList';
+import Container from '../../common/container';
 
 function ToolsIntro() {
   return (

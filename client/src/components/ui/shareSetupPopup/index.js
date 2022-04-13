@@ -1,3 +1,3 @@
-import ShareSetupPopup from 'components/ui/shareSetupPopup/shareSetupPopup';
+import ShareSetupPopup from './shareSetupPopup';
 
 export default ShareSetupPopup;

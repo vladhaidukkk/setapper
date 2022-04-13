@@ -1,6 +1,6 @@
-import { Profile } from 'pages';
 import { Navigate } from 'react-router-dom';
 import React from 'react';
+import { Profile } from '../pages';
 
 const settingsRoutes = [
   {

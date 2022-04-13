@@ -1,11 +1,11 @@
 import axios from 'axios';
-import configKeys from 'config.json';
-import { formatUrlForFirebaseHelper, isErrorExpectedHelper } from 'utils/helpers';
-import localStorageService from 'services/localStorage.service';
-import authService from 'services/auth.service';
+import configKeys from '../config.json';
+import { formatUrlForFirebaseHelper, isErrorExpectedHelper } from '../utils/helpers';
+import localStorageService from './localStorage.service';
+import authService from './auth.service';
 
 const http = axios.create({
-  baseURL: configKeys.useFirebase ? configKeys.firebaseRDBApiEndpoint : '',
+  baseURL: configKeys.useFirebase ? configKeys.firebaseRDBApiEndpoint : configKeys.apiEndpoint,
 });
 
 http.interceptors.request.use(
@@ -17,20 +17,29 @@ http.interceptors.request.use(
     const jwtRefreshToken = localStorageService.getJwtRefreshToken();
     const jwtExpiresDate = localStorageService.getJwtExpiresDate();
 
-    if (jwtRefreshToken && jwtExpiresDate > Date.now()) {
+    if (jwtRefreshToken && jwtExpiresDate < Date.now()) {
       const jwtData = await authService.exchangeRefreshToken();
-      console.log('last:', jwtRefreshToken);
-      console.log('refresh:', jwtData);
-      localStorageService.setJwtData({
-        accessToken: jwtData.id_token,
-        refreshToken: jwtData.refresh_token,
-        expiresIn: jwtData.expires_in,
-      });
+
+      if (configKeys.useFirebase) {
+        localStorageService.setJwtData({
+          accessToken: jwtData.id_token,
+          refreshToken: jwtData.refresh_token,
+          expiresIn: jwtData.expires_in,
+        });
+      } else {
+        localStorageService.setJwtData(jwtData);
+      }
     }
 
     const accessToken = localStorageService.getJwtAccessToken();
-    if (configKeys.useFirebase && accessToken) {
-      config.params = { ...config.params, auth: accessToken };
+    if (accessToken) {
+      if (configKeys.useFirebase) {
+        config.params = { ...config.params, auth: accessToken };
+      } else {
+        config.headers = {
+          Authorization: `Bearer ${accessToken}`,
+        };
+      }
     }
 
     return config;

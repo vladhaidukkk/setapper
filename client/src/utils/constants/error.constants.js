@@ -4,6 +4,9 @@ const errorConstants = {
     ACCOUNT: 'accountError',
     SETUPS: 'setupsError',
     PRESETS: 'presetsError',
+    ACCESSES: 'accessesError',
+    LIKES: 'likesError',
+    COMMENTS: 'commentsError',
   },
   messages: {
     EMAIL_NOT_FOUND: 'Email was not found',

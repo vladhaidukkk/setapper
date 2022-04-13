@@ -1,8 +1,8 @@
 import React from 'react';
-import { builderConstants } from 'utils/constants';
-import { CheckboxField, TextField } from 'components/common/form';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { builderConstants } from '../../../utils/constants';
+import { CheckboxField, TextField } from '../../common/form';
 
 function OptionFieldsList({ register, name }) {
   const { tool } = useParams();

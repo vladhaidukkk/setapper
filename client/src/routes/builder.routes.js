@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { SetupViewer, SetupCreator, SetupEditor } from 'components/layout';
-import { SetupLoader } from 'hoc';
+import { SetupViewer, SetupCreator, SetupEditor } from '../components/layout';
+import { SetupLoader } from '../hoc';
 
 const builderRoutes = [
   {

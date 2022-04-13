@@ -1,10 +1,10 @@
 import React from 'react';
-import AdjustedImg from 'components/common/adjustedImg';
-import LogoBlack from 'assets/logo/logo-black.svg';
-import LogoWhite from 'assets/logo/logo-white.svg';
 import { Link } from 'react-router-dom';
-import { useTheme } from 'hooks';
-import themeConstants from 'utils/constants/theme.constants';
+import AdjustedImg from '../../common/adjustedImg';
+import LogoBlack from '../../../assets/logo/logo-black.svg';
+import LogoWhite from '../../../assets/logo/logo-white.svg';
+import { useTheme } from '../../../hooks';
+import themeConstants from '../../../utils/constants/theme.constants';
 
 function Logo() {
   const { themeColor } = useTheme();
