@@ -26,7 +26,7 @@ function HeaderNav() {
             path="/builder"
             pathPrefix="/builder"
             options={[
-              { index: true, label: 'Inspector', Icon: EyeIcon, divided: true },
+              { index: true, label: 'Inspector', icon: EyeIcon, divided: true },
               ...toolConstants.LIST.map((item) => ({ ...item, path: item.value })),
             ]}
           />
@@ -36,7 +36,7 @@ function HeaderNav() {
           path="/presets"
           pathPrefix="/presets"
           options={[
-            { index: true, label: 'Inspector', Icon: EyeIcon, divided: true },
+            { index: true, label: 'Inspector', icon: EyeIcon, divided: true },
             ...toolConstants.LIST.map((item) => ({ ...item, path: item.value })),
           ]}
         />

@@ -37,20 +37,83 @@ const buildWebpackConfig = (options, initialOptions) => {
   }${options.eslintPlugin ? "const ESLintPlugin=require('eslint-webpack-plugin');" : ''}${
     options.stylelintPlugin ? "const StylelintPlugin=require('stylelint-webpack-plugin');" : ''
   }${options.dotenvPlugin ? "const Dotenv=require('dotenv-webpack');" : ''}${
-    options.manifestPlugin ? "const {WebpackManifestPlugin}=require('webpack-manifest-plugin');" : ''
-  }${options.robotstxtPlugin ? "const RobotstxtPlugin=require('robotstxt-webpack-plugin');" : ''}
+    options.optimizeCode
+      ? "const TerserPlugin=require('terser-webpack-plugin');const CssMinimizerPlugin=require('css-minimizer-webpack-plugin');"
+      : ''
+  }
+
+  ${
+    options.envOptimization
+      ? 'const envMode=process.env.NODE_ENV;const isProd=envMode===production;const isDev=envMode===development;'
+      : ''
+  }
 
   module.exports={
+    mode:${options.envOptimization ? 'envMode||"production"' : '"production"'},
     entry:'./${options.entryFolder || initialOptions.entryFolder.defaultValue}/${
     options.entryFilename || initialOptions.entryFilename.defaultValue
-  }',
-    output:{
-      path:path.resolve(__dirname,'${options.outputFolder || initialOptions.outputFolder.defaultValue}'),
-      filename:'${options.outputFilename || initialOptions.outputFilename.defaultValue}${
-    options.hashOutputFilenames ? '.[contenthash:12]' : ''
   }.js',
-      ${options.cleanOutputFolder ? 'clean: true' : ''}
-    },
+    output:{
+      path:path.resolve(__dirname,'${options.outputFolder || initialOptions.outputFolder.defaultValue}'),${
+    options.envOptimization && options.hashOutputFilenames
+      ? `filename:isProd?'${
+          options.outputFilename || initialOptions.outputFilename.defaultValue
+        }.[contenthash:12].js':'${options.outputFilename || initialOptions.outputFilename.defaultValue}.js'`
+      : `filename:'${options.outputFilename || initialOptions.outputFilename.defaultValue}${
+          options.hashOutputFilenames ? '.[contenthash:12]' : ''
+        }.js'`
+  },
+      ${options.cleanOutputFolder ? 'clean:true' : ''}
+    },${
+      options.enableDevServer
+        ? `devServer:{
+            port: ${options.devServerPort || initialOptions.devServerPort.defaultValue},
+            ${options.openDevServer ? 'open:true' : ''}
+          },`
+        : ''
+    }${options.enableDevTools ? `devtool:${options.envOptimization ? 'isDev&&"source-map"' : '"source-map"'},` : ''}${
+    options.optimizeCode
+      ? `optimization:{
+          splitChunks:{
+            chunks:'all',
+          },
+          ${options.envOptimization ? 'minimize:isProd' : 'minimize:true'},
+          minimizer:[new TerserPlugin(),new CssMinimizerPlugin()],
+        },`
+      : ''
+  }${
+    options.htmlPlugin ||
+    options.cssPlugin ||
+    options.eslintPlugin ||
+    options.stylelintPlugin ||
+    options.dotenvPlugin ||
+    options.manifestPlugin ||
+    options.robotstxtPlugin
+      ? `plugins:[
+        ${
+          options.htmlPlugin
+            ? `new HtmlWebpackPlugin({${options.htmlTitle ? `title:'${options.htmlTitle}',` : ''}template:'${
+                options.htmlTemplate || initialOptions.htmlTemplate.defaultValue
+              }',${options.envOptimization ? 'minify:isProd,' : ''}}),`
+            : ''
+        }${
+          options.cssPlugin
+            ? `new MiniCssExtractPlugin({filename:${
+                options.envOptimization && options.hashOutputFilenames
+                  ? `isProd?'${options.cssFilename || initialOptions.cssFilename.defaultValue}.[contenthash:12].css':'${
+                      options.cssFilename || initialOptions.cssFilename.defaultValue
+                    }.css'`
+                  : `'${options.cssFilename || initialOptions.cssFilename.defaultValue}${
+                      options.hashOutputFilenames ? '.[contenthash:12]' : ''
+                    }.css'`
+              }}),`
+            : ''
+        }${options.eslintPlugin ? 'new ESLintPlugin(),' : ''}${
+          options.stylelintPlugin ? 'new StylelintPlugin(),' : ''
+        }${options.dotenvPlugin ? 'new Dotenv(),' : ''}
+      ]`
+      : ''
+  }
   };`;
 
   return { content, language: 'javascript' };
@@ -75,8 +138,6 @@ const buildPackageJson = (data, initialOptions) => {
       ${options.eslintPlugin ? ',"eslint":"^8.11.0","eslint-webpack-plugin":"^3.1.1"' : ''}
       ${options.stylelintPlugin ? ',"stylelint": "^14.6.0","stylelint-webpack-plugin":"^3.1.1"' : ''}
       ${options.dotenvPlugin ? ',"dotenv-webpack":"^7.1.0"' : ''}
-      ${options.manifestPlugin ? ',"webpack-manifest-plugin":"^5.0.0"' : ''}
-      ${options.robotstxtPlugin ? ',"robotstxt-webpack-plugin":"^7.0.0"' : ''}
     }
   }
   `;
