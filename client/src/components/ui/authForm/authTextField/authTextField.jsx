@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useRandomId } from 'hooks';
+import { useRandomId } from '../../../../hooks';
 
 function AuthTextField({ name, type, label, register, position, autoComplete, validation }) {
   const id = useRandomId(`${name}-`);

@@ -29,7 +29,7 @@ const createSetup = (payload) => async (dispatch) => {
   try {
     const data = await setupsService.createSetup(payload);
     dispatch(created(data));
-    historyUtil.push(`/builder/${data.tool}/${data.id}`);
+    historyUtil.push(`/builder/${data.tool}/${data._id}`);
   } catch (error) {
     dispatch(creationFailed());
     dispatch(handleError({ type: errorConstants.types.SETUPS, error }));

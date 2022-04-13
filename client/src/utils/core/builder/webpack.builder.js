@@ -30,7 +30,6 @@ const buildStructureJson = (options, initialOptions) => {
 };
 
 const buildWebpackConfig = (options, initialOptions) => {
-  console.log(options, initialOptions);
   const content = `
   const path=require('path');
   ${options.htmlPlugin ? "const HtmlWebpackPlugin=require('html-webpack-plugin');" : ''}${

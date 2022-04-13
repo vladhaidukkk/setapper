@@ -19,6 +19,7 @@ function SetupsList({ list, matchString, notFound }) {
   }, [setupId, edit]);
 
   const handleDeleteSetup = (id) => {
+    console.log(id);
     setDeletionSetupId(() => id);
   };
 
@@ -46,17 +47,20 @@ function SetupsList({ list, matchString, notFound }) {
     <div className="flex grow flex-col overflow-y-auto">
       {list && list.length !== 0 ? (
         <ul className="flex grow flex-col space-y-2 overflow-y-auto">
-          {list.map((item) => (
-            <Setup
-              key={item.id}
-              {...item}
-              matchString={matchString}
-              isDeleting={deletionSetupId === item.id}
-              onDelete={handleDeleteSetup}
-              onCancelDeletion={handleCancelDeletion}
-              onConfirmDeletion={handleConfirmDeletion}
-            />
-          ))}
+          {list.map((item) => {
+            console.log(item, deletionSetupId);
+            return (
+              <Setup
+                key={item._id}
+                {...item}
+                matchString={matchString}
+                isDeleting={deletionSetupId === item._id}
+                onDelete={handleDeleteSetup}
+                onCancelDeletion={handleCancelDeletion}
+                onConfirmDeletion={handleConfirmDeletion}
+              />
+            );
+          })}
         </ul>
       ) : (
         renderHint()

@@ -3,7 +3,7 @@ const getSetupsLoadingStatus = () => (state) => {
 };
 
 const getSetupById = (id) => (state) => {
-  return state.setups.entities && state.setups.entities.find((setup) => setup.id === id);
+  return state.setups.entities && state.setups.entities.find((setup) => setup._id === id);
 };
 
 const getSetupsByTool = (tool) => (state) => {

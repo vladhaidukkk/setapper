@@ -7,15 +7,13 @@ import DownloadBtn from '../../common/downloadBtn';
 
 function SetupPanel({ data }) {
   const { tool } = useParams();
-  const [buildingResult, setBuildingResult] = useState(null);
-  const [metaFile, setMetaFile] = useState(null);
-  const [setupFile, setSetupFile] = useState(null);
+  const buildingResult = builderUtil[tool](data);
+  const [metaFile, setMetaFile] = useState(buildingResult.metaFiles.default);
+  const [setupFile, setSetupFile] = useState(buildingResult.setupFiles.default);
 
   useEffect(() => {
-    const result = builderUtil[tool](data);
-    setBuildingResult(result);
-    setMetaFile(result.metaFiles.default);
-    setSetupFile(result.setupFiles.default);
+    setMetaFile(() => buildingResult.metaFiles.default);
+    setSetupFile(() => buildingResult.setupFiles.default);
   }, [tool]);
 
   const handleMetaFileChange = (newFile) => {
@@ -26,22 +24,26 @@ function SetupPanel({ data }) {
     setSetupFile(() => newFile);
   };
 
-  return buildingResult ? (
+  return buildingResult && metaFile && setupFile ? (
     <div className="flex flex-1 flex-col space-y-2.5">
-      <CodeBox
-        code={buildingResult.setupFiles[setupFile].content}
-        language={buildingResult.setupFiles[setupFile].language}
-        onChange={handleSetupFileChange}
-        selectedOption={setupFile}
-        options={buildingResult.setupFiles.list}
-      />
-      <CodeBox
-        code={buildingResult.metaFiles[metaFile].content}
-        language={buildingResult.metaFiles[metaFile].language}
-        onChange={handleMetaFileChange}
-        selectedOption={metaFile}
-        options={buildingResult.metaFiles.list}
-      />
+      {buildingResult.setupFiles[setupFile] && (
+        <CodeBox
+          code={buildingResult.setupFiles[setupFile].content}
+          language={buildingResult.setupFiles[setupFile].language}
+          onChange={handleSetupFileChange}
+          selectedOption={setupFile}
+          options={buildingResult.setupFiles.list}
+        />
+      )}
+      {buildingResult.metaFiles[metaFile] && (
+        <CodeBox
+          code={buildingResult.metaFiles[metaFile].content}
+          language={buildingResult.metaFiles[metaFile].language}
+          onChange={handleMetaFileChange}
+          selectedOption={metaFile}
+          options={buildingResult.metaFiles.list}
+        />
+      )}
       <div className="flex flex-col">
         <DownloadBtn data={data} label="Download setup" />
       </div>

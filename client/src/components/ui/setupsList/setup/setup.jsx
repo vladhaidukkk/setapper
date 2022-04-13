@@ -6,7 +6,7 @@ import { MatchSpan } from '../../../common/search';
 import { truncateOnIndexHelper } from '../../../../utils/helpers';
 
 function Setup({
-  id,
+  _id,
   title,
   description,
   tool,
@@ -39,12 +39,12 @@ function Setup({
         <p className="text-stone-800 line-clamp-2 dark:text-stone-200">{truncatedDescription}</p>
         <div className="flex items-center space-x-2.5 pt-1">
           <NavLink
-            to={`/builder/${tool}/${id}`}
+            to={`/builder/${tool}/${_id}`}
             className={`flex flex-1 justify-center rounded-md border px-2 py-1 text-xs outline-none
             transition-colors duration-200 hover:border-indigo-600 hover:bg-indigo-500 hover:text-white focus:border-indigo-600
             focus:bg-indigo-500 focus:text-white dark:hover:border-indigo-500 dark:hover:bg-indigo-600 dark:hover:text-white dark:focus:border-indigo-500
             dark:focus:bg-indigo-600 dark:focus:text-white ${
-              setupId === id && !edit
+              setupId === _id && !edit
                 ? 'border-indigo-600 bg-indigo-500 text-white dark:border-indigo-500 dark:bg-indigo-600'
                 : 'border-stone-300 bg-stone-100 text-stone-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400'
             }`}
@@ -52,12 +52,12 @@ function Setup({
             View
           </NavLink>
           <NavLink
-            to={`/builder/${tool}/${id}/edit`}
+            to={`/builder/${tool}/${_id}/edit`}
             className={`flex flex-1 justify-center rounded-md border px-2 py-1 text-xs outline-none
             transition-colors duration-200 hover:border-violet-600 hover:bg-violet-500 hover:text-white focus:border-violet-600
             focus:bg-violet-500 focus:text-white dark:hover:border-violet-500 dark:hover:bg-violet-600 dark:hover:text-white dark:focus:border-violet-500
             dark:focus:bg-violet-600 dark:focus:text-white ${
-              setupId === id && edit === 'edit'
+              setupId === _id && edit === 'edit'
                 ? 'border-violet-600 bg-violet-500 text-white dark:border-violet-500 dark:bg-violet-600'
                 : 'border-stone-300 bg-stone-100 text-stone-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400'
             }`}
@@ -66,7 +66,7 @@ function Setup({
           </NavLink>
           <button
             type="button"
-            onClick={() => onDelete(id)}
+            onClick={() => onDelete(_id)}
             className="flex flex-1 justify-center rounded-md border border-stone-300 bg-stone-100 px-2 py-1
             text-xs text-stone-600 outline-none transition-colors duration-200 hover:border-rose-600
             hover:bg-rose-500 hover:text-white focus:border-rose-600 focus:bg-rose-500 focus:text-white dark:border-stone-700 dark:bg-stone-900
@@ -113,7 +113,7 @@ Setup.defaultProps = {
 };
 
 Setup.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tool: PropTypes.string.isRequired,

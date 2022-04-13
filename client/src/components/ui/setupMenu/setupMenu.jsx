@@ -1,11 +1,10 @@
 import React from 'react';
-import { useDropdown, useRandomId } from 'hooks';
 import { DotsHorizontalIcon, PencilAltIcon, ShareIcon, TrashIcon } from '@heroicons/react/solid';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useDropdown, useRandomId, useModal } from '../../../hooks';
 import SetupMenuOptionsList from './setupMenuOptionsList/setupMenuOptionsList';
 import { removeSetup } from '../../../store/setups/setups.actions';
-import { useModal } from '../../../hooks';
 import ConfirmDeletionPopup from '../confirmDeletionPopup';
 import ShareSetupPopup from '../shareSetupPopup';
 

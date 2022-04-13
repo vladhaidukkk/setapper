@@ -3,15 +3,16 @@ import localStorageService from './localStorage.service';
 import configKeys from '../config.json';
 
 const authHttp = axios.create({
-  baseURL: configKeys.useFirebase ? configKeys.firebaseAuthApiEndpoint : configKeys.apiEndpoint,
+  baseURL: configKeys.useFirebase ? configKeys.firebaseAuthApiEndpoint : `${configKeys.apiEndpoint}auth/`,
   params: {
     key: configKeys.useFirebase ? process.env.REACT_APP_FIREBASE_API_KEY : undefined,
   },
 });
 
-const signUp = async ({ email, password }) => {
+const signUp = async (payload) => {
   const requestUrl = configKeys.useFirebase ? 'accounts:signUp' : 'signUp';
-  const { data } = await authHttp.post(requestUrl, { email, password, returnSecureToken: true });
+  const requestBody = configKeys.useFirebase ? { ...payload, returnSecureToken: true } : payload;
+  const { data } = await authHttp.post(requestUrl, requestBody);
   return data;
 };
 

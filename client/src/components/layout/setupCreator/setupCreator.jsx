@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';
 import { useForm } from 'react-hook-form';
@@ -16,10 +16,15 @@ function SetupCreator() {
     handleSubmit,
     register,
     watch,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: getDefaultSetupDataHelper(tool),
   });
+
+  useEffect(() => {
+    reset(getDefaultSetupDataHelper(tool));
+  }, [tool]);
 
   const handleFormSubmit = (data) => {
     dispatch(createSetup({ ...data, tool, options: validateSetupOptionsHelper(tool, data.options) }));
