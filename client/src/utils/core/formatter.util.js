@@ -5,7 +5,11 @@ const formatJsStr = (str) => {
   return prettier.format(str, {
     parser: 'babel',
     plugins: [babelParser],
-    printWidth: 60,
+    printWidth: 80,
+    singleQuote: true,
+    semi: true,
+    trailingComma: 'es5',
+    tabWidth: 2,
   });
 };
 

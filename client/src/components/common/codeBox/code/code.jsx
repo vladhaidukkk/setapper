@@ -11,7 +11,7 @@ function Code({ content, language }) {
 
   return (
     <div className="Code">
-      <pre className="rounded-b-md">
+      <pre className="max-h-[36rem] rounded-b-md">
         <code className={`language-${language}`}>{content}</code>
       </pre>
     </div>

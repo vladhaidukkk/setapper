@@ -1,7 +1,7 @@
 const commonConstants = {
   FILES: {
     setapperJson: 'setapper.json',
-    instructionTxt: 'instruction.txt',
+    instructionJson: 'instruction.json',
     structureJson: 'structure.json',
     packageJson: 'package.json',
   },

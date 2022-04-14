@@ -1,10 +1,28 @@
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 import { builderConstants } from '../../constants';
+import formatterUtil from '../formatter.util';
 
 const buildSetapperJson = (data) => {
   return { content: JSON.stringify(data), language: 'json' };
 };
 
-const buildInstructionTxt = () => ({ content: 'hello', language: 'txt' });
+const buildInstructionJson = (options) => {
+  const content = `
+  {
+    "start":"To start development download setup",
+    "preparation":"Before coding download all dependencies using (npm install) or (yarn install)",
+    "commands":{
+      ${options.enableDevServer ? '"start":"Run your project on development server",' : ''}
+      "build":"Build your project for production"
+      ${options.envOptimization ? ',"dev":"Build your project in development mode"' : ''}
+    },
+    "commandsHelp":"If you use npm you can run commands using (npm run command-name), if yarn (yarn command-name)"
+  }
+  `;
+
+  return { content, language: 'json' };
+};
 
 const buildStructureJson = (options, initialOptions) => {
   const commonFiles = builderConstants.common.FILES;
@@ -16,6 +34,7 @@ const buildStructureJson = (options, initialOptions) => {
       "${options.entryFolder || initialOptions.entryFolder.defaultValue}":{
         "files":[
           "${options.entryFilename || initialOptions.entryFilename.defaultValue}.js"
+          ${options.htmlPlugin ? `,"${options.htmlTemplate || initialOptions.htmlTemplate.defaultValue}.html"` : ''}
         ]
       },
       "files":[
@@ -92,9 +111,11 @@ const buildWebpackConfig = (options, initialOptions) => {
       ? `plugins:[
         ${
           options.htmlPlugin
-            ? `new HtmlWebpackPlugin({${options.htmlTitle ? `title:'${options.htmlTitle}',` : ''}template:'${
-                options.htmlTemplate || initialOptions.htmlTemplate.defaultValue
-              }',${options.envOptimization ? 'minify:isProd,' : ''}}),`
+            ? `new HtmlWebpackPlugin({${options.htmlTitle ? `title:'${options.htmlTitle}',` : ''}template:'./${
+                options.entryFolder || initialOptions.entryFolder.defaultValue
+              }/${options.htmlTemplate || initialOptions.htmlTemplate.defaultValue}.html',${
+                options.envOptimization ? 'minify:isProd,' : ''
+              }}),`
             : ''
         }${
           options.cssPlugin
@@ -111,7 +132,75 @@ const buildWebpackConfig = (options, initialOptions) => {
         }${options.eslintPlugin ? 'new ESLintPlugin(),' : ''}${
           options.stylelintPlugin ? 'new StylelintPlugin(),' : ''
         }${options.dotenvPlugin ? 'new Dotenv(),' : ''}
-      ]`
+      ],`
+      : ''
+  }${
+    options.htmlLoader ||
+    options.cssLoader ||
+    options.postcssLoader ||
+    options.sassLoader ||
+    options.lessLoader ||
+    options.babelLoader ||
+    options.xmlLoader ||
+    options.imagesLoader ||
+    options.fontsLoader
+      ? `module:{rules:[
+        ${options.htmlLoader ? "{test:/\\.html$/i,loader: 'html-loader',}," : ''}${
+          options.cssLoader
+            ? `{test:/\\.css$/i,use:[${
+                options.envOptimization && options.cssPlugin
+                  ? 'isProd?MiniCssExtractPlugin.loader:"style-loader"'
+                  : `${options.cssPlugin ? 'MiniCssExtractPlugin.loader' : '"style-loader"'}`
+              },'css-loader',${
+                options.postcssLoader && options.postcssEnvPreset
+                  ? `{loader:"postcss-loader",options:{postcssOptions:{plugins:[["postcss-preset-env",{}]]}}}`
+                  : `${options.postcssLoader ? '"postcss-loader"' : ''}`
+              }],},`
+            : ''
+        }${
+          options.cssLoader && options.sassLoader
+            ? `{test:/\\.s[ac]ss$/i,use:[${
+                options.envOptimization && options.cssPlugin
+                  ? 'isProd?MiniCssExtractPlugin.loader:"style-loader"'
+                  : `${options.cssPlugin ? 'MiniCssExtractPlugin.loader' : '"style-loader"'}`
+              },'css-loader',${
+                options.postcssLoader && options.postcssEnvPreset
+                  ? `{loader:"postcss-loader",options:{postcssOptions:{plugins:[["postcss-preset-env",{}]]}}},`
+                  : `${options.postcssLoader ? '"postcss-loader",' : ''}`
+              }"resolve-url-loader","sass-loader"],},`
+            : ''
+        }${
+          options.cssLoader && options.lessLoader
+            ? `{test:/\\.less$/i,use:[${
+                options.envOptimization && options.cssPlugin
+                  ? 'isProd?MiniCssExtractPlugin.loader:"style-loader"'
+                  : `${options.cssPlugin ? 'MiniCssExtractPlugin.loader' : '"style-loader"'}`
+              },'css-loader',${
+                options.postcssLoader && options.postcssEnvPreset
+                  ? `{loader:"postcss-loader",options:{postcssOptions:{plugins:[["postcss-preset-env",{}]]}}},`
+                  : `${options.postcssLoader ? '"postcss-loader",' : ''}`
+              }"less-loader"],},`
+            : ''
+        }${
+          options.babelLoader
+            ? `{test:/\\.${
+                options.reactPreset ? '(js|jsx)' : 'js'
+              }$/i,exclude: /node_modules/,use:{loader:"babel-loader",options:{presets:["@babel/preset-env",${
+                options.reactPreset ? '"@babel/preset-react"' : ''
+              }]}}},`
+            : ''
+        }${
+          options.babelLoader && options.typescriptPreset
+            ? `{test:/\\.${
+                options.reactPreset ? '(ts|tsx)' : 'ts'
+              }$/i,exclude: /node_modules/,use:{loader:"babel-loader",options:{presets:["@babel/preset-env",${
+                options.reactPreset ? '"@babel/preset-react",' : ''
+              }"@babel/preset-typescript"]}}},`
+            : ''
+        }${options.xmlLoader ? '{test: /\\.xml$/i,type: "xml-loader"},' : ''}${
+          options.imagesLoader ? '{test: /\\.(png|svg|jpg|jpeg|gif)$/i,type: "asset/resource"},' : ''
+        }${options.fontsLoader ? '{test: /\\.(woff|woff2|eot|ttf|otf)$/i,type: "asset/resource"},' : ''}
+      ]}`
       : ''
   }
   };`;
@@ -119,25 +208,48 @@ const buildWebpackConfig = (options, initialOptions) => {
   return { content, language: 'javascript' };
 };
 
-const buildPackageJson = (data, initialOptions) => {
+const buildPackageJson = (data) => {
   const { title, version, options } = data;
 
   const content = `
   {
     "name":"${title}",
-    "version":"${version || '1.0.0'}",
+    "version":"${version}",
     "private":true,
     "scripts":{
-      "build":"webpack ${options.entryFolder || initialOptions.entryFolder.defaultValue}"
+      ${
+        options.enableDevServer
+          ? `"start":"${options.envOptimization ? 'cross-env NODE_ENV=development ' : ''}webpack serve",`
+          : ''
+      }
+      "build":"${options.envOptimization ? 'cross-env NODE_ENV=production ' : ''}webpack"
+      ${options.envOptimization ? ',"dev":"cross-env NODE_ENV=development webpack"' : ''}
     },
     "devDependencies":{
       "webpack":"^5.70.0",
       "webpack-cli":"^4.9.2"
+      ${options.enableDevServer ? ',"webpack-dev-server": "^4.7.4"' : ''}
+      ${options.envOptimization ? ',"cross-env": "^7.0.3"' : ''}
       ${options.htmlPlugin ? ',"html-webpack-plugin":"^5.5.0"' : ''}
       ${options.cssPlugin ? ',"mini-css-extract-plugin":"^2.6.0"' : ''}
       ${options.eslintPlugin ? ',"eslint":"^8.11.0","eslint-webpack-plugin":"^3.1.1"' : ''}
       ${options.stylelintPlugin ? ',"stylelint": "^14.6.0","stylelint-webpack-plugin":"^3.1.1"' : ''}
       ${options.dotenvPlugin ? ',"dotenv-webpack":"^7.1.0"' : ''}
+      ${options.optimizeCode ? ',"terser-webpack-plugin": "^5.3.1","css-minimizer-webpack-plugin": "^3.4.1"' : ''}
+      ${options.htmlLoader ? ',"html-loader": "^3.1.0"' : ''}
+      ${options.cssLoader ? ',"css-loader": "^6.7.1","style-loader": "^3.3.1"' : ''}
+      ${options.postcssLoader ? ',"postcss": "^8.4.12","postcss-loader": "^6.2.1"' : ''}
+      ${options.postcssEnvPreset ? ',"postcss-preset-env": "^7.4.3"' : ''}
+      ${options.sassLoader ? ',"sass": "^1.49.9","sass-loader": "^12.6.0","resolve-url-loader": "^5.0.0"' : ''}
+      ${options.lessLoader ? ',"less": "^4.1.2","less-loader": "^10.2.0"' : ''}
+      ${options.babelLoader ? ',"@babel/core": "^7.17.8","@babel/preset-env": "^7.16.11","babel-loader": "^8.2.3"' : ''}
+      ${options.reactPreset ? ',"@babel/preset-react": "^7.16.7"' : ''}
+      ${options.typescriptPreset ? ',"@babel/preset-typescript": "^7.16.7"' : ''}
+      ${options.xmlLoader ? ',"xml-loader": "^1.2.1"' : ''}
+    }${
+      options.babelLoader
+        ? ',"browserslist":{"production":[">0.2%","not dead","not op_mini all"],"development":["last 1 chrome version","last 1 firefox version","last 1 safari version"]}'
+        : ''
     }
   }
   `;
@@ -145,72 +257,24 @@ const buildPackageJson = (data, initialOptions) => {
   return { content, language: 'json' };
 };
 
-// const buildPostcssConfig = (data) => {};
-
-// const buildBabelConfig = (data) => {};
-
 const webpackBuilder = (data) => {
   const commonFiles = builderConstants.common.FILES;
   const webpackFiles = builderConstants.webpack.FILES;
   const initialOptions = builderConstants.webpack.OPTIONS;
 
   const setapperJson = buildSetapperJson(data);
-  const instructionTxt = buildInstructionTxt();
+  const instructionJson = buildInstructionJson(data.options);
   const structureJson = buildStructureJson(data.options, initialOptions);
 
   const webpackConfig = buildWebpackConfig(data.options, initialOptions);
-  const packageJson = buildPackageJson(data, initialOptions);
-
-  // const webpackConfigJs = `
-  //   const path = require('path');
-  //
-  //   module.exports = {
-  //     entry: './${options.entry || initialOptions.entry.defaultValue}',
-  //     output: {
-  //       path: path.resolve(__dirname, '${options.outputPath || initialOptions.outputPath.defaultValue}'),
-  //       filename: '${options.outputFilename || initialOptions.outputFilename.defaultValue}',
-  //       ${options.clean ? 'clean: true,' : ''}
-  //     },
-  //     ${
-  //       options.optimization
-  //         ? `optimization: {
-  //             splitChunks: {
-  //               chunks: 'all'
-  //             },
-  //           },`
-  //         : ''
-  //     }${
-  //   options.cssLoader
-  //     ? `module: {
-  //         rules: [
-  //           ${
-  //             options.cssLoader
-  //               ? `{
-  //                 test: /\\.css$/i,
-  //                 use: ['style-loader', 'css-loader'],
-  //               },`
-  //               : ''
-  //           }${
-  //         options.sassLoader
-  //           ? `{
-  //                 test: /\\.(s[ac]ss)$/i,
-  //                 use: ['style-loader', 'css-loader', 'sass-loader'],
-  //               },`
-  //           : ''
-  //       }
-  //         ],
-  //       },`
-  //     : ''
-  // }
-  //   };
-  // `;
+  const packageJson = buildPackageJson(data);
 
   return {
     metaFiles: {
       default: commonFiles.setapperJson,
-      list: [commonFiles.setapperJson, commonFiles.instructionTxt, commonFiles.structureJson],
+      list: [commonFiles.setapperJson, commonFiles.instructionJson, commonFiles.structureJson],
       [commonFiles.setapperJson]: setapperJson,
-      [commonFiles.instructionTxt]: instructionTxt,
+      [commonFiles.instructionJson]: instructionJson,
       [commonFiles.structureJson]: structureJson,
     },
     setupFiles: {
@@ -218,6 +282,22 @@ const webpackBuilder = (data) => {
       list: [webpackFiles.webpackConfig, commonFiles.packageJson],
       [webpackFiles.webpackConfig]: webpackConfig,
       [commonFiles.packageJson]: packageJson,
+    },
+    download: async () => {
+      const zip = new JSZip();
+
+      const folder = zip.folder('setapper');
+      folder.file(webpackFiles.webpackConfig, formatterUtil.formatJsStr(webpackConfig.content));
+      folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
+
+      const sourceFolder = folder.folder(data.options.entryFolder || initialOptions.entryFolder.defaultValue);
+      sourceFolder.file(`${data.options.entryFilename || initialOptions.entryFilename.defaultValue}.js`, '');
+      if (data.options.htmlPlugin) {
+        sourceFolder.file(`${data.options.htmlTemplate || initialOptions.htmlTemplate.defaultValue}.html`, '');
+      }
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      saveAs(content, 'setapper.zip');
     },
   };
 };

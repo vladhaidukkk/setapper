@@ -1,23 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import JSZip from 'jszip';
 import { useParams } from 'react-router-dom';
-import { saveAs } from 'file-saver';
 import { builderUtil } from '../../../utils/core';
-import { builderConstants } from '../../../utils/constants';
 
 function DownloadBtn({ data, label }) {
   const { tool } = useParams();
 
   const handleDownload = async () => {
     const buildingResult = builderUtil[tool](data);
-    const zip = new JSZip();
-    zip.file(
-      builderConstants[tool].FILES.webpackConfig,
-      buildingResult.setupFiles[builderConstants[tool].FILES.webpackConfig].content
-    );
-    const content = await zip.generateAsync({ type: 'blob' });
-    saveAs(content, 'ddd.zip');
+    await buildingResult.download();
   };
 
   return (

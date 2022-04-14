@@ -1,12 +1,9 @@
 const webpackConstants = {
   FILES: {
     webpackConfig: 'webpack.config.js',
-    postcssConfig: 'postcss.config.js',
-    babelConfig: 'babel.config.js',
   },
   OPTIONS: {
     entryFolder: {
-      // done
       label: 'Entry folder name',
       description: 'Name of the folder with source code',
       dataType: 'string',
@@ -14,7 +11,6 @@ const webpackConstants = {
       required: true,
     },
     entryFilename: {
-      // done
       label: 'Entry filename',
       description: 'Name of the main JavaScript file',
       dataType: 'string',
@@ -22,7 +18,6 @@ const webpackConstants = {
       required: true,
     },
     outputFolder: {
-      // done
       label: 'Output folder name',
       description: 'Name of the folder with bundled code',
       dataType: 'string',
@@ -30,7 +25,6 @@ const webpackConstants = {
       required: true,
     },
     outputFilename: {
-      // done
       label: 'Output filename',
       description: 'Name of the file with bundled JavaScript code',
       dataType: 'string',
@@ -38,28 +32,24 @@ const webpackConstants = {
       required: true,
     },
     hashOutputFilenames: {
-      // done +-
       label: 'Hash output filenames',
       description: 'Should output filenames be hashed to prevent caching',
       dataType: 'boolean',
       defaultValue: false,
     },
     cleanOutputFolder: {
-      // done
       label: 'Clean output folder',
       description: 'Should output folder be cleaned before new bundle',
       dataType: 'boolean',
       defaultValue: true,
     },
     enableDevServer: {
-      // noooo
       label: 'Enable DevServer',
       description: 'Enable mode of live-coding with page reloading after changes',
       dataType: 'boolean',
       defaultValue: true,
     },
     devServerPort: {
-      // done
       label: 'DevServer port',
       description: 'Number of the port on which your DevServer should run',
       dataType: 'number',
@@ -67,64 +57,55 @@ const webpackConstants = {
       required: true,
     },
     openDevServer: {
-      // done
       label: 'Open DevServer',
       description: 'Should Browser be opened after you start your DevServer',
       dataType: 'boolean',
       defaultValue: true,
     },
     optimizeCode: {
-      // done
       label: 'Optimize code',
       description: 'Should webpack optimize your bundled code',
       dataType: 'boolean',
       defaultValue: false,
     },
     envOptimization: {
-      // done
       label: 'Environment optimization',
       description: 'Should webpack optimize code depending on environment mode',
       dataType: 'boolean',
       defaultValue: false,
     },
     enableDevTools: {
-      // done
       label: 'Enable DevTools',
       description: 'Add map files to your bundled files what helps in debugging',
       dataType: 'boolean',
       defaultValue: false,
     },
     htmlPlugin: {
-      // done
       label: 'HTML plugin',
       description: 'This plugin create an HTML file in the output folder',
       dataType: 'boolean',
       defaultValue: true,
     },
     htmlTitle: {
-      // done
       label: 'HTML title',
       description: 'A title of your HTML file',
       dataType: 'string',
       defaultValue: '',
     },
     htmlTemplate: {
-      // done
       label: 'HTML template',
-      description: 'A path to an HTML file which will be taken as a template for your bundled HTML',
+      description: 'Name of the HTML file which will be taken as a template for your bundled HTML',
       dataType: 'string',
-      defaultValue: 'src/index.html',
+      defaultValue: 'index',
       required: true,
     },
     cssPlugin: {
-      // done
       label: 'CSS plugin',
       description: 'This plugin create a CSS file in the output folder',
       dataType: 'boolean',
       defaultValue: false,
     },
     cssFilename: {
-      // done
       label: 'CSS filename',
       description: 'Name of the file with bundled CSS code',
       dataType: 'string',
@@ -218,12 +199,6 @@ const webpackConstants = {
     fontsLoader: {
       label: 'Fonts loader',
       description: 'This loader allows you to import fonts in JS',
-      dataType: 'boolean',
-      defaultValue: false,
-    },
-    splitConfigs: {
-      label: 'Split config files',
-      description: 'Move babel and other configs into separate files',
       dataType: 'boolean',
       defaultValue: false,
     },
