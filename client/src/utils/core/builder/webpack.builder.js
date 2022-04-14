@@ -286,7 +286,7 @@ const webpackBuilder = (data) => {
     download: async () => {
       const zip = new JSZip();
 
-      const folder = zip.folder('setapper');
+      const folder = zip.folder('webpack-setup');
       folder.file(webpackFiles.webpackConfig, formatterUtil.formatJsStr(webpackConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 
