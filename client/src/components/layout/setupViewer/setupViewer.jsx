@@ -21,7 +21,7 @@ function SetupViewer() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 py-2.5 px-3.5 pb-0">
-      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
+      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto px-1">
         <div className="flex items-start justify-between space-x-2.5">
           <h2 className="text-2xl font-medium text-black dark:text-white">{setup.title}</h2>
           <SetupMenu />
@@ -30,7 +30,7 @@ function SetupViewer() {
         <div className="flex space-x-2.5">
           <DetailInfo label="version:" value={setup.version} />
           <DetailInfo label="created:" value={moment(setup.createdAt).format('MMM Do YY')} />
-          <DetailInfo label="modified:" value={moment(setup.modifiedAt).format('MMM Do YY')} />
+          <DetailInfo label="modified:" value={moment(setup.updatedAt).format('MMM Do YY')} />
         </div>
         <div className="space-y-2.5">
           {/* <h3 className="text-lg">Comments</h3> */}

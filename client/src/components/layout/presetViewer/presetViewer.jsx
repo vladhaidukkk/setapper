@@ -18,7 +18,7 @@ function PresetViewer() {
         <div className="flex space-x-2.5">
           <DetailInfo label="version:" value={preset.version} />
           <DetailInfo label="created:" value={moment(preset.createdAt).format('MMM Do YY')} />
-          <DetailInfo label="modified:" value={moment(preset.modifiedAt).format('MMM Do YY')} />
+          <DetailInfo label="modified:" value={moment(preset.updatedAt).format('MMM Do YY')} />
         </div>
         {/* <div className="space-y-2.5"> */}
         {/*  <h3 className="text-lg font-medium">Leave a comment</h3> */}

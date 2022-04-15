@@ -87,10 +87,10 @@ const gulpBuilder = (data) => {
       [gulpFiles.gulpConfig]: gulpConfig,
       [commonFiles.packageJson]: packageJson,
     },
-    download: async () => {
+    download: async (folderName) => {
       const zip = new JSZip();
 
-      const folder = zip.folder('gulp-setup');
+      const folder = zip.folder(folderName || 'gulp-setup');
       folder.file(gulpFiles.gulpConfig, formatterUtil.formatJsStr(gulpConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 

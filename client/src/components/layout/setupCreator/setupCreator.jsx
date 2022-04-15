@@ -8,6 +8,8 @@ import Form, { SubmitBtn, TextareaField, TextField } from '../../common/form';
 import OptionFieldsList from '../../ui/optionFieldsList';
 import SetupPanel from '../../ui/setupPanel';
 import { getDefaultSetupDataHelper, validateSetupOptionsHelper } from '../../../utils/helpers';
+import Alert from '../../common/alert';
+import { builderConstants } from '../../../utils/constants';
 
 function SetupCreator() {
   const dispatch = useDispatch();
@@ -33,6 +35,11 @@ function SetupCreator() {
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
       <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
+        {!builderConstants[tool].PRODUCTION && (
+          <Alert
+            message={`${capitalize(tool)} configuration options are in development. Now you can't create setup for it.`}
+          />
+        )}
         <h3 className="px-1 text-2xl font-medium text-black dark:text-white">New {capitalize(tool)} setup</h3>
         <div className="overflow-y-auto px-1 pb-2.5">
           <Form onSubmit={handleSubmit(handleFormSubmit)} register={register}>
@@ -64,7 +71,7 @@ function SetupCreator() {
               }}
             />
             <OptionFieldsList name="options" />
-            <SubmitBtn>Create setup</SubmitBtn>
+            {builderConstants[tool].PRODUCTION && <SubmitBtn>Create setup</SubmitBtn>}
           </Form>
         </div>
       </div>

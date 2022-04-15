@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { PresetViewer, ToolPresetsViewer } from '../components/layout';
+import { PresetLoader } from '../hoc';
 
 const presetsRoutes = [
   {
@@ -9,7 +10,11 @@ const presetsRoutes = [
   },
   {
     path: ':tool/:presetId/',
-    element: <PresetViewer />,
+    element: (
+      <PresetLoader>
+        <PresetViewer />
+      </PresetLoader>
+    ),
   },
   {
     path: ':tool/:presetId/*',

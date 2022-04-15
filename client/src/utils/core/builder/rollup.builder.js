@@ -87,10 +87,10 @@ const eslintBuilder = (data) => {
       [rollupFiles.rollupConfig]: rollupConfig,
       [commonFiles.packageJson]: packageJson,
     },
-    download: async () => {
+    download: async (folderName) => {
       const zip = new JSZip();
 
-      const folder = zip.folder('rollup-setup');
+      const folder = zip.folder(folderName || 'rollup-setup');
       folder.file(rollupFiles.rollupConfig, formatterUtil.formatJsStr(rollupConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 

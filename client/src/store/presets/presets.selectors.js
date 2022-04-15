@@ -3,7 +3,7 @@ const getPresetsLoadingStatus = () => (state) => {
 };
 
 const getPresetById = (id) => (state) => {
-  return state.presets.entities && state.presets.entities.find((preset) => preset.id === id);
+  return state.presets.entities && state.presets.entities.find((preset) => preset._id === id);
 };
 
 const getPresetsByTool = (tool) => (state) => {

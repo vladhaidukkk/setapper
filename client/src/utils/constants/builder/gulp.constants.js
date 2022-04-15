@@ -1,4 +1,5 @@
 const gulpConstants = {
+  PRODUCTION: false,
   FILES: {
     gulpConfig: 'gulpfile.js',
   },

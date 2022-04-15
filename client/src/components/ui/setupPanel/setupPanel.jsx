@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { builderUtil } from '../../../utils/core';
 import CodeBox from '../../common/codeBox';
 import DownloadBtn from '../../common/downloadBtn';
+import { builderConstants } from '../../../utils/constants';
 
 function SetupPanel({ data }) {
   const { tool } = useParams();
@@ -44,9 +45,11 @@ function SetupPanel({ data }) {
           options={buildingResult.metaFiles.list}
         />
       )}
-      <div className="flex flex-col">
-        <DownloadBtn data={data} label="Download setup" />
-      </div>
+      {builderConstants[tool].PRODUCTION && (
+        <div className="flex flex-col">
+          <DownloadBtn data={data} label="Download setup" folderName={`${tool}-setup`} />
+        </div>
+      )}
     </div>
   ) : null;
 }

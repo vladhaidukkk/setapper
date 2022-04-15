@@ -1,4 +1,5 @@
 const stylelintConstants = {
+  PRODUCTION: false,
   FILES: {
     stylelintConfig: 'stylelint.config.js',
   },

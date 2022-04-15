@@ -87,10 +87,10 @@ const prettierBuilder = (data) => {
       [prettierFiles.prettierConfig]: prettierConfig,
       [commonFiles.packageJson]: packageJson,
     },
-    download: async () => {
+    download: async (folderName) => {
       const zip = new JSZip();
 
-      const folder = zip.folder('prettier-setup');
+      const folder = zip.folder(folderName || 'prettier-setup');
       folder.file(prettierFiles.prettierConfig, formatterUtil.formatJsonStr(prettierConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 

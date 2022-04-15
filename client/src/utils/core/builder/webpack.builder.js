@@ -283,10 +283,10 @@ const webpackBuilder = (data) => {
       [webpackFiles.webpackConfig]: webpackConfig,
       [commonFiles.packageJson]: packageJson,
     },
-    download: async () => {
+    download: async (folderName) => {
       const zip = new JSZip();
 
-      const folder = zip.folder('webpack-setup');
+      const folder = zip.folder(folderName || 'webpack-setup');
       folder.file(webpackFiles.webpackConfig, formatterUtil.formatJsStr(webpackConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 

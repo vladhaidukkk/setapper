@@ -7,6 +7,7 @@ import SetupMenuOptionsList from './setupMenuOptionsList/setupMenuOptionsList';
 import { removeSetup } from '../../../store/setups/setups.actions';
 import ConfirmDeletionPopup from '../confirmDeletionPopup';
 import ShareSetupPopup from '../shareSetupPopup';
+import { createAccess } from '../../../store/accesses/accesses.ations';
 
 function SetupMenu() {
   const { tool, setupId } = useParams();
@@ -17,7 +18,8 @@ function SetupMenu() {
   const { open, close } = useModal();
 
   const handleShareSubmit = (data) => {
-    console.log(data);
+    close();
+    dispatch(createAccess({ ...data, setupId }));
   };
 
   const handleShare = () => {

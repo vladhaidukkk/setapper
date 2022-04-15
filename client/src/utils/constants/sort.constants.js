@@ -13,7 +13,7 @@ const sortConstants = {
       { value: 'title', label: 'Title', icon: PencilIcon },
       { value: 'description', label: 'Description', icon: PencilAltIcon },
       { value: 'createdAt', label: 'Creation', icon: CalendarIcon },
-      { value: 'modifiedAt', label: 'Modification', icon: ClockIcon },
+      { value: 'updatedAt', label: 'Modification', icon: ClockIcon },
     ],
     orderOptions: [
       { value: 'asc', label: 'Asc', icon: SortAscendingIcon },

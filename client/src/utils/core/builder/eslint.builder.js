@@ -87,10 +87,10 @@ const eslintBuilder = (data) => {
       [eslintFiles.eslintConfig]: eslintConfig,
       [commonFiles.packageJson]: packageJson,
     },
-    download: async () => {
+    download: async (folderName) => {
       const zip = new JSZip();
 
-      const folder = zip.folder('eslint-setup');
+      const folder = zip.folder(folderName || 'eslint-setup');
       folder.file(eslintFiles.eslintConfig, formatterUtil.formatJsStr(eslintConfig.content));
       folder.file(commonFiles.packageJson, formatterUtil.formatJsonStr(packageJson.content));
 

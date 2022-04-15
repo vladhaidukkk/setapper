@@ -5,7 +5,7 @@ import { parserUtil } from '../../../../utils/core';
 import { MatchSpan } from '../../../common/search';
 import { truncateOnIndexHelper } from '../../../../utils/helpers';
 
-function Preset({ id, title, description, tool, matchString, version }) {
+function Preset({ _id, title, description, tool, matchString, version }) {
   const { presetId } = useParams();
 
   const titleComps = matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
@@ -26,12 +26,12 @@ function Preset({ id, title, description, tool, matchString, version }) {
         <p className="text-stone-800 line-clamp-2 dark:text-stone-200">{truncatedDescription}</p>
         <div className="flex items-center space-x-2.5 pt-1">
           <NavLink
-            to={`/builder/${tool}/${id}`}
+            to={`/presets/${tool}/${_id}`}
             className={`flex flex-1 justify-center rounded-md border px-2 py-1 text-xs outline-none
             transition-colors duration-200 hover:border-indigo-600 hover:bg-indigo-500 hover:text-white focus:border-indigo-600
             focus:bg-indigo-500 focus:text-white dark:hover:border-indigo-500 dark:hover:bg-indigo-600 dark:hover:text-white dark:focus:border-indigo-500
             dark:focus:bg-indigo-600 dark:focus:text-white ${
-              presetId === id
+              presetId === _id
                 ? 'border-indigo-600 bg-indigo-500 text-white dark:border-indigo-500 dark:bg-indigo-600'
                 : 'border-stone-300 bg-stone-100 text-stone-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400'
             }`}
@@ -49,7 +49,7 @@ Preset.defaultProps = {
 };
 
 Preset.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tool: PropTypes.string.isRequired,

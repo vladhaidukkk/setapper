@@ -1,4 +1,5 @@
 const webpackConstants = {
+  PRODUCTION: true,
   FILES: {
     webpackConfig: 'webpack.config.js',
   },

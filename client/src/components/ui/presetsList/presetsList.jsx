@@ -22,7 +22,7 @@ function PresetsList({ list, matchString, notFound }) {
       {list && list.length !== 0 ? (
         <ul className="flex grow flex-col space-y-2 overflow-y-auto">
           {list.map((item) => (
-            <Preset key={item.id} {...item} matchString={matchString} />
+            <Preset key={item._id} {...item} matchString={matchString} />
           ))}
         </ul>
       ) : (
