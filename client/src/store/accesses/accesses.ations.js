@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { accessesService } from '../../services';
 import { handleError } from '../errors/errors.actions';
 import { errorConstants } from '../../utils/constants';
@@ -28,6 +29,7 @@ const createAccess = (payload) => async (dispatch) => {
   try {
     const data = await accessesService.createAccess(payload);
     dispatch(created(data));
+    toast.success('User was invited to setup');
   } catch (error) {
     dispatch(creationFailed());
     dispatch(handleError({ type: errorConstants.types.ACCESSES, error }));
