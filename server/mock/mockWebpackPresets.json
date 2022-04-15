@@ -1,5 +1,6 @@
 [
   {
+    "localId": 1,
     "title": "Vanilla JavaScript",
     "description": "Webpack preset for easy and fast development on Vanilla JavaScript without any frameworks",
     "version": "1.0.0",
@@ -40,6 +41,7 @@
     }
   },
   {
+    "localId": 2,
     "title": "Vanilla TypeScript",
     "description": "Webpack preset for easy and fast development on Vanilla TypeScript without any frameworks",
     "version": "1.0.0",
@@ -80,6 +82,7 @@
     }
   },
   {
+    "localId": 3,
     "title": "React JS",
     "description": "Webpack preset for easy and fast development on React Framework with JavaScript",
     "version": "1.0.0",
@@ -120,6 +123,7 @@
     }
   },
   {
+    "localId": 4,
     "title": "React TS",
     "description": "Webpack preset for easy and fast development on React Framework with TypeScript",
     "version": "1.0.0",
