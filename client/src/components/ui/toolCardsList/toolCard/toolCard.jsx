@@ -42,8 +42,7 @@ function ToolCard({ name, icon: Icon, text, link }) {
             <a
               href={link}
               target="_blank"
-              className="flex items-center text-sm text-stone-600 transition-all hover:text-indigo-500 focus:text-indigo-500
-              dark:text-stone-400 md:text-base lg:text-sm xl:text-base 2xl:text-sm"
+              className="inline-flex items-center text-sm text-stone-600 transition-all duration-200 hover:text-indigo-500 focus:text-indigo-500 dark:text-stone-400 dark:hover:text-indigo-500 dark:focus:text-indigo-500 md:text-base lg:text-sm xl:text-base 2xl:text-sm"
               rel="noreferrer"
             >
               <BookOpenIcon className="mr-1 h-5 w-5" />

@@ -1,14 +1,16 @@
 import React from 'react';
-import { Header } from '../../components/layout';
+import { BuilderOptions, Footer, Header } from '../../components/layout';
 import BuilderIntro from '../../components/layout/builderIntro/builderIntro';
 
 function BuilderInspector() {
   return (
     <div className="flex h-screen flex-col">
       <Header />
-      <main className="flex-auto bg-white dark:bg-stone-800">
+      <main>
         <BuilderIntro />
+        <BuilderOptions />
       </main>
+      <Footer />
     </div>
   );
 }

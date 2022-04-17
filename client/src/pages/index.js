@@ -5,7 +5,7 @@ import Registration from './auth/registration/registration';
 import Builder from './builder/builder';
 import Home from './home/home';
 import Presets from './presets/presets';
-import Dashboard from './dashboard/dashboard';
+import Control from './control/control';
 import Settings from './settings/settings';
 import Profile from './settings/profile/profile';
 import BuilderInspector from './builderInspector/builderInspector';
@@ -20,7 +20,7 @@ export {
   BuilderInspector,
   Home,
   Presets,
-  Dashboard,
+  Control,
   Settings,
   Profile,
   PresetsInspector,

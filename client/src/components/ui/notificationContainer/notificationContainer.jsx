@@ -21,7 +21,7 @@ function NotificationContainer() {
   return (
     <ToastContainer
       autoClose={4000}
-      limit={6}
+      limit={3}
       transition={Slide}
       draggablePercent={60}
       closeButton={false}

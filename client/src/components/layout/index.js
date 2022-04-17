@@ -9,6 +9,8 @@ import Footer from './footer/footer';
 import PresetsBar from './presetsBar/presetsBar';
 import ToolPresetsViewer from './toolPresetsViewer/toolPresetsViewer';
 import PresetViewer from './presetViewer/presetViewer';
+import BuilderOptions from './builderOptions/builderOptions';
+import PresetsOptions from './presetsOptions/presetsOptions';
 
 export {
   SetupsBar,
@@ -22,4 +24,6 @@ export {
   PresetsBar,
   PresetViewer,
   ToolPresetsViewer,
+  BuilderOptions,
+  PresetsOptions,
 };

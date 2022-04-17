@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { Auth, Builder, BuilderInspector, Dashboard, Home, Presets, PresetsInspector, Settings } from '../pages';
+import { Auth, Builder, BuilderInspector, Control, Home, Presets, PresetsInspector, Settings } from '../pages';
 import authRoutes from './auth.routes';
 import builderRoutes from './builder.routes';
 import { BuilderPathValidator, PresetsPathValidator, PrivateRoute, PublicRoute } from '../hoc';
@@ -50,15 +50,15 @@ const appRoutes = [
     children: builderRoutes,
   },
   {
-    path: 'dashboard/',
+    path: 'control/',
     element: (
       <PrivateRoute>
-        <Dashboard />
+        <Control />
       </PrivateRoute>
     ),
   },
   {
-    path: 'dashboard/*',
+    path: 'control/*',
     element: <Navigate to="" replace />,
   },
   {

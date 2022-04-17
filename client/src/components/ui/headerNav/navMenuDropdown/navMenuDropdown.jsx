@@ -1,10 +1,10 @@
 import React from 'react';
 import {
+  AdjustmentsIcon,
   HomeIcon,
   LoginIcon,
   MenuAlt2Icon,
   UserAddIcon,
-  ViewBoardsIcon,
   ViewGridAddIcon,
   ViewGridIcon,
 } from '@heroicons/react/solid';
@@ -47,8 +47,8 @@ function NavMenuDropdown() {
             </NavMenuItem>
           </PublicElement>
           <PrivateElement>
-            <NavMenuItem path="/dashboard" icon={ViewBoardsIcon}>
-              Dashboard
+            <NavMenuItem path="/control" icon={AdjustmentsIcon}>
+              Control
             </NavMenuItem>
           </PrivateElement>
           <PrivateElement>

@@ -18,7 +18,7 @@ function HeaderNav() {
           <NavItem path="/auth/registration">Sign up</NavItem>
         </PublicElement>
         <PrivateElement>
-          <NavItem path="/dashboard">Dashboard</NavItem>
+          <NavItem path="/control">Control</NavItem>
         </PrivateElement>
         <PrivateElement>
           <NavDropdown
