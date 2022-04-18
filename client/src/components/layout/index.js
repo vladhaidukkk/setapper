@@ -11,6 +11,7 @@ import ToolPresetsViewer from './toolPresetsViewer/toolPresetsViewer';
 import PresetViewer from './presetViewer/presetViewer';
 import BuilderOptions from './builderOptions/builderOptions';
 import PresetsOptions from './presetsOptions/presetsOptions';
+import SettingsMenu from './settingsMenu/settingsMenu';
 
 export {
   SetupsBar,
@@ -26,4 +27,5 @@ export {
   ToolPresetsViewer,
   BuilderOptions,
   PresetsOptions,
+  SettingsMenu,
 };

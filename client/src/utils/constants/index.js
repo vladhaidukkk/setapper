@@ -5,6 +5,7 @@ import toolConstants from './tool.constants';
 import builderConstants from './builder';
 import sortConstants from './sort.constants';
 import notificationConstants from './notification.constants';
+import settingsConstants from './settings.constants';
 
 export {
   localStorageConstants,
@@ -14,4 +15,5 @@ export {
   builderConstants,
   sortConstants,
   notificationConstants,
+  settingsConstants,
 };

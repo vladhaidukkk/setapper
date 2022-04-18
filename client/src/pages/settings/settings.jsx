@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../../components/layout';
+import { Footer, Header, SettingsMenu } from '../../components/layout';
 import Container from '../../components/common/container';
 
 function Settings() {
@@ -9,9 +9,15 @@ function Settings() {
       <Header />
       <main className="flex-auto bg-white dark:bg-stone-800">
         <Container>
-          <Outlet />
+          <div className="mt-1 flex space-x-4.5">
+            <SettingsMenu />
+            <div className="flex-1">
+              <Outlet />
+            </div>
+          </div>
         </Container>
       </main>
+      <Footer />
     </div>
   );
 }

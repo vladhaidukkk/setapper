@@ -8,6 +8,7 @@ import { PrivateElement } from '../../../hoc';
 import Logo from '../../ui/logo';
 
 function Header({ fluid }) {
+  // todo: create fixed header
   return (
     <header className="border-b border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-900">
       <Container fluid={fluid}>

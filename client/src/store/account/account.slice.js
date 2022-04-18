@@ -27,6 +27,9 @@ const accountSlice = createSlice({
     creationRequested: crudRequested,
     created: crudReceived,
     creationFailed: crudFailed,
+    updated: (state, action) => {
+      state.data = action.payload;
+    },
     dataRemoved: (state) => {
       state.data = null;
     },

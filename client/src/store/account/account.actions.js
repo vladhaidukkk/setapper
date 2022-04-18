@@ -1,9 +1,14 @@
+import { createAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import accountSlice from './account.slice';
 import { usersService } from '../../services';
 import { handleError } from '../errors/errors.actions';
 import { errorConstants } from '../../utils/constants';
 
-const { requested, received, failed, creationRequested, created, creationFailed, dataRemoved } = accountSlice.actions;
+const { requested, received, failed, creationRequested, created, creationFailed, dataRemoved, updated } =
+  accountSlice.actions;
+const updateRequested = createAction('account/updateRequested');
+const updateFailed = createAction('account/updateFailed');
 
 const createAccount = (id, payload) => async (dispatch) => {
   dispatch(creationRequested());
@@ -31,4 +36,17 @@ const removeAccountData = () => (dispatch) => {
   dispatch(dataRemoved());
 };
 
-export { createAccount, loadAccountById, removeAccountData };
+const updateAccount = (payload) => async (dispatch, getState) => {
+  dispatch(updateRequested());
+  try {
+    const { accountId } = getState().auth;
+    const data = await usersService.updateUser(accountId, payload);
+    dispatch(updated(data));
+    toast.success('Account was updated');
+  } catch (error) {
+    dispatch(updateFailed());
+    dispatch(handleError({ type: errorConstants.types.ACCOUNT, error }));
+  }
+};
+
+export { createAccount, loadAccountById, removeAccountData, updateAccount };
