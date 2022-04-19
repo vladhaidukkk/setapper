@@ -1,5 +1,19 @@
 const User = require('../models/user.model');
 
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.send(users);
+  } catch (error) {
+    res.status(500).send({
+      error: {
+        message: error.message,
+        code: 500,
+      },
+    });
+  }
+};
+
 const getUserById = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -72,4 +86,5 @@ const updateUserById = async (req, res) => {
 module.exports = {
   getUserById,
   updateUserById,
+  getUsers,
 };

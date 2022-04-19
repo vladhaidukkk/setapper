@@ -7,6 +7,7 @@ const errorConstants = {
     ACCESSES: 'accessesError',
     LIKES: 'likesError',
     COMMENTS: 'commentsError',
+    USERS: 'usersError',
   },
   messages: {
     EMAIL_NOT_FOUND: 'Email was not found',

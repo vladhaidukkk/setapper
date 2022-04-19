@@ -8,9 +8,12 @@ import SetupPanel from '../../ui/setupPanel';
 import SetupMenu from '../../ui/setupMenu';
 import DetailInfo from '../../ui/detailInfo';
 import Form, { SubmitBtn, TextareaField } from '../../common/form';
+import { getAccountId } from '../../../store/auth/auth.selectors';
+import OwnerTooltip from '../../ui/ownerTooltip';
 
 function SetupViewer() {
   const { setupId } = useParams();
+  const accountId = useSelector(getAccountId());
   const setup = useSelector(getSetupById(setupId));
 
   const { handleSubmit, register } = useForm();
@@ -24,7 +27,7 @@ function SetupViewer() {
       <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto px-1">
         <div className="flex items-start justify-between space-x-2.5">
           <h2 className="text-2xl font-medium text-black dark:text-white">{setup.title}</h2>
-          <SetupMenu />
+          {accountId === setup.ownerId ? <SetupMenu /> : <OwnerTooltip ownerId={setup.ownerId} />}
         </div>
         <p className="text-lg text-stone-800 dark:text-stone-200">{setup.description}</p>
         <div className="flex space-x-2.5">

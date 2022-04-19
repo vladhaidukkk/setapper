@@ -12,6 +12,7 @@ import PresetViewer from './presetViewer/presetViewer';
 import BuilderOptions from './builderOptions/builderOptions';
 import PresetsOptions from './presetsOptions/presetsOptions';
 import SettingsMenu from './settingsMenu/settingsMenu';
+import ControlManager from './controlManager/controlManager';
 
 export {
   SetupsBar,
@@ -28,4 +29,5 @@ export {
   BuilderOptions,
   PresetsOptions,
   SettingsMenu,
+  ControlManager,
 };

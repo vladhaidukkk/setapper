@@ -1,9 +1,17 @@
 const Setup = require('../models/setup.model');
+const Access = require('../models/access.model');
 
 const getUserSetups = async (req, res) => {
   try {
-    const setups = await Setup.find({ ownerId: req.userId });
-    res.send(setups);
+    const accesses = await Access.find({ userId: req.userId });
+    const ownSetups = await Setup.find({ ownerId: req.userId });
+    const sharedSetups = await Promise.all(
+      accesses.map(async (access) => {
+        return await Setup.findById(access.setupId);
+      })
+    );
+
+    res.send([...ownSetups, ...sharedSetups]);
   } catch (error) {
     res.status(500).send({
       error: {

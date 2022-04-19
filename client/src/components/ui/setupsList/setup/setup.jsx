@@ -1,15 +1,19 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { ShareIcon } from '@heroicons/react/solid';
 import { parserUtil } from '../../../../utils/core';
 import { MatchSpan } from '../../../common/search';
 import { truncateOnIndexHelper } from '../../../../utils/helpers';
+import { getAccountId } from '../../../../store/auth/auth.selectors';
 
 function Setup({
   _id,
   title,
   description,
   tool,
+  ownerId,
   matchString,
   version,
   isDeleting,
@@ -18,6 +22,7 @@ function Setup({
   onConfirmDeletion,
 }) {
   const { setupId, edit } = useParams();
+  const accountId = useSelector(getAccountId());
 
   const titleComps = matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
   const descriptionComps = matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
@@ -34,7 +39,10 @@ function Setup({
           isDeleting ? 'border-rose-600 dark:border-rose-500' : 'border-stone-300 dark:border-stone-700'
         }`}
       >
-        <p className="text-xs text-stone-600 dark:text-stone-400">version: {version}</p>
+        <p className="flex items-center justify-between text-xs text-stone-600 dark:text-stone-400">
+          <span className="truncate">version: {version}</span>
+          {accountId !== ownerId && <ShareIcon className="h-3 w-3" />}
+        </p>
         <h4 className="text-md truncate font-medium text-black dark:text-white">{truncatedTitle}</h4>
         <p className="text-stone-800 line-clamp-2 dark:text-stone-200">{truncatedDescription}</p>
         <div className="flex items-center space-x-2.5 pt-1">
@@ -51,9 +59,11 @@ function Setup({
           >
             View
           </NavLink>
-          <NavLink
-            to={`/builder/${tool}/${_id}/edit`}
-            className={`flex flex-1 justify-center rounded-md border px-2 py-1 text-xs outline-none
+          {ownerId === accountId && (
+            <>
+              <NavLink
+                to={`/builder/${tool}/${_id}/edit`}
+                className={`flex flex-1 justify-center rounded-md border px-2 py-1 text-xs outline-none
             transition-colors duration-200 hover:border-violet-600 hover:bg-violet-500 hover:text-white focus:border-violet-600
             focus:bg-violet-500 focus:text-white dark:hover:border-violet-500 dark:hover:bg-violet-600 dark:hover:text-white dark:focus:border-violet-500
             dark:focus:bg-violet-600 dark:focus:text-white ${
@@ -61,20 +71,22 @@ function Setup({
                 ? 'border-violet-600 bg-violet-500 text-white dark:border-violet-500 dark:bg-violet-600'
                 : 'border-stone-300 bg-stone-100 text-stone-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400'
             }`}
-          >
-            Edit
-          </NavLink>
-          <button
-            type="button"
-            onClick={() => onDelete(_id)}
-            className="flex flex-1 justify-center rounded-md border border-stone-300 bg-stone-100 px-2 py-1
+              >
+                Edit
+              </NavLink>
+              <button
+                type="button"
+                onClick={() => onDelete(_id)}
+                className="flex flex-1 justify-center rounded-md border border-stone-300 bg-stone-100 px-2 py-1
             text-xs text-stone-600 outline-none transition-colors duration-200 hover:border-rose-600
             hover:bg-rose-500 hover:text-white focus:border-rose-600 focus:bg-rose-500 focus:text-white dark:border-stone-700 dark:bg-stone-900
             dark:text-stone-400 dark:hover:border-rose-500 dark:hover:bg-rose-600 dark:hover:text-white dark:focus:border-rose-500
             dark:focus:bg-rose-600 dark:focus:text-white"
-          >
-            Delete
-          </button>
+              >
+                Delete
+              </button>
+            </>
+          )}
         </div>
         <div className={`space-y-1 pt-1.5 ${isDeleting ? 'block' : 'hidden'}`}>
           <p className="text-xs text-stone-600 dark:text-stone-400">Confirm deletion:</p>
@@ -117,6 +129,7 @@ Setup.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   tool: PropTypes.string.isRequired,
+  ownerId: PropTypes.string.isRequired,
   version: PropTypes.string,
   isDeleting: PropTypes.bool.isRequired,
   matchString: PropTypes.string.isRequired,

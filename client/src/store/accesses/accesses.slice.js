@@ -23,12 +23,10 @@ const accessesSlice = createSlice({
       state.entities.push(action.payload);
     },
     removed: (state, action) => {
-      // todo: id -> _id
-      state.entities = state.entities.filter((entity) => entity.id !== action.payload);
+      state.entities = state.entities.filter((entity) => entity._id !== action.payload);
     },
     updated: (state, action) => {
-      // todo: id -> _id
-      const entityIndex = state.entities.findIndex((entity) => entity.id === action.payload.id);
+      const entityIndex = state.entities.findIndex((entity) => entity._id === action.payload.id);
       state.entities[entityIndex] = action.payload.data;
     },
   },

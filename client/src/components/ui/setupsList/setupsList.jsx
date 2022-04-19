@@ -19,7 +19,6 @@ function SetupsList({ list, matchString, notFound }) {
   }, [setupId, edit]);
 
   const handleDeleteSetup = (id) => {
-    console.log(id);
     setDeletionSetupId(() => id);
   };
 

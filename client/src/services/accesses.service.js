@@ -19,7 +19,7 @@ const removeAccess = async (id) => {
 };
 
 const updateAccess = async (id, payload) => {
-  const { data } = httpService.patch(accessesEndpoint + id, payload);
+  const { data } = await httpService.patch(accessesEndpoint + id, payload);
   return data;
 };
 

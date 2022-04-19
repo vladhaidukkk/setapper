@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalBtn, ModalSubtitle, ModalTitle } from '../../common/modal';
 
-function ConfirmDeletionPopup({ onConfirm, onCancel }) {
+function AccessDeletionPopup({ onConfirm, onCancel }) {
   return (
     <>
-      <ModalTitle>Confirm setup deletion</ModalTitle>
-      <ModalSubtitle>Are you sure you want to delete this setup?</ModalSubtitle>
+      <ModalTitle>Confirm access deletion</ModalTitle>
+      <ModalSubtitle>Are you sure you want to delete this access?</ModalSubtitle>
       <div className="flex items-center space-x-2.5">
         <ModalBtn onClick={onConfirm} color="rose">
           Confirm
@@ -19,9 +19,9 @@ function ConfirmDeletionPopup({ onConfirm, onCancel }) {
   );
 }
 
-ConfirmDeletionPopup.propTypes = {
+AccessDeletionPopup.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
 
-export default ConfirmDeletionPopup;
+export default AccessDeletionPopup;

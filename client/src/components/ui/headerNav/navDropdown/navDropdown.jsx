@@ -24,7 +24,7 @@ function NavDropdown({ label, path, pathPrefix, options }) {
         <ChevronDownIcon className="ml-1 -mr-1 h-3.5 w-3.5" />
       </Link>
       <div
-        className="absolute top-full left-0 z-10 hidden min-w-[10rem] translate-y-4 rounded-md border border-stone-300 bg-stone-50 p-2 shadow-md
+        className="absolute top-full left-0 z-50 hidden min-w-[10rem] translate-y-4 rounded-md border border-stone-300 bg-stone-50 p-2 shadow-md
         before:absolute before:left-0 before:bottom-full before:block before:h-5 before:w-full before:bg-transparent after:absolute after:left-0
         after:top-full after:block after:h-2 after:w-full after:bg-transparent group-hover:block dark:border-stone-700 dark:bg-stone-900"
       >

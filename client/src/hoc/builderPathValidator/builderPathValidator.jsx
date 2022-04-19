@@ -4,11 +4,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { toolConstants } from '../../utils/constants';
 import { getSetupById, getSetupsLoadingStatus } from '../../store/setups/setups.selectors';
+import { getAccountId } from '../../store/auth/auth.selectors';
 
 function BuilderPathValidator({ children }) {
   const { tool, setupId, edit } = useParams();
   const isSetupsLoading = useSelector(getSetupsLoadingStatus());
   const setup = useSelector(getSetupById(setupId));
+  const accountId = useSelector(getAccountId());
   const navigate = useNavigate();
 
   const isToolValid = tool && toolConstants.LIST.find((item) => item.value === tool);
@@ -20,6 +22,8 @@ function BuilderPathValidator({ children }) {
       } else if (setupId && !setup && !isSetupsLoading) {
         navigate(`/builder/${tool}`, { replace: true });
       } else if (setup && !isSetupsLoading && edit && edit !== 'edit') {
+        navigate(`/builder/${tool}/${setupId}`, { replace: true });
+      } else if (setup && !isSetupsLoading && edit && edit === 'edit' && setup.ownerId !== accountId) {
         navigate(`/builder/${tool}/${setupId}`, { replace: true });
       }
     }

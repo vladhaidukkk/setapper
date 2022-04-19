@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { useDropdown, useRandomId, useModal } from '../../../hooks';
 import SetupMenuOptionsList from './setupMenuOptionsList/setupMenuOptionsList';
 import { removeSetup } from '../../../store/setups/setups.actions';
-import ConfirmDeletionPopup from '../confirmDeletionPopup';
+import SetupDeletionPopup from '../setupDeletionPopup';
 import ShareSetupPopup from '../shareSetupPopup';
-import { createAccess } from '../../../store/accesses/accesses.ations';
+import { createAccess } from '../../../store/accesses/accesses.actions';
 
 function SetupMenu() {
   const { tool, setupId } = useParams();
@@ -37,7 +37,7 @@ function SetupMenu() {
   };
 
   const handleDelete = () => {
-    open(<ConfirmDeletionPopup onConfirm={handleConfirmDeletion} onCancel={close} />);
+    open(<SetupDeletionPopup onConfirm={handleConfirmDeletion} onCancel={close} />);
     toggle();
   };
 

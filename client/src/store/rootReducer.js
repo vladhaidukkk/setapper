@@ -7,6 +7,7 @@ import presetsReducer from './presets/presets.reducer';
 import accessesReducer from './accesses/accesses.reducer';
 import commentsReducer from './comments/comments.reducer';
 import likesReducer from './likes/likes.reducer';
+import usersReducer from './users/users.reducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   accesses: accessesReducer,
   comments: commentsReducer,
   likes: likesReducer,
+  users: usersReducer,
 });
 
 export default rootReducer;

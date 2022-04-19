@@ -7,7 +7,7 @@ function SettingsSection({ path, label, icon: Icon }) {
     <li>
       <Link
         to={`/settings/${path}`}
-        className="flex items-center rounded-md border border-stone-300 bg-white px-2.5 py-1.5 text-sm text-black transition-all duration-200 hover:scale-[97%] hover:shadow-md dark:border-stone-700 dark:bg-stone-800 dark:text-white"
+        className="flex items-center rounded-md border border-stone-300 bg-white px-2.5 py-1.5 text-sm text-black transition-all duration-200 hover:scale-[97%] hover:shadow dark:border-stone-700 dark:bg-stone-800 dark:text-white"
       >
         {Icon && <Icon className="mr-1.5 h-3.5 w-3.5" />}
         <span>{label}</span>

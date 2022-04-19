@@ -1,18 +1,28 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import { AccountUploader, DataUploader, ErrorHandler, ModalProvider, PresetsUploader, ThemeProvider } from './hoc';
+import {
+  AccountUploader,
+  AccountDataUploader,
+  ErrorHandler,
+  ModalProvider,
+  PresetsUploader,
+  ThemeProvider,
+} from './hoc';
 import routes from './routes';
+import DataUploader from './hoc/dataUploader/dataUploader';
 
 function App() {
   return (
     <ThemeProvider>
       <ErrorHandler>
         <AccountUploader>
-          <DataUploader>
+          <AccountDataUploader>
             <PresetsUploader>
-              <ModalProvider>{useRoutes(routes)}</ModalProvider>
+              <DataUploader>
+                <ModalProvider>{useRoutes(routes)}</ModalProvider>
+              </DataUploader>
             </PresetsUploader>
-          </DataUploader>
+          </AccountDataUploader>
         </AccountUploader>
       </ErrorHandler>
     </ThemeProvider>

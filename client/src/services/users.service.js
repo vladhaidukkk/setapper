@@ -3,6 +3,11 @@ import configKeys from '../config.json';
 
 const usersEndpoint = 'users/';
 
+const getUsers = async () => {
+  const { data } = await httpService.get(usersEndpoint);
+  return data;
+};
+
 const createUser = async (id, payload) => {
   const requestMethod = configKeys.useFirebase ? 'put' : 'post';
   const requestUrl = configKeys.useFirebase ? usersEndpoint + id : usersEndpoint;
@@ -37,6 +42,7 @@ const updateUser = async (id, payload) => {
 };
 
 const usersService = {
+  getUsers,
   createUser,
   getUserById,
   updateUser,

@@ -7,7 +7,16 @@ const getSetupById = (id) => (state) => {
 };
 
 const getSetupsByTool = (tool) => (state) => {
-  return state.setups.entities && state.setups.entities.filter((setup) => setup.tool === tool);
+  return (
+    state.setups.entities &&
+    state.setups.entities.filter((setup) => {
+      if (setup.tool === tool) {
+        const access = state.accesses.entities && state.accesses.entities.find((item) => item.setupId === setup._id);
+        return setup.ownerId === state.auth.accountId || access?.isAccepted;
+      }
+      return false;
+    })
+  );
 };
 
 export { getSetupsLoadingStatus, getSetupById, getSetupsByTool };

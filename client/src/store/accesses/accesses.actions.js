@@ -40,7 +40,8 @@ const removeAccess = (id) => async (dispatch) => {
   dispatch(removalRequested());
   try {
     await accessesService.removeAccess(id);
-    dispatch(removed());
+    dispatch(removed(id));
+    toast.success('Access was removed');
   } catch (error) {
     dispatch(removalFailed());
     dispatch(handleError({ type: errorConstants.types.ACCESSES, error }));

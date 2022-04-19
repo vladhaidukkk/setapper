@@ -10,7 +10,7 @@ import PresetsPathValidator from './presetsPathValidator/presetsPathValidator';
 import PresetsUploader from './presetsUploader/presetsUploader';
 import ModalProvider from './modalProvider/modalProvider';
 import SetupLoader from './setupLoader/setupLoader';
-import DataUploader from './dataUploader/dataUploader';
+import AccountDataUploader from './accountDataUploader/accountDataUploader';
 import PresetLoader from './presetLoader/presetLoader';
 
 export {
@@ -26,6 +26,6 @@ export {
   PresetsUploader,
   ModalProvider,
   SetupLoader,
-  DataUploader,
+  AccountDataUploader,
   PresetLoader,
 };
