@@ -23,8 +23,7 @@ const likesSlice = createSlice({
       state.entities.push(action.payload);
     },
     removed: (state, action) => {
-      // todo: id -> _id
-      state.entities = state.entities.filter((entity) => entity.id !== action.payload);
+      state.entities = state.entities.filter((entity) => entity._id !== action.payload);
     },
   },
 });

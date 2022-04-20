@@ -7,11 +7,11 @@ import PublicRoute from './publicRoute/publicRoute';
 import PrivateElement from './privateElement/privateElement';
 import PublicElement from './publicElement/publicElement';
 import PresetsPathValidator from './presetsPathValidator/presetsPathValidator';
-import PresetsUploader from './presetsUploader/presetsUploader';
 import ModalProvider from './modalProvider/modalProvider';
 import SetupLoader from './setupLoader/setupLoader';
 import AccountDataUploader from './accountDataUploader/accountDataUploader';
 import PresetLoader from './presetLoader/presetLoader';
+import DataUploader from './dataUploader/dataUploader';
 
 export {
   ErrorHandler,
@@ -20,10 +20,10 @@ export {
   BuilderPathValidator,
   PrivateRoute,
   PublicRoute,
+  DataUploader,
   PrivateElement,
   PublicElement,
   PresetsPathValidator,
-  PresetsUploader,
   ModalProvider,
   SetupLoader,
   AccountDataUploader,

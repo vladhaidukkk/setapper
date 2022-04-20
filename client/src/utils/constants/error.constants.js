@@ -15,6 +15,7 @@ const errorConstants = {
     INVALID_PASSWORD: 'Password is not correct',
     USER_NOT_FOUND: 'User was not found',
     FORBIDDEN_ACCESS_CREATION: 'You are owner of this setup',
+    UNAUTHORIZED: 'You are not logged in',
   },
 };
 

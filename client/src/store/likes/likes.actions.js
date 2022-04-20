@@ -3,6 +3,7 @@ import likesSlice from './likes.slice';
 import { handleError } from '../errors/errors.actions';
 import { errorConstants } from '../../utils/constants';
 import { likesService } from '../../services';
+import { decrementCommentLikes, incrementCommentLikes } from '../comments/comments.actions';
 
 const { requested, received, failed, created, removed } = likesSlice.actions;
 const creationRequested = createAction('likes/creationRequested');
@@ -26,17 +27,19 @@ const createLike = (payload) => async (dispatch) => {
   try {
     const data = await likesService.createLike(payload);
     dispatch(created(data));
+    dispatch(incrementCommentLikes(payload.commentId));
   } catch (error) {
     dispatch(creationFailed());
     dispatch(handleError({ type: errorConstants.types.LIKES, error }));
   }
 };
 
-const removeLike = (id) => async (dispatch) => {
+const removeLike = (id, commentId) => async (dispatch) => {
   dispatch(removalRequested());
   try {
     await likesService.removeLike(id);
-    dispatch(removed());
+    dispatch(removed(id));
+    dispatch(decrementCommentLikes(commentId));
   } catch (error) {
     dispatch(removalFailed());
     dispatch(handleError({ type: errorConstants.types.LIKES, error }));

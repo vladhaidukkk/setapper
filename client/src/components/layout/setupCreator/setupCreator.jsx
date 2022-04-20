@@ -36,9 +36,13 @@ function SetupCreator() {
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
       <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
         {!builderConstants[tool].PRODUCTION && (
-          <Alert
-            message={`${capitalize(tool)} configuration options are in development. Now you can't create setup for it.`}
-          />
+          <div className="px-1">
+            <Alert
+              message={`${capitalize(
+                tool
+              )} configuration options are in development. Now you can't create setup for it.`}
+            />
+          </div>
         )}
         <h3 className="px-1 text-2xl font-medium text-black dark:text-white">New {capitalize(tool)} setup</h3>
         <div className="overflow-y-auto px-1 pb-2.5">

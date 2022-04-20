@@ -47,7 +47,6 @@ function SetupsList({ list, matchString, notFound }) {
       {list && list.length !== 0 ? (
         <ul className="flex grow flex-col space-y-2 overflow-y-auto">
           {list.map((item) => {
-            console.log(item, deletionSetupId);
             return (
               <Setup
                 key={item._id}

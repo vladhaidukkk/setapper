@@ -1,15 +1,7 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import {
-  AccountUploader,
-  AccountDataUploader,
-  ErrorHandler,
-  ModalProvider,
-  PresetsUploader,
-  ThemeProvider,
-} from './hoc';
+import { AccountUploader, AccountDataUploader, ErrorHandler, ModalProvider, ThemeProvider, DataUploader } from './hoc';
 import routes from './routes';
-import DataUploader from './hoc/dataUploader/dataUploader';
 
 function App() {
   return (
@@ -17,11 +9,9 @@ function App() {
       <ErrorHandler>
         <AccountUploader>
           <AccountDataUploader>
-            <PresetsUploader>
-              <DataUploader>
-                <ModalProvider>{useRoutes(routes)}</ModalProvider>
-              </DataUploader>
-            </PresetsUploader>
+            <DataUploader>
+              <ModalProvider>{useRoutes(routes)}</ModalProvider>
+            </DataUploader>
           </AccountDataUploader>
         </AccountUploader>
       </ErrorHandler>
