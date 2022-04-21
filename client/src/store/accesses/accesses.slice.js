@@ -29,6 +29,9 @@ const accessesSlice = createSlice({
       const entityIndex = state.entities.findIndex((entity) => entity._id === action.payload.id);
       state.entities[entityIndex] = action.payload.data;
     },
+    removedBySetup: (state, action) => {
+      state.entities = state.entities.filter((entity) => entity.setupId !== action.payload);
+    },
   },
 });
 

@@ -4,6 +4,7 @@ import { handleError } from '../errors/errors.actions';
 import { setupsService } from '../../services';
 import { errorConstants } from '../../utils/constants';
 import { historyUtil } from '../../utils/core';
+import { removeSetupAccesses } from '../accesses/accesses.actions';
 
 const { requested, received, failed, created, removed, updated } = setupsSlice.actions;
 const creationRequested = createAction('setups/creationRequested');
@@ -41,6 +42,7 @@ const removeSetup = (id, redirectPath) => async (dispatch) => {
   try {
     await setupsService.removeSetup(id);
     dispatch(removed(id));
+    dispatch(removeSetupAccesses(id));
     historyUtil.replace(redirectPath);
   } catch (error) {
     dispatch(removalFailed());

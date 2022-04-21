@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
@@ -24,8 +24,12 @@ function Setup({
   const { setupId, edit } = useParams();
   const accountId = useSelector(getAccountId());
 
-  const titleComps = matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
-  const descriptionComps = matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
+  const titleComps = useMemo(() => {
+    return matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
+  }, [matchString]);
+  const descriptionComps = useMemo(() => {
+    return matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
+  }, [matchString]);
 
   const truncatedTitle = matchString && titleComps.length > 1 ? truncateOnIndexHelper(0, titleComps, 30) : titleComps;
   const truncatedDescription =

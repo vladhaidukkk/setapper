@@ -5,7 +5,7 @@ import { handleError } from '../errors/errors.actions';
 import { errorConstants } from '../../utils/constants';
 import accessesSlice from './accesses.slice';
 
-const { requested, received, failed, created, removed, updated } = accessesSlice.actions;
+const { requested, received, failed, created, removed, updated, removedBySetup } = accessesSlice.actions;
 const creationRequested = createAction('accesses/creationRequested');
 const creationFailed = createAction('accesses/creationFailed');
 const removalRequested = createAction('accesses/removalRequested');
@@ -59,4 +59,8 @@ const updateAccess = (id, payload) => async (dispatch) => {
   }
 };
 
-export { loadAccountAccesses, createAccess, removeAccess, updateAccess };
+const removeSetupAccesses = (setupId) => (dispatch) => {
+  dispatch(removedBySetup(setupId));
+};
+
+export { loadAccountAccesses, createAccess, removeAccess, updateAccess, removeSetupAccesses };

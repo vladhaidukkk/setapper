@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { parserUtil } from '../../../../utils/core';
@@ -8,8 +8,12 @@ import { truncateOnIndexHelper } from '../../../../utils/helpers';
 function Preset({ _id, title, description, tool, matchString, version }) {
   const { presetId } = useParams();
 
-  const titleComps = matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
-  const descriptionComps = matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
+  const titleComps = useMemo(() => {
+    return matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
+  }, [matchString]);
+  const descriptionComps = useMemo(() => {
+    return matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
+  }, [matchString]);
 
   const truncatedTitle = matchString && titleComps.length > 1 ? truncateOnIndexHelper(0, titleComps, 30) : titleComps;
   const truncatedDescription =

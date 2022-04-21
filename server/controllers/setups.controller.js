@@ -59,6 +59,11 @@ const deleteSetupById = async (req, res) => {
       });
     }
 
+    const accesses = await Access.find({ setupId });
+    for (const access of accesses) {
+      await access.remove();
+    }
+
     await setup.remove();
     res.status(204).send(null);
   } catch (error) {
