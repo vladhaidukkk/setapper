@@ -2,8 +2,9 @@ import axios from 'axios';
 import localStorageService from './localStorage.service';
 import configKeys from '../config.json';
 
+const apiEndpoint = process.env.NODE_ENV === 'production' ? configKeys.apiProdEndpoint : configKeys.apiDevEndpoint;
 const authHttp = axios.create({
-  baseURL: configKeys.useFirebase ? configKeys.firebaseAuthApiEndpoint : `${configKeys.apiEndpoint}auth/`,
+  baseURL: configKeys.useFirebase ? configKeys.firebaseAuthApiEndpoint : `${apiEndpoint}auth/`,
   params: {
     key: configKeys.useFirebase ? process.env.REACT_APP_FIREBASE_API_KEY : undefined,
   },
