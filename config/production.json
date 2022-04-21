@@ -1,6 +1,0 @@
-{
-  "port": 8080,
-  "mongodbUri": "mongodb+srv://vladhaidukkk:pOQu1mOGUvYRa7s5@cluster0.rvx62.mongodb.net/setapper?retryWrites=true&w=majority",
-  "accessTokenKey": "JTgAhQTT8MK1dWjprYJB",
-  "refreshTokenKey": "99fDM6HyLMqdw79cAIjF"
-}
