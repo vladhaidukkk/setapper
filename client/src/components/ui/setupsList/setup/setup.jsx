@@ -26,10 +26,10 @@ function Setup({
 
   const titleComps = useMemo(() => {
     return matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
-  }, [matchString]);
+  }, [matchString, title]);
   const descriptionComps = useMemo(() => {
     return matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
-  }, [matchString]);
+  }, [matchString, description]);
 
   const truncatedTitle = matchString && titleComps.length > 1 ? truncateOnIndexHelper(0, titleComps, 30) : titleComps;
   const truncatedDescription =
@@ -48,7 +48,7 @@ function Setup({
           {accountId !== ownerId && <ShareIcon className="h-3 w-3" />}
         </p>
         <h4 className="text-md truncate font-medium text-black dark:text-white">{truncatedTitle}</h4>
-        <p className="text-stone-800 line-clamp-2 dark:text-stone-200">{truncatedDescription}</p>
+        <p className="text-stone-800 line-clamp-3 dark:text-stone-200">{truncatedDescription}</p>
         <div className="flex items-center space-x-2.5 pt-1">
           <NavLink
             to={`/builder/${tool}/${_id}`}

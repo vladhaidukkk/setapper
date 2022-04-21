@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import setupsSlice from './setups.slice';
 import { handleError } from '../errors/errors.actions';
 import { setupsService } from '../../services';
@@ -56,6 +57,7 @@ const updateSetup = (id, payload) => async (dispatch) => {
     const data = await setupsService.updateSetup(id, payload);
     dispatch(updated({ id, data }));
     historyUtil.push(`/builder/${data.tool}/${id}`);
+    toast.success('Setup was updated');
   } catch (error) {
     dispatch(updateFailed());
     dispatch(handleError({ type: errorConstants.types.SETUPS, error }));

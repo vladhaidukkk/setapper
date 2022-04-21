@@ -10,10 +10,10 @@ function Preset({ _id, title, description, tool, matchString, version }) {
 
   const titleComps = useMemo(() => {
     return matchString ? parserUtil.strToJsx(title, matchString, <MatchSpan />) : title;
-  }, [matchString]);
+  }, [matchString, title]);
   const descriptionComps = useMemo(() => {
     return matchString ? parserUtil.strToJsx(description, matchString, <MatchSpan />) : description;
-  }, [matchString]);
+  }, [matchString, description]);
 
   const truncatedTitle = matchString && titleComps.length > 1 ? truncateOnIndexHelper(0, titleComps, 30) : titleComps;
   const truncatedDescription =
