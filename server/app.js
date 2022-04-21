@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const config = require('config');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const routes = require('./routes');
 const initDatabase = require('./startUp/initDatabase');
 
@@ -17,7 +18,13 @@ app.use(cors());
 app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('production');
+  const ROOT_DIR = path.resolve(__dirname, '../client/build');
+  const INDEX_FILE = path.resolve(ROOT_DIR, 'index.html');
+
+  app.use('/', express.static(ROOT_DIR));
+  app.get('*', (req, res) => {
+    res.sendFile(INDEX_FILE);
+  });
 }
 
 const start = async () => {

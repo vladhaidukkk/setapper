@@ -4,8 +4,9 @@ import { formatUrlForFirebaseHelper, isErrorExpectedHelper } from '../utils/help
 import localStorageService from './localStorage.service';
 import authService from './auth.service';
 
+const apiEndpoint = process.env.NODE_ENV === 'production' ? configKeys.apiProdEndpoint : configKeys.apiDevEndpoint;
 const http = axios.create({
-  baseURL: configKeys.useFirebase ? configKeys.firebaseRDBApiEndpoint : configKeys.apiEndpoint,
+  baseURL: configKeys.useFirebase ? configKeys.firebaseRDBApiEndpoint : apiEndpoint,
 });
 
 http.interceptors.request.use(

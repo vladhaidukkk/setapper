@@ -1,5 +1,6 @@
 {
-  "apiEndpoint": "http://localhost:8080/api/v1/",
+  "apiProdEndpoint": "http://185.237.206.201/api/v1/",
+  "apiDevEndpoint": "http://localhost:8080/api/v1/",
   "firebaseRDBApiEndpoint": "https://setapper-96945-default-rtdb.europe-west1.firebasedatabase.app/",
   "firebaseAuthApiEndpoint": "https://identitytoolkit.googleapis.com/v1/",
   "useFirebase": false
