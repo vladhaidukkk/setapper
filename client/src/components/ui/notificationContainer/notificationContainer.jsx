@@ -23,7 +23,7 @@ function NotificationContainer() {
       autoClose={4000}
       limit={3}
       transition={Slide}
-      draggablePercent={60}
+      draggablePercent={50}
       closeButton={false}
       icon={getIcon}
       toastClassName="bg-white border border-b-0 border-stone-200 dark:border-stone-700 dark:bg-stone-800 shadow-md rounded-md"

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { isDesktop } from 'react-device-detect';
 import Form, { SubmitBtn, TextareaField, TextField } from '../../common/form';
 import OptionFieldsList from '../../ui/optionFieldsList';
 import SetupPanel from '../../ui/setupPanel';
@@ -28,7 +29,11 @@ function SetupEditor() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
-      <div className="col-span-7 flex touch-manipulation flex-col space-y-2.5 overflow-y-auto">
+      <div
+        className={`flex touch-manipulation flex-col space-y-2.5 overflow-y-auto ${
+          isDesktop ? 'col-span-7' : 'col-span-12'
+        }`}
+      >
         <h3 className="px-1 text-2xl font-medium text-black dark:text-white">Edit setup</h3>
         <div className="overflow-y-auto px-1 pb-2.5">
           <Form onSubmit={handleSubmit(handleFormSubmit)} register={register}>
@@ -64,9 +69,11 @@ function SetupEditor() {
           </Form>
         </div>
       </div>
-      <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
-        <SetupPanel data={watch()} />
-      </div>
+      {isDesktop && (
+        <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
+          <SetupPanel data={watch()} />
+        </div>
+      )}
     </div>
   );
 }

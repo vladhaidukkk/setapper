@@ -34,7 +34,7 @@ function PresetsBar() {
   };
 
   return (
-    <aside className="flex h-full w-72 flex-col space-y-2.5 border-r border-stone-200 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900">
+    <aside className="flex h-full w-52 flex-col space-y-2.5 border-r border-stone-200 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900 lg:w-64 xl:w-72">
       <div className="flex h-10 min-h-[2.5rem] items-center space-x-2.5">
         <div
           className="flex h-full flex-1 items-center rounded-md border border-stone-300 bg-white shadow-sm outline-none

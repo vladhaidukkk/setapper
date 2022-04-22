@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function CheckboxField({ name, register, label, desc, validation }) {
   return (
-    <div className="flex items-start">
+    <div className="col-span-2 flex items-start lg:col-span-1">
       <div className="flex h-5 items-center">
         <input
           id={name}

@@ -4,7 +4,7 @@ import ErrorField from '../errorField/errorField';
 
 function TextField({ name, label, register, validation, error, placeholder, desc }) {
   return (
-    <div className="col-span-1">
+    <div className="col-span-2 lg:col-span-1">
       {label && (
         <label htmlFor={name} className="mb-1 block text-sm font-medium text-stone-800 dark:text-stone-200">
           {label}

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { isDesktop } from 'react-device-detect';
 import { createSetup } from '../../../store/setups/setups.actions';
 import Form, { SubmitBtn, TextareaField, TextField } from '../../common/form';
 import OptionFieldsList from '../../ui/optionFieldsList';
@@ -34,7 +35,11 @@ function SetupCreator() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
-      <div className="col-span-7 flex touch-manipulation flex-col space-y-2.5 overflow-y-auto">
+      <div
+        className={`flex touch-manipulation flex-col space-y-2.5 overflow-y-auto ${
+          isDesktop ? 'col-span-7' : 'col-span-12'
+        }`}
+      >
         {!builderConstants[tool].PRODUCTION && (
           <div className="px-1">
             <Alert
@@ -79,9 +84,11 @@ function SetupCreator() {
           </Form>
         </div>
       </div>
-      <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
-        <SetupPanel data={watch()} />
-      </div>
+      {isDesktop && (
+        <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
+          <SetupPanel data={watch()} />
+        </div>
+      )}
     </div>
   );
 }
