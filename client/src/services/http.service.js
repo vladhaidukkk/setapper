@@ -19,16 +19,21 @@ http.interceptors.request.use(
     const jwtExpiresDate = localStorageService.getJwtExpiresDate();
 
     if (jwtRefreshToken && jwtExpiresDate < Date.now()) {
-      const jwtData = await authService.exchangeRefreshToken();
+      try {
+        const jwtData = await authService.exchangeRefreshToken();
 
-      if (configKeys.useFirebase) {
-        localStorageService.setJwtData({
-          accessToken: jwtData.id_token,
-          refreshToken: jwtData.refresh_token,
-          expiresIn: jwtData.expires_in,
-        });
-      } else {
-        localStorageService.setJwtData(jwtData);
+        if (configKeys.useFirebase) {
+          localStorageService.setJwtData({
+            accessToken: jwtData.id_token,
+            refreshToken: jwtData.refresh_token,
+            expiresIn: jwtData.expires_in,
+          });
+        } else {
+          localStorageService.setJwtData(jwtData);
+        }
+      } catch (error) {
+        localStorageService.removeJwtData();
+        localStorageService.removeAccountId();
       }
     }
 
