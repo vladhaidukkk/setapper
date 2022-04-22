@@ -20,7 +20,7 @@ function PresetsList({ list, matchString, notFound }) {
   return (
     <div className="flex grow flex-col overflow-y-auto">
       {list && list.length !== 0 ? (
-        <ul className="flex grow flex-col space-y-2 overflow-y-auto">
+        <ul className="flex grow touch-manipulation flex-col space-y-2 overflow-y-auto">
           {list.map((item) => (
             <Preset key={item._id} {...item} matchString={matchString} />
           ))}

@@ -9,7 +9,7 @@ function Settings() {
       <Header />
       <main className="flex-auto bg-white dark:bg-stone-800">
         <Container>
-          <div className="mt-1 flex space-x-4.5">
+          <div className="mt-1 flex lg:space-x-4.5">
             <SettingsMenu />
             <div className="flex-1">
               <Outlet />

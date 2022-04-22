@@ -36,7 +36,7 @@ function Comment({ comment }) {
   };
 
   return (
-    <li className="w-11/12 space-y-2.5 rounded-md border border-stone-300 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900">
+    <li className="w-full space-y-2.5 rounded-md border border-stone-300 bg-stone-50 p-2.5 dark:border-stone-700 dark:bg-stone-900 2xl:w-11/12">
       <div className="flex items-start justify-between space-x-2.5">
         <UserInfo userId={comment.ownerId} />
         {accountId === comment.ownerId && (

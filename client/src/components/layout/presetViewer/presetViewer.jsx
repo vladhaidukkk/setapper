@@ -13,7 +13,7 @@ function PresetViewer() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
-      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto px-1 pb-2.5">
+      <div className="col-span-7 flex touch-manipulation flex-col space-y-2.5 overflow-y-auto px-1 pb-2.5">
         <h2 className="text-2xl font-medium text-black dark:text-white">{preset.title}</h2>
         <p className="text-lg text-stone-800 dark:text-stone-200">{preset.description}</p>
         <div className="flex space-x-2.5">
@@ -23,7 +23,7 @@ function PresetViewer() {
         </div>
         <PresetComments />
       </div>
-      <div className="col-span-5 -mx-2.5 flex flex-col overflow-y-auto p-2.5 pt-0">
+      <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
         <SetupPanel data={preset} />
       </div>
     </div>

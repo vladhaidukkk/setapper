@@ -34,7 +34,7 @@ function SetupCreator() {
 
   return (
     <div className="grid flex-1 grid-cols-12 gap-x-2.5 p-2.5 pb-0">
-      <div className="col-span-7 flex flex-col space-y-2.5 overflow-y-auto">
+      <div className="col-span-7 flex touch-manipulation flex-col space-y-2.5 overflow-y-auto">
         {!builderConstants[tool].PRODUCTION && (
           <div className="px-1">
             <Alert
@@ -79,7 +79,7 @@ function SetupCreator() {
           </Form>
         </div>
       </div>
-      <div className="col-span-5 -mx-2.5 flex flex-col overflow-y-auto p-2.5 pt-0">
+      <div className="col-span-5 -mx-2.5 flex touch-manipulation flex-col overflow-y-auto p-2.5 pt-0">
         <SetupPanel data={watch()} />
       </div>
     </div>

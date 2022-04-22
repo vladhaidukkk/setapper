@@ -13,7 +13,7 @@ function SettingsMenu() {
   };
 
   return (
-    <div className="flex w-56 flex-col justify-between space-y-2 overflow-hidden rounded-md border border-stone-200 bg-stone-50 p-2 dark:border-stone-700 dark:bg-stone-900">
+    <div className="hidden flex-col justify-between  space-y-2 overflow-hidden rounded-md border border-stone-200 bg-stone-50 p-2 dark:border-stone-700 dark:bg-stone-900 lg:flex lg:w-48 xl:w-56">
       <ul className="space-y-2">
         {settingsConstants.MENU_LIST.map((item) => {
           return <SettingsSection key={item.path} {...item} />;
