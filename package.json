@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/app.js",
-    "serve": "cross-env NODE_ENV=development nodemon server/app.js"
+    "serve": "cross-env NODE_ENV=development nodemon server/app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
