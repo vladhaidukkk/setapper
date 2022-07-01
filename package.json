@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/app.js",
-    "serve": "cross-env NODE_ENV=development nodemon server/app.js"
+    "serve": "cross-env NODE_ENV=development nodemon server/app.js",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,5 +22,8 @@
     "concurrently": "^7.1.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

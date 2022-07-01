@@ -7,7 +7,7 @@ const path = require('path');
 const routes = require('./routes');
 const initDatabase = require('./startUp/initDatabase');
 
-const PORT = config.get('port') ?? 8080;
+const PORT = process.env.NODE_ENV ?? config.get('port') ?? 8080;
 
 const app = express();
 
