@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const Token = require('../models/token.model');
 
 const generate = (userId) => {
-  const accessToken = jwt.sign({ userId }, config.get('accessTokenKey'), {
+  const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_KEY, {
     expiresIn: '1h',
   });
-  const refreshToken = jwt.sign({ userId }, config.get('refreshTokenKey'));
+  const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_KEY);
 
   return {
     accessToken,
@@ -28,7 +27,7 @@ const save = async (userId, refreshToken) => {
 
 const verifyRefreshToken = (refreshToken) => {
   try {
-    return jwt.verify(refreshToken, config.get('refreshTokenKey'));
+    return jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
   } catch (error) {
     return null;
   }
@@ -36,7 +35,7 @@ const verifyRefreshToken = (refreshToken) => {
 
 const verifyAccessToken = (accessToken) => {
   try {
-    return jwt.verify(accessToken, config.get('accessTokenKey'));
+    return jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY);
   } catch (error) {
     return null;
   }

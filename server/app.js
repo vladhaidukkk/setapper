@@ -1,13 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const chalk = require('chalk');
-const config = require('config');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const routes = require('./routes');
 const initDatabase = require('./startUp/initDatabase');
 
-const PORT = process.env.NODE_ENV ?? config.get('port') ?? 8080;
+const PORT = process.env.PORT ?? 8080;
 
 const app = express();
 
@@ -32,7 +32,7 @@ const start = async () => {
     mongoose.connection.once('open', async () => {
       await initDatabase();
     });
-    await mongoose.connect(config.get('mongodbUri'));
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log(chalk.green('MongoDB is connected'));
     app.listen(PORT, () => {
       console.log(chalk.green(`Server is running on PORT ${PORT}`));
